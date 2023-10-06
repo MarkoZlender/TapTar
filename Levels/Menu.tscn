@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpqr4183sdl0q"]
+
+[ext_resource type="Script" path="res://Levels/Menu.gd" id="1_dnsnf"]
+[ext_resource type="Texture2D" uid="uid://d0gmv4255pl0h" path="res://Resources/Images/bg2.jpg" id="2_e7g7k"]
+[ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="2_kpwpd"]
+[ext_resource type="FontFile" uid="uid://dar5fvireddji" path="res://Resources/Fonts/PixelifySans-VariableFont_wght.ttf" id="3_adbgq"]
+[ext_resource type="AudioStream" uid="uid://bgaj154falgjg" path="res://Resources/Sound/menu_background_soundtrack.wav" id="4_agvhf"]
+
+[sub_resource type="Theme" id="Theme_k1rgb"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_k1rgb")
+script = ExtResource("1_dnsnf")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.008
+anchor_bottom = 1.0
+offset_top = -360.0
+offset_right = -0.216064
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_e7g7k")
+expand_mode = 1
+
+[node name="BackgroundMenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_agvhf")
+autoplay = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.029
+anchor_top = 0.085
+anchor_right = 0.343
+anchor_bottom = 0.272
+offset_left = -0.408001
+offset_top = -0.0800018
+offset_right = -0.136017
+offset_bottom = -0.256012
+theme_override_fonts/normal_font = ExtResource("3_adbgq")
+theme_override_font_sizes/normal_font_size = 100
+text = "TapTar"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+self_modulate = Color(0.501961, 0.501961, 0.501961, 1)
+layout_mode = 2
+anchor_left = 0.085
+anchor_top = 0.71
+anchor_right = 0.224
+anchor_bottom = 0.958
+offset_left = -0.419998
+offset_top = -0.0800171
+offset_right = 0.451996
+offset_bottom = 0.215942
+grow_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+theme = ExtResource("2_kpwpd")
+text = "Start"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_kpwpd")
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../StartButton")
+theme = ExtResource("2_kpwpd")
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
