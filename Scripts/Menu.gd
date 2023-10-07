@@ -16,7 +16,10 @@ func _on_start_button_pressed():
 
 
 func _on_options_button_pressed():
-	get_tree().change_scene_to_file("res://Levels/Options.tscn")
+	var options = preload("res://Levels/Options.tscn")
+	var options_instance = options.instantiate()
+	add_child(options_instance)
+	#get_tree().change_scene_to_file("res://Levels/Options.tscn")
 
 
 func _on_quit_button_pressed():

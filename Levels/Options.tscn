@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://doi5r83r42ue6"]
+[gd_scene load_steps=5 format=3 uid="uid://doi5r83r42ue6"]
 
-[ext_resource type="Script" path="res://Levels/Options.gd" id="1_6krp5"]
+[ext_resource type="Script" path="res://Scripts/Options.gd" id="1_foghd"]
+[ext_resource type="FontFile" uid="uid://c7j4bn3ulr1tq" path="res://Resources/Fonts/Nunito-ExtraBold.ttf" id="2_tkb4a"]
+[ext_resource type="FontFile" uid="uid://ccdc50pfy0l0s" path="res://Resources/Fonts/Nunito-Bold.ttf" id="3_mbmj5"]
+[ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="3_tw2lm"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -9,28 +12,63 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_6krp5")
+script = ExtResource("1_foghd")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Test"
+color = Color(0, 0, 0, 1)
 
-[node name="Button" type="Button" parent="."]
+[node name="TitleText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 59.0
+offset_top = 28.0
+offset_right = -915.0
+offset_bottom = -558.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_tkb4a")
+theme_override_font_sizes/normal_font_size = 38
+text = "Keybinds"
+
+[node name="KeybindsText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = 129.0
+offset_right = -521.0
+offset_bottom = -245.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_mbmj5")
+theme_override_font_sizes/normal_font_size = 38
+text = "W - move forward
+A - move left
+S - move back
+D - move right
+E  - Interact"
+
+[node name="BackButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.329
-anchor_top = 0.747
-anchor_right = 0.454
-anchor_bottom = 0.821
-offset_left = -0.00802612
-offset_top = -0.0560303
-offset_right = -0.00805664
-offset_bottom = -0.00799561
+anchor_left = 0.051
+anchor_top = 0.85
+anchor_right = 0.176
+anchor_bottom = 0.926
+offset_left = 0.247997
+offset_top = 0.200012
+offset_right = 0.247986
+offset_bottom = -0.0480347
+theme = ExtResource("3_tw2lm")
 text = "Back"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
