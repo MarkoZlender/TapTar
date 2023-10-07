@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_foghd")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,28 +25,66 @@ color = Color(0, 0, 0, 1)
 
 [node name="TitleText" type="RichTextLabel" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 59.0
-offset_top = 28.0
-offset_right = -915.0
-offset_bottom = -558.0
+anchors_preset = -1
+anchor_left = 0.051
+anchor_top = 0.043
+anchor_right = 0.206
+anchor_bottom = 0.139
+offset_left = 0.247997
+offset_top = 0.136
+offset_right = -0.312012
+offset_bottom = -0.0720062
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("2_tkb4a")
 theme_override_font_sizes/normal_font_size = 38
 text = "Keybinds"
 
+[node name="MusicVolumeText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.548
+anchor_top = 0.145
+anchor_right = 0.754
+anchor_bottom = 0.221
+offset_left = -0.296021
+offset_top = 0.0399933
+offset_right = 0.391968
+offset_bottom = -0.208008
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_tkb4a")
+theme_override_font_sizes/normal_font_size = 31
+text = "Music Volume"
+
+[node name="SFXVolumeText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.548
+anchor_top = 0.313
+anchor_right = 0.754
+anchor_bottom = 0.389
+offset_left = -0.296021
+offset_top = 0.17598
+offset_right = 0.391968
+offset_bottom = -0.0720215
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_tkb4a")
+theme_override_font_sizes/normal_font_size = 31
+text = "Effects Volume"
+
 [node name="KeybindsText" type="RichTextLabel" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 70.0
-offset_top = 129.0
-offset_right = -521.0
-offset_bottom = -245.0
+anchors_preset = -1
+anchor_left = 0.061
+anchor_top = 0.199
+anchor_right = 0.548
+anchor_bottom = 0.728
+offset_left = -0.272003
+offset_top = 0.0479889
+offset_right = -0.296021
+offset_bottom = 0.255981
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("3_mbmj5")
@@ -55,20 +93,64 @@ text = "W - move forward
 A - move left
 S - move back
 D - move right
+
 E  - Interact"
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.051
+anchor_left = 0.206
 anchor_top = 0.85
-anchor_right = 0.176
-anchor_bottom = 0.926
-offset_left = 0.247997
-offset_top = 0.200012
-offset_right = 0.247986
-offset_bottom = -0.0480347
+anchor_right = 0.331
+anchor_bottom = 0.929
+offset_left = -0.312012
+offset_top = 2.20001
+offset_right = -0.312042
+offset_bottom = 0.00799561
 theme = ExtResource("3_tw2lm")
 text = "Back"
 
+[node name="SaveButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.051
+anchor_top = 0.853
+anchor_right = 0.176
+anchor_bottom = 0.926
+offset_left = 0.247997
+offset_top = 0.255981
+offset_right = 0.247986
+offset_bottom = 1.95203
+theme = ExtResource("3_tw2lm")
+text = "Save"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.548
+anchor_top = 0.199
+anchor_right = 0.727
+anchor_bottom = 0.275
+offset_left = -0.296021
+offset_top = 0.0479889
+offset_right = -0.504089
+offset_bottom = -0.199997
+value = 50.0
+
+[node name="SFXVolumeSlider" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.548
+anchor_top = 0.389
+anchor_right = 0.727
+anchor_bottom = 0.465
+offset_left = -0.296021
+offset_top = -0.0720215
+offset_right = -0.504089
+offset_bottom = -0.320007
+value = 50.0
+
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="value_changed" from="MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
