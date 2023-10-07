@@ -26,3 +26,9 @@ func _on_options_button_pressed():
 
 func _on_quit_button_pressed():
 	get_tree().quit()
+
+
+func _on_story_button_pressed():
+	var story = preload("res://Levels/Story.tscn")
+	var story_instance = story.instantiate()
+	add_child(story_instance)
