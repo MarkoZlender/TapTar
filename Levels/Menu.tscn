@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpqr4183sdl0q"]
+[gd_scene load_steps=6 format=3 uid="uid://dpqr4183sdl0q"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_c8yb5"]
-[ext_resource type="Texture2D" uid="uid://cuwfckqgl4qki" path="res://Resources/Images/blackliquid_bg.jpg" id="2_iuq7m"]
 [ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="2_kpwpd"]
 [ext_resource type="AudioStream" uid="uid://bgaj154falgjg" path="res://Resources/Sound/menu_background_soundtrack.wav" id="4_agvhf"]
 [ext_resource type="FontFile" uid="uid://7fgv25am7ca" path="res://Resources/Fonts/Nosifer-Regular.ttf" id="4_va0g5"]
@@ -18,6 +17,15 @@ grow_vertical = 2
 theme = SubResource("Theme_k1rgb")
 script = ExtResource("1_c8yb5")
 
+[node name="BGcolor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="BackgroundMenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_agvhf")
 volume_db = -70.0
@@ -27,16 +35,12 @@ bus = &"Music"
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.008
+anchor_left = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 7.78394
-offset_bottom = 131.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_iuq7m")
 expand_mode = 1
-flip_h = true
-flip_v = true
 
 [node name="TitleText" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -58,13 +62,13 @@ scroll_active = false
 self_modulate = Color(0.501961, 0.501961, 0.501961, 1)
 layout_mode = 2
 anchor_left = 0.085
-anchor_top = 0.71
-anchor_right = 0.224
+anchor_top = 0.582
+anchor_right = 0.335
 anchor_bottom = 0.958
-offset_left = -0.419998
-offset_top = -0.0800171
-offset_right = 0.451996
-offset_bottom = 0.215942
+offset_left = 0.0800018
+offset_top = -0.136017
+offset_right = 0.0799866
+offset_bottom = 0.216003
 grow_vertical = 0
 theme_override_constants/separation = 16
 
@@ -73,6 +77,12 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
 theme = ExtResource("2_kpwpd")
 text = "Start"
+
+[node name="Delete Progress" type="Button" parent="Buttons"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+theme = ExtResource("2_kpwpd")
+text = "Delete Progress"
 
 [node name="OptionsButton" type="Button" parent="Buttons"]
 layout_mode = 2
@@ -89,17 +99,18 @@ text = "Quit"
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.085
-anchor_top = 0.489
+anchor_top = 0.383
 anchor_right = 0.225
-anchor_bottom = 0.565
+anchor_bottom = 0.483
 offset_left = 0.0800018
-offset_top = 0.127991
+offset_top = -0.184006
 offset_right = -0.200012
-offset_bottom = -0.119995
+offset_bottom = 0.0159912
 theme = ExtResource("2_kpwpd")
 text = "Story"
 
 [connection signal="pressed" from="Buttons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Buttons/Delete Progress" to="." method="_on_delete_progress_pressed"]
 [connection signal="pressed" from="Buttons/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="StoryButton" to="." method="_on_story_button_pressed"]

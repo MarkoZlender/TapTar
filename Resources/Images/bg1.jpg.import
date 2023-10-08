@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuwfckqgl4qki"
-path="res://.godot/imported/blackliquid_bg.jpg-9e7109f48b14c0bd0cdb8fbce76cc457.ctex"
+uid="uid://dqrn544tw6a7o"
+path="res://.godot/imported/bg1.jpg-e1edb2492b44ce3ee083edd21a7e2972.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Images/blackliquid_bg.jpg"
-dest_files=["res://.godot/imported/blackliquid_bg.jpg-9e7109f48b14c0bd0cdb8fbce76cc457.ctex"]
+source_file="res://Resources/Images/bg1.jpg"
+dest_files=["res://.godot/imported/bg1.jpg-e1edb2492b44ce3ee083edd21a7e2972.ctex"]
 
 [params]
 

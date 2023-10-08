@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://loej2f8ojc2n"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://loej2f8ojc2n"]
 
 [ext_resource type="FontFile" uid="uid://c7j4bn3ulr1tq" path="res://Resources/Fonts/Nunito-ExtraBold.ttf" id="1_4e55n"]
 [ext_resource type="Texture2D" uid="uid://lc2unj1apcaq" path="res://Resources/Images/buttons.png" id="2_1kp8g"]
+[ext_resource type="FontFile" uid="uid://ccdc50pfy0l0s" path="res://Resources/Fonts/Nunito-Bold.ttf" id="3_2bu68"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6i5se"]
 
@@ -42,3 +43,14 @@ Button/styles/focus = SubResource("StyleBoxEmpty_jcbmx")
 Button/styles/hover = SubResource("StyleBoxTexture_k4blh")
 Button/styles/normal = SubResource("StyleBoxTexture_1onag")
 Button/styles/pressed = SubResource("StyleBoxEmpty_xud44")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/constants/line_spacing = 0
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 0
+Label/constants/shadow_offset_y = 0
+Label/constants/shadow_outline_size = 0
+Label/font_sizes/font_size = 40
+Label/fonts/font = ExtResource("3_2bu68")
+Label/styles/normal = null

@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://frgw32qfksy0"]
+[gd_scene load_steps=2 format=3 uid="uid://frgw32qfksy0"]
+
+[ext_resource type="Script" path="res://Scripts/Level_1.gd" id="1_bbfii"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_bbfii")
 
 [node name="TextEdit" type="TextEdit" parent="."]
 offset_right = 451.0
