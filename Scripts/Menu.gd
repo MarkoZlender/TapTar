@@ -8,11 +8,6 @@ var character = Character.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# array with background images
-	var backgrounds = ["res://Resources/Images/bg1.jpg", "res://Resources/Images/bg2.jpg", "res://Resources/Images/bg3.jpg", "res://Resources/Images/bg4.jpg", "res://Resources/Images/bg5.jpg"]
-	# loading a random image from array
-	randomize() # better randomization
-	$Background.texture = load(backgrounds[randi()%4+0])
 	$Buttons/StartButton.grab_focus()
 	# load saved options
 	_save = SaveOptions.load_options() as SaveOptions

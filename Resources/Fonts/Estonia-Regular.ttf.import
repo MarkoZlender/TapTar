@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cbo460udoadfs"
-path="res://.godot/imported/Nunito-VariableFont_wght.ttf-07af479f94397856582d313aa443fa50.fontdata"
+uid="uid://f4wq7tf4xm3d"
+path="res://.godot/imported/Estonia-Regular.ttf-8431e8636833e641e28f5c6ed73d67e3.fontdata"
 
 [deps]
 
-source_file="res://Resources/Fonts/Nunito-VariableFont_wght.ttf"
-dest_files=["res://.godot/imported/Nunito-VariableFont_wght.ttf-07af479f94397856582d313aa443fa50.fontdata"]
+source_file="res://Resources/Fonts/Estonia-Regular.ttf"
+dest_files=["res://.godot/imported/Estonia-Regular.ttf-8431e8636833e641e28f5c6ed73d67e3.fontdata"]
 
 [params]
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpqr4183sdl0q"]
+[gd_scene load_steps=7 format=3 uid="uid://dpqr4183sdl0q"]
 
 [ext_resource type="Script" path="res://Scripts/Menu.gd" id="1_c8yb5"]
+[ext_resource type="Texture2D" uid="uid://dyb4bavnc75gd" path="res://Resources/Images/oldpaper.png" id="2_5c0pa"]
 [ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="2_kpwpd"]
 [ext_resource type="AudioStream" uid="uid://bgaj154falgjg" path="res://Resources/Sound/menu_background_soundtrack.wav" id="4_agvhf"]
-[ext_resource type="FontFile" uid="uid://7fgv25am7ca" path="res://Resources/Fonts/Nosifer-Regular.ttf" id="4_va0g5"]
+[ext_resource type="FontFile" uid="uid://f4wq7tf4xm3d" path="res://Resources/Fonts/Estonia-Regular.ttf" id="4_lg6sq"]
 
 [sub_resource type="Theme" id="Theme_k1rgb"]
 
@@ -17,14 +18,14 @@ grow_vertical = 2
 theme = SubResource("Theme_k1rgb")
 script = ExtResource("1_c8yb5")
 
-[node name="BGcolor" type="ColorRect" parent="."]
+[node name="BGTexture" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("2_5c0pa")
 
 [node name="BackgroundMenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_agvhf")
@@ -32,29 +33,18 @@ volume_db = -70.0
 autoplay = true
 bus = &"Music"
 
-[node name="Background" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-
 [node name="TitleText" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.029
-anchor_top = 0.085
-anchor_right = 0.496
-anchor_bottom = 0.329
+anchor_right = 0.335
+anchor_bottom = 0.397
 offset_left = -0.408001
-offset_top = -0.0800018
-offset_right = -0.392029
-offset_bottom = -0.192017
-theme_override_fonts/normal_font = ExtResource("4_va0g5")
-theme_override_font_sizes/normal_font_size = 100
+offset_right = 0.0799866
+offset_bottom = -0.256012
+theme_override_colors/default_color = Color(0.788235, 0, 0.266667, 1)
+theme_override_fonts/normal_font = ExtResource("4_lg6sq")
+theme_override_font_sizes/normal_font_size = 200
 text = "TapTar"
 scroll_active = false
 
@@ -62,15 +52,20 @@ scroll_active = false
 self_modulate = Color(0.501961, 0.501961, 0.501961, 1)
 layout_mode = 2
 anchor_left = 0.085
-anchor_top = 0.582
+anchor_top = 0.389
 anchor_right = 0.335
 anchor_bottom = 0.958
 offset_left = 0.0800018
-offset_top = -0.136017
+offset_top = 124.928
 offset_right = 0.0799866
 offset_bottom = 0.216003
 grow_vertical = 0
 theme_override_constants/separation = 16
+
+[node name="StoryButton" type="Button" parent="Buttons"]
+layout_mode = 2
+theme = ExtResource("2_kpwpd")
+text = "Story"
 
 [node name="StartButton" type="Button" parent="Buttons"]
 layout_mode = 2
@@ -95,22 +90,8 @@ focus_neighbor_bottom = NodePath("../StartButton")
 theme = ExtResource("2_kpwpd")
 text = "Quit"
 
-[node name="StoryButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.085
-anchor_top = 0.383
-anchor_right = 0.225
-anchor_bottom = 0.483
-offset_left = 0.0800018
-offset_top = -0.184006
-offset_right = -0.200012
-offset_bottom = 0.0159912
-theme = ExtResource("2_kpwpd")
-text = "Story"
-
+[connection signal="pressed" from="Buttons/StoryButton" to="." method="_on_story_button_pressed"]
 [connection signal="pressed" from="Buttons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Buttons/Delete Progress" to="." method="_on_delete_progress_pressed"]
 [connection signal="pressed" from="Buttons/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="StoryButton" to="." method="_on_story_button_pressed"]
