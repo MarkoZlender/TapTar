@@ -11,6 +11,7 @@ func _ready():
 	
 	$Buttons/StartButton.grab_focus()
 	# load saved options
+	_create_or_load_save_options()
 	_save = SaveOptions.load_options() as SaveOptions
 	volume = _save.volume
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), volume.music_volume)
@@ -19,6 +20,17 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func _create_or_load_save_options() -> void:
+	if SaveOptions.save_exists():
+		_save = SaveOptions.load_options() as SaveOptions
+	else:
+		_save = SaveOptions.new()
+		
+		_save.volume = VolumeOptions.new()
+		_save.write_options()
+		
+	volume = _save.volume
 
 # function for loading and saving game
 func _create_or_load_save_game() -> bool:
