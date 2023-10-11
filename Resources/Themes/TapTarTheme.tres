@@ -1,16 +1,23 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://loej2f8ojc2n"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://loej2f8ojc2n"]
 
 [ext_resource type="FontFile" uid="uid://f4wq7tf4xm3d" path="res://Resources/Fonts/Estonia-Regular.ttf" id="1_whsr1"]
+[ext_resource type="Texture2D" uid="uid://bpsvmqxuvm1sx" path="res://Resources/Sprites/border2.png" id="2_1tiv0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6i5se"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xupvy"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_do2he"]
+texture = ExtResource("2_1tiv0")
+texture_margin_left = 36.0
+texture_margin_top = 40.0
+texture_margin_right = 36.0
+texture_margin_bottom = 48.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dpru4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xud44"]
 
 [resource]
+default_font = ExtResource("1_whsr1")
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_disabled_color = Color(0, 0, 0, 1)
 Button/colors/font_focus_color = Color(0.788235, 0, 0.266667, 1)
@@ -26,22 +33,60 @@ Button/colors/icon_normal_color = Color(1, 1, 1, 1)
 Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
 Button/constants/h_separation = 0
 Button/constants/icon_max_width = 0
-Button/constants/outline_size = 1
+Button/constants/outline_size = 3
 Button/font_sizes/font_size = 48
 Button/fonts/font = ExtResource("1_whsr1")
 Button/styles/disabled = SubResource("StyleBoxEmpty_6i5se")
-Button/styles/focus = SubResource("StyleBoxEmpty_xupvy")
-Button/styles/hover = SubResource("StyleBoxEmpty_xupvy")
+Button/styles/focus = SubResource("StyleBoxTexture_do2he")
+Button/styles/hover = SubResource("StyleBoxTexture_do2he")
 Button/styles/normal = SubResource("StyleBoxEmpty_dpru4")
 Button/styles/pressed = SubResource("StyleBoxEmpty_xud44")
-Label/colors/font_color = Color(1, 1, 1, 1)
+HSlider/constants/center_grabber = 0
+HSlider/constants/grabber_offset = 0
+HSlider/icons/grabber = null
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = null
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = null
+HSlider/styles/grabber_area_highlight = null
+HSlider/styles/slider = null
+Label/colors/font_color = Color(0, 0, 0, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 1)
 Label/constants/line_spacing = 0
-Label/constants/outline_size = 0
+Label/constants/outline_size = 3
 Label/constants/shadow_offset_x = 0
 Label/constants/shadow_offset_y = 0
 Label/constants/shadow_outline_size = 0
 Label/font_sizes/font_size = 40
 Label/fonts/font = ExtResource("1_whsr1")
 Label/styles/normal = null
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/selection_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_border = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 1)
+RichTextLabel/constants/line_separation = 0
+RichTextLabel/constants/outline_size = 3
+RichTextLabel/constants/shadow_offset_x = 0
+RichTextLabel/constants/shadow_offset_y = 0
+RichTextLabel/constants/shadow_outline_size = 0
+RichTextLabel/constants/table_h_separation = 0
+RichTextLabel/constants/table_v_separation = 0
+RichTextLabel/constants/text_highlight_h_padding = 0
+RichTextLabel/constants/text_highlight_v_padding = 0
+RichTextLabel/font_sizes/bold_font_size = 48
+RichTextLabel/font_sizes/bold_italics_font_size = 48
+RichTextLabel/font_sizes/italics_font_size = 48
+RichTextLabel/font_sizes/mono_font_size = 48
+RichTextLabel/font_sizes/normal_font_size = 48
+RichTextLabel/fonts/bold_font = ExtResource("1_whsr1")
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_whsr1")
+RichTextLabel/fonts/italics_font = ExtResource("1_whsr1")
+RichTextLabel/fonts/mono_font = ExtResource("1_whsr1")
+RichTextLabel/fonts/normal_font = ExtResource("1_whsr1")
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null

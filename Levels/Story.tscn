@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgirv5w55hen4"]
+[gd_scene load_steps=5 format=3 uid="uid://dgirv5w55hen4"]
 
-[ext_resource type="FontFile" uid="uid://ccdc50pfy0l0s" path="res://Resources/Fonts/Nunito-Bold.ttf" id="1_6dw5r"]
 [ext_resource type="Script" path="res://Scripts/Story.gd" id="1_fa4tj"]
 [ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="2_jymj5"]
+[ext_resource type="Texture2D" uid="uid://dyb4bavnc75gd" path="res://Resources/Images/oldpaper.png" id="2_r7wkl"]
+[ext_resource type="Texture2D" uid="uid://dkm2wjhh2nqtg" path="res://Resources/Sprites/border1.png" id="4_u66co"]
 
 [node name="Story" type="Control"]
 layout_mode = 3
@@ -13,91 +14,53 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fa4tj")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("2_r7wkl")
 
-[node name="FlavorRect1" type="ColorRect" parent="."]
+[node name="Border" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.244
-anchor_top = 0.002
-anchor_right = 0.279
-anchor_bottom = 0.998
-offset_left = -0.0880127
-offset_top = -0.296
-offset_right = -0.40802
-offset_bottom = 0.295959
-color = Color(0.780392, 0.607843, 0.313726, 1)
-
-[node name="FlavorRect2" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.104
-anchor_right = 0.139
-anchor_bottom = 0.997
-offset_left = 0.192001
-offset_right = -0.128052
-offset_bottom = -0.0560303
-color = Color(0.780392, 0.607843, 0.313726, 1)
-
-[node name="FlavorRect3" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.168
-anchor_right = 0.889
-anchor_bottom = 0.23
-offset_top = 0.135994
-offset_right = -0.128052
-offset_bottom = -0.0400085
-color = Color(0.780392, 0.607843, 0.313726, 1)
-
-[node name="FlavorRect4" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.966
-anchor_right = 0.889
-anchor_bottom = 1.028
-offset_top = 0.0319824
-offset_right = -0.128052
-offset_bottom = -0.143982
-color = Color(0.780392, 0.607843, 0.313726, 1)
+anchor_left = 0.210938
+anchor_top = 0.0231481
+anchor_right = 0.733507
+anchor_bottom = 0.95216
+offset_right = 6.10352e-05
+offset_bottom = 6.10352e-05
+texture = ExtResource("4_u66co")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="StoryTitle" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.441
-anchor_top = 0.08
-anchor_right = 0.532
-anchor_bottom = 0.168
-offset_left = -0.0320129
-offset_top = 0.16
-offset_right = 0.135986
-offset_bottom = 0.135994
-theme_override_fonts/normal_font = ExtResource("1_6dw5r")
-theme_override_font_sizes/normal_font_size = 40
+anchor_left = 0.418403
+anchor_top = 0.0416667
+anchor_right = 0.50434
+anchor_bottom = 0.177469
+theme = ExtResource("2_jymj5")
+theme_override_font_sizes/normal_font_size = 70
 text = "Story"
+metadata/_edit_use_anchors_ = true
 
 [node name="StoryDescription" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.301
-anchor_top = 0.23
-anchor_right = 0.808
-anchor_bottom = 0.966
-offset_left = 0.247955
-offset_top = -0.0400085
-offset_right = 0.18396
-offset_bottom = 0.0319824
-theme_override_fonts/normal_font = ExtResource("1_6dw5r")
-theme_override_font_sizes/normal_font_size = 34
+anchor_left = 0.228299
+anchor_top = 0.216049
+anchor_right = 0.735243
+anchor_bottom = 0.890432
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_jymj5")
 text = "There are two opposing factions which spawned after the nuclear war and society's Collapse. They are in constant conflict.
 You take the role of a recruit who fights against the dogmatic faction by infiltrating enemy establishments and causing as much damage as possible to the opposing faction."
+metadata/_edit_use_anchors_ = true
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 1

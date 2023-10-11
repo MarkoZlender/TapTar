@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://nri4wfs1ovn0"]
+[gd_scene load_steps=4 format=3 uid="uid://nri4wfs1ovn0"]
 
 [ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="1_gjac8"]
 [ext_resource type="Script" path="res://Scripts/CharacterCustomization.gd" id="1_x2vtk"]
+[ext_resource type="Texture2D" uid="uid://dyb4bavnc75gd" path="res://Resources/Images/oldpaper.png" id="2_os6na"]
 
 [node name="Customization" type="Control"]
 layout_mode = 3
@@ -12,28 +13,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x2vtk")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.219608, 0.219608, 0.219608, 1)
+texture = ExtResource("2_os6na")
 
 [node name="CustomizationTitle" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.029
-anchor_top = 0.054
-anchor_right = 0.425
-anchor_bottom = 0.14
-offset_left = -0.408001
-offset_top = 0.00799942
-offset_right = 0.399994
-offset_bottom = 0.279999
+anchor_left = 0.0286458
+anchor_top = 0.0540123
+anchor_right = 0.237847
+anchor_bottom = 0.140432
 theme = ExtResource("1_gjac8")
 text = "Character Customization"
+metadata/_edit_use_anchors_ = true
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 1
@@ -43,7 +41,6 @@ anchor_top = 0.24537
 anchor_right = 0.118924
 anchor_bottom = 0.317901
 theme = ExtResource("1_gjac8")
-theme_override_font_sizes/font_size = 32
 text = "Name:"
 metadata/_edit_use_anchors_ = true
 
@@ -59,23 +56,19 @@ offset_top = -0.128006
 offset_right = 0.192001
 offset_bottom = 0.215973
 theme = ExtResource("1_gjac8")
-theme_override_font_sizes/font_size = 32
 text = "Stats"
 
 [node name="CombatLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.029
-anchor_top = 0.537
-anchor_right = 0.117
-anchor_bottom = 0.605
-offset_left = -0.408001
-offset_top = 0.0239868
-offset_right = -22.784
-offset_bottom = -0.0400085
+anchor_left = 0.0286458
+anchor_top = 0.537037
+anchor_right = 0.0972222
+anchor_bottom = 0.614198
+offset_bottom = -6.0
 theme = ExtResource("1_gjac8")
-theme_override_font_sizes/font_size = 28
 text = "Combat"
+metadata/_edit_use_anchors_ = true
 
 [node name="HackingLabel" type="Label" parent="."]
 layout_mode = 1
@@ -89,7 +82,6 @@ offset_top = 0.0239868
 offset_right = 0.391998
 offset_bottom = -0.0400085
 theme = ExtResource("1_gjac8")
-theme_override_font_sizes/font_size = 28
 text = "Hacking"
 
 [node name="PointsLabel" type="Label" parent="."]
@@ -104,7 +96,6 @@ offset_top = 0.0239868
 offset_right = -0.447998
 offset_bottom = 0.144012
 theme = ExtResource("1_gjac8")
-theme_override_font_sizes/font_size = 28
 text = "Points:"
 
 [node name="Points" type="Label" parent="."]
@@ -119,7 +110,6 @@ offset_top = 0.0239868
 offset_right = 0.231934
 offset_bottom = 0.144012
 theme = ExtResource("1_gjac8")
-theme_override_font_sizes/font_size = 28
 text = "0"
 
 [node name="LockpickingLabel" type="Label" parent="."]
@@ -134,7 +124,6 @@ offset_top = -0.22403
 offset_right = -0.296021
 offset_bottom = -0.288025
 theme = ExtResource("1_gjac8")
-theme_override_font_sizes/font_size = 28
 text = "Lockpicking"
 
 [node name="VitalityLabel" type="Label" parent="."]
@@ -149,7 +138,6 @@ offset_top = -0.22403
 offset_right = 0.215988
 offset_bottom = -0.288025
 theme = ExtResource("1_gjac8")
-theme_override_font_sizes/font_size = 28
 text = "Vitality"
 
 [node name="CombatSkillInput" type="SpinBox" parent="."]
@@ -257,30 +245,24 @@ metadata/_edit_use_anchors_ = true
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.878
-anchor_top = 0.894
-anchor_right = 0.973
-anchor_bottom = 0.961
-offset_left = 0.543945
-offset_top = -0.312012
-offset_right = 0.104004
-offset_bottom = 0.271973
+anchor_left = 0.838542
+anchor_top = 0.893519
+anchor_right = 0.978299
+anchor_bottom = 0.987654
 theme = ExtResource("1_gjac8")
 text = "Start"
+metadata/_edit_use_anchors_ = true
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.757
-anchor_top = 0.894
-anchor_right = 0.852
-anchor_bottom = 0.969
-offset_left = -0.0640259
-offset_top = -0.312012
-offset_right = -0.504089
-offset_bottom = 0.0879517
+anchor_left = 0.673611
+anchor_top = 0.893519
+anchor_right = 0.813368
+anchor_bottom = 0.987654
 theme = ExtResource("1_gjac8")
 text = "Back"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="value_changed" from="CombatSkillInput" to="." method="_on_combat_skill_input_value_changed"]
 [connection signal="value_changed" from="HackingSkillInput" to="." method="_on_hacking_skill_input_value_changed"]

@@ -8,6 +8,7 @@ var character = Character.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	$Buttons/StartButton.grab_focus()
 	# load saved options
 	_save = SaveOptions.load_options() as SaveOptions
@@ -45,6 +46,7 @@ func _on_options_button_pressed():
 	var options = preload("res://Levels/Options.tscn")
 	var options_instance = options.instantiate()
 	add_child(options_instance)
+	$Buttons/StartButton.grab_focus()
 
 
 func _on_quit_button_pressed():
@@ -55,6 +57,7 @@ func _on_story_button_pressed():
 	var story = preload("res://Levels/Story.tscn")
 	var story_instance = story.instantiate()
 	add_child(story_instance)
+	$Buttons/StartButton.grab_focus()
 
 
 func _on_delete_progress_pressed():

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://doi5r83r42ue6"]
+[gd_scene load_steps=6 format=3 uid="uid://doi5r83r42ue6"]
 
 [ext_resource type="Script" path="res://Scripts/Options.gd" id="1_foghd"]
-[ext_resource type="FontFile" uid="uid://c7j4bn3ulr1tq" path="res://Resources/Fonts/Nunito-ExtraBold.ttf" id="2_tkb4a"]
-[ext_resource type="FontFile" uid="uid://ccdc50pfy0l0s" path="res://Resources/Fonts/Nunito-Bold.ttf" id="3_mbmj5"]
+[ext_resource type="Texture2D" uid="uid://dyb4bavnc75gd" path="res://Resources/Images/oldpaper.png" id="2_ch1ly"]
 [ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="3_tw2lm"]
+[ext_resource type="Texture2D" uid="uid://cvsvupm8dmcrw" path="res://Resources/Images/angel_pointing.svg" id="4_ov6ek"]
+[ext_resource type="Texture2D" uid="uid://dkm2wjhh2nqtg" path="res://Resources/Sprites/border1.png" id="5_mo206"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -14,141 +15,161 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_foghd")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("2_ch1ly")
 
-[node name="TitleText" type="RichTextLabel" parent="."]
+[node name="Border2" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_left = 0.527778
+anchor_top = 0.0987654
+anchor_right = 0.736979
+anchor_bottom = 0.498457
+texture = ExtResource("5_mo206")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Border1" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.051
-anchor_top = 0.043
-anchor_right = 0.206
-anchor_bottom = 0.139
-offset_left = 0.247997
-offset_top = 0.136
-offset_right = -0.312012
-offset_bottom = -0.0720062
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("2_tkb4a")
-theme_override_font_sizes/normal_font_size = 38
-text = "Keybinds"
+anchor_left = 0.0190972
+anchor_top = 0.121914
+anchor_right = 0.268229
+anchor_bottom = 0.873457
+texture = ExtResource("5_mo206")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="MusicVolumeText" type="RichTextLabel" parent="."]
+[node name="KeybindsText" type="RichTextLabel" parent="Border1"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.548
-anchor_top = 0.145
-anchor_right = 0.754
-anchor_bottom = 0.221
-offset_left = -0.296021
-offset_top = 0.0399933
-offset_right = 0.391968
-offset_bottom = -0.208008
+anchor_left = 0.146341
+anchor_top = 0.0582329
+anchor_right = 0.878049
+anchor_bottom = 0.939759
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("2_tkb4a")
-theme_override_font_sizes/normal_font_size = 31
-text = "Music Volume"
-
-[node name="SFXVolumeText" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.548
-anchor_top = 0.313
-anchor_right = 0.754
-anchor_bottom = 0.389
-offset_left = -0.296021
-offset_top = 0.17598
-offset_right = 0.391968
-offset_bottom = -0.0720215
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("2_tkb4a")
-theme_override_font_sizes/normal_font_size = 31
-text = "Effects Volume"
-
-[node name="KeybindsText" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.061
-anchor_top = 0.199
-anchor_right = 0.548
-anchor_bottom = 0.728
-offset_left = -0.272003
-offset_top = 0.0479889
-offset_right = -0.296021
-offset_bottom = 0.255981
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("3_mbmj5")
-theme_override_font_sizes/normal_font_size = 38
+theme = ExtResource("3_tw2lm")
 text = "W - move forward
 A - move left
 S - move back
 D - move right
 
 E  - Interact"
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0512153
+anchor_right = 0.203125
+anchor_bottom = 0.160494
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_tw2lm")
+theme_override_font_sizes/normal_font_size = 60
+text = "Keybinds"
+metadata/_edit_use_anchors_ = true
+
+[node name="MusicVolumeText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.547743
+anchor_top = 0.117284
+anchor_right = 0.75434
+anchor_bottom = 0.21142
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_tw2lm")
+text = "Music Volume"
+metadata/_edit_use_anchors_ = true
+
+[node name="SFXVolumeText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.547743
+anchor_top = 0.313272
+anchor_right = 0.704861
+anchor_bottom = 0.415123
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_tw2lm")
+text = "Effects Volume"
+metadata/_edit_use_anchors_ = true
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.206
-anchor_top = 0.85
-anchor_right = 0.331
-anchor_bottom = 0.929
-offset_left = -0.312012
-offset_top = 2.20001
-offset_right = -0.312042
-offset_bottom = 0.00799561
+anchor_left = 0.203125
+anchor_top = 0.896605
+anchor_right = 0.328125
+anchor_bottom = 0.990741
+focus_neighbor_top = NodePath("../MusicVolumeSlider")
+focus_neighbor_right = NodePath("../SaveButton")
 theme = ExtResource("3_tw2lm")
 text = "Back"
+metadata/_edit_use_anchors_ = true
 
 [node name="SaveButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.051
-anchor_top = 0.853
-anchor_right = 0.176
-anchor_bottom = 0.926
-offset_left = 0.247997
-offset_top = 0.255981
-offset_right = 0.247986
-offset_bottom = 1.95203
+anchor_left = 0.0512153
+anchor_top = 0.896605
+anchor_right = 0.176215
+anchor_bottom = 0.990741
+focus_neighbor_left = NodePath("../BackButton")
+focus_neighbor_top = NodePath("../MusicVolumeSlider")
 theme = ExtResource("3_tw2lm")
 text = "Save"
+metadata/_edit_use_anchors_ = true
 
 [node name="MusicVolumeSlider" type="HSlider" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.548
-anchor_top = 0.199
-anchor_right = 0.727
-anchor_bottom = 0.275
-offset_left = -0.296021
-offset_top = 0.0479889
-offset_right = -0.504089
-offset_bottom = -0.199997
+anchor_left = 0.547743
+anchor_top = 0.199074
+anchor_right = 0.726562
+anchor_bottom = 0.274691
+offset_bottom = 1.52588e-05
+focus_neighbor_left = NodePath("../SaveButton")
+focus_neighbor_top = NodePath("../SaveButton")
+focus_neighbor_right = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../SFXVolumeSlider")
+theme = ExtResource("3_tw2lm")
 value = 50.0
+metadata/_edit_use_anchors_ = true
 
 [node name="SFXVolumeSlider" type="HSlider" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.548
-anchor_top = 0.389
-anchor_right = 0.727
-anchor_bottom = 0.465
-offset_left = -0.296021
-offset_top = -0.0720215
-offset_right = -0.504089
-offset_bottom = -0.320007
+anchor_left = 0.547743
+anchor_top = 0.388889
+anchor_right = 0.726562
+anchor_bottom = 0.464506
+focus_neighbor_left = NodePath("../BackButton")
+focus_neighbor_top = NodePath("../MusicVolumeSlider")
+focus_neighbor_right = NodePath("../SaveButton")
+focus_neighbor_bottom = NodePath("../SaveButton")
 value = 50.0
+metadata/_edit_use_anchors_ = true
+
+[node name="AngelTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.784722
+anchor_top = 0.464506
+anchor_right = 0.971354
+anchor_bottom = 0.967593
+texture = ExtResource("4_ov6ek")
+expand_mode = 1
+stretch_mode = 4
+flip_h = true
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]

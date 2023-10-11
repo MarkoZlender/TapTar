@@ -5,6 +5,7 @@ var volume = VolumeOptions.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$SaveButton.grab_focus()
 	_create_or_load_save()
 	$MusicVolumeSlider.value = volume.music_volume
 	$SFXVolumeSlider.value = volume.sfx_volume
