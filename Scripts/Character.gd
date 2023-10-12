@@ -10,6 +10,9 @@ class_name Character extends Resource
 @export var charisma := 0
 @export var cunning := 0
 
+# portrait
+@export var portrait = "res://Resources/Images/no_image_available.svg"
+
 # map
 @export var map := "res://Levels/small_map.tscn"
 

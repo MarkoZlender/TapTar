@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://nri4wfs1ovn0"]
+[gd_scene load_steps=9 format=3 uid="uid://nri4wfs1ovn0"]
 
 [ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="1_gjac8"]
 [ext_resource type="Script" path="res://Scripts/CharacterCustomization.gd" id="1_x2vtk"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://4bpbj15i2idx" path="res://Resources/Themes/spinboxTheme.tres" id="5_4veot"]
 [ext_resource type="Texture2D" uid="uid://ca2ndd3qxgssi" path="res://Resources/Sprites/arrow.png" id="6_cyccr"]
 [ext_resource type="Texture2D" uid="uid://cn2tav06exfrx" path="res://Resources/Sprites/arrow_back.png" id="7_ssu1v"]
+[ext_resource type="Texture2D" uid="uid://dgwysyihypo4i" path="res://Resources/Images/angel_corner.svg" id="8_k7orw"]
 
 [node name="Customization" type="Control"]
 layout_mode = 3
@@ -48,117 +49,153 @@ texture = ExtResource("4_uesn8")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="CustomizationTitle" type="Label" parent="."]
+[node name="Labels" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CustomizationTitle" type="Label" parent="Labels"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0286458
 anchor_top = 0.0540123
 anchor_right = 0.253125
 anchor_bottom = 0.141049
-offset_right = -29.3337
-offset_bottom = -0.666718
+offset_left = 53.8541
+offset_top = 56.1728
+offset_right = 475.875
+offset_bottom = 146.691
 theme = ExtResource("1_gjac8")
 text = "Character Customization"
 metadata/_edit_use_anchors_ = true
 
-[node name="NameLabel" type="Label" parent="."]
+[node name="NameLabel" type="Label" parent="Labels"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0286458
 anchor_top = 0.24537
 anchor_right = 0.118924
 anchor_bottom = 0.332407
-offset_bottom = -15.6665
+offset_left = 53.8541
+offset_top = 255.185
+offset_right = 166.243
+offset_bottom = 345.703
 theme = ExtResource("1_gjac8")
 text = "Name:"
 metadata/_edit_use_anchors_ = true
 
-[node name="NameLabel2" type="Label" parent="."]
+[node name="NameLabel2" type="Label" parent="Labels"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.69375
-anchor_top = 0.532407
-anchor_right = 0.777083
-anchor_bottom = 0.619444
+anchor_left = 36.325
+anchor_top = 14.5
+anchor_right = 40.325
+anchor_bottom = 16.85
 theme = ExtResource("1_gjac8")
 text = "Map size"
 metadata/_edit_use_anchors_ = true
 
-[node name="StatsLabel" type="Label" parent="."]
+[node name="StatsLabel" type="Label" parent="Labels"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0286458
 anchor_top = 0.408333
 anchor_right = 0.103958
 anchor_bottom = 0.49537
+offset_left = 53.8541
+offset_top = 424.666
+offset_right = 138.842
+offset_bottom = 515.185
 theme = ExtResource("1_gjac8")
 text = "Stats"
 metadata/_edit_use_anchors_ = true
 
-[node name="CombatLabel" type="Label" parent="."]
+[node name="CombatLabel" type="Label" parent="Labels"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0286458
 anchor_top = 0.537037
 anchor_right = 0.0972222
 anchor_bottom = 0.624074
-offset_bottom = -16.6661
+offset_left = 53.8541
+offset_top = 558.518
+offset_right = 331.111
+offset_bottom = 649.037
 theme = ExtResource("1_gjac8")
 text = "Martial prowess"
 metadata/_edit_use_anchors_ = true
 
-[node name="HackingLabel" type="Label" parent="."]
+[node name="HackingLabel" type="Label" parent="Labels"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0286458
 anchor_top = 0.7
 anchor_right = 0.116971
 anchor_bottom = 0.787037
+offset_left = 53.8541
+offset_top = 728.0
+offset_right = 179.321
+offset_bottom = 818.518
 theme = ExtResource("1_gjac8")
 text = "Intellect"
 metadata/_edit_use_anchors_ = true
 
-[node name="PointsLabel" type="Label" parent="."]
+[node name="PointsLabel" type="Label" parent="Labels"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.190625
 anchor_top = 0.893519
 anchor_right = 0.282113
 anchor_bottom = 0.980556
+offset_left = 358.375
+offset_top = 929.26
+offset_right = 469.715
+offset_bottom = 1019.78
 theme = ExtResource("1_gjac8")
 text = "Points:"
 metadata/_edit_use_anchors_ = true
 
-[node name="Points" type="Label" parent="."]
+[node name="Points" type="Label" parent="Labels"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.282113
 anchor_top = 0.893519
 anchor_right = 0.317467
 anchor_bottom = 0.980556
+offset_left = 530.372
+offset_top = 929.26
+offset_right = 566.958
+offset_bottom = 1019.78
 theme = ExtResource("1_gjac8")
 text = "0"
 metadata/_edit_use_anchors_ = true
 
-[node name="LockpickingLabel" type="Label" parent="."]
+[node name="LockpickingLabel" type="Label" parent="Labels"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0286458
 anchor_top = 0.77577
 anchor_right = 0.160613
 anchor_bottom = 0.862807
+offset_left = 53.8541
+offset_top = 806.801
+offset_right = 195.575
+offset_bottom = 897.319
 theme = ExtResource("1_gjac8")
 text = "Cunning"
 metadata/_edit_use_anchors_ = true
 
-[node name="VitalityLabel" type="Label" parent="."]
+[node name="VitalityLabel" type="Label" parent="Labels"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0287875
 anchor_top = 0.612792
 anchor_right = 0.117112
 anchor_bottom = 0.69983
-offset_bottom = -20.624
+offset_left = 54.1205
+offset_top = 637.304
+offset_right = 217.588
+offset_bottom = 727.822
 theme = ExtResource("1_gjac8")
 text = "Charisma"
 metadata/_edit_use_anchors_ = true
@@ -276,10 +313,20 @@ metadata/_edit_use_anchors_ = true
 [node name="MapSelect" type="OptionButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.791667
+anchor_left = 0.852083
 anchor_top = 0.537037
-anchor_right = 0.901563
+anchor_right = 0.961979
 anchor_bottom = 0.624074
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_left = 0.797917
+anchor_right = 1.0
+anchor_bottom = 0.359259
+texture = ExtResource("8_k7orw")
+expand_mode = 1
+flip_h = true
 metadata/_edit_use_anchors_ = true
 
 [connection signal="value_changed" from="MartialProwessSkillInput" to="." method="_on_martial_prowess_skill_input_value_changed"]

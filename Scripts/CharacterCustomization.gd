@@ -15,7 +15,7 @@ var portrait_index = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Points.text = str(points)
+	$Labels/Points.text = str(points)
 	$Portrait.texture = load(portraits[portrait_index])
 	add_map_menu_items()
 
@@ -24,7 +24,7 @@ func _process(delta):
 	pass
 
 func update_points():
-	$Points.text = str(points - martial_prowess_skill_value - charisma_skill_value - intelect_skill_value - cunning_skill_value)
+	$Labels/Points.text = str(points - martial_prowess_skill_value - charisma_skill_value - intelect_skill_value - cunning_skill_value)
 
 func _on_back_button_pressed():
 	self.queue_free()
@@ -35,6 +35,7 @@ func set_character_stats():
 	character.intellect = intelect_skill_value
 	character.charisma = charisma_skill_value
 	character.cunning = cunning_skill_value
+	character.portrait = $Portrait.texture
 	save_system.save_game.character = character
 	save_system.save_game.write_game()
 	

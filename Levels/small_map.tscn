@@ -1,9 +1,20 @@
-[gd_scene format=3 uid="uid://ci5hu2dadpcab"]
+[gd_scene load_steps=2 format=3 uid="uid://ci5hu2dadpcab"]
+
+[ext_resource type="Script" path="res://Levels/small_map.gd" id="1_sutvt"]
 
 [node name="Small_map" type="Node2D"]
+script = ExtResource("1_sutvt")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 75
 text = "Small map"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 306.0
+offset_top = 82.0
+offset_right = 816.0
+offset_bottom = 592.0
+expand_mode = 1
+metadata/_edit_use_anchors_ = true

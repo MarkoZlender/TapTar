@@ -87,7 +87,7 @@ focus_neighbor_bottom = NodePath("../StoryButton")
 theme = ExtResource("2_kpwpd")
 text = "Quit"
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="FlavorImage" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.597222
