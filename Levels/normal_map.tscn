@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dfsekgx22h78x"]
+
+[node name="Normal_map" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 75
+text = "Normal map"

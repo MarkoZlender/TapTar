@@ -2,15 +2,17 @@ extends Control
 
 @export var points := 30
 
-var _save_game = SaveGame.new()
+var save_system = SaveSystem.new()
 var character = Character.new()
 
-var combat_skill_value = 0
-var vitality_skill_value = 0
-var hacking_skill_value = 0
-var lockpicking_skill_value = 0
+var martial_prowess_skill_value = 0
+var intelect_skill_value = 0
+var charisma_skill_value = 0
+var cunning_skill_value = 0
+
 var portraits = ["res://Resources/Images/portrait1.jpg", "res://Resources/Images/portrait2.jpg", "res://Resources/Images/portrait3.jpg"]
 var portrait_index = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Points.text = str(points)
@@ -22,41 +24,24 @@ func _process(delta):
 	pass
 
 func update_points():
-	$Points.text = str(points - combat_skill_value - vitality_skill_value - hacking_skill_value - lockpicking_skill_value)
+	$Points.text = str(points - martial_prowess_skill_value - charisma_skill_value - intelect_skill_value - cunning_skill_value)
 
 func _on_back_button_pressed():
 	self.queue_free()
 
 func set_character_stats():
 	character.character_name = $NameInput.text
-	character.combat = combat_skill_value
-	character.vitality = vitality_skill_value
-	character.hacking = hacking_skill_value
-	character.lockpicking = lockpicking_skill_value
-	_save_game.character = character
-	_save_game.write_game()
+	character.martial_prowess = martial_prowess_skill_value
+	character.intellect = intelect_skill_value
+	character.charisma = charisma_skill_value
+	character.cunning = cunning_skill_value
+	save_system.save_game.character = character
+	save_system.save_game.write_game()
 	
 
 func _on_start_button_pressed():
 	set_character_stats()
-	get_tree().change_scene_to_file("res://Levels/Level_1.tscn")
-
-
-func _on_combat_skill_input_value_changed(value):
-	combat_skill_value = value
-	update_points()
-
-func _on_vitality_skill_input_value_changed(value):
-	vitality_skill_value = value
-	update_points()
-
-func _on_hacking_skill_input_value_changed(value):
-	hacking_skill_value = value
-	update_points()
-
-func _on_lockpicking_skill_input_value_changed(value):
-	lockpicking_skill_value = value
-	update_points()
+	get_tree().change_scene_to_file(character.map)
 
 
 func _on_next_button_pressed():
@@ -83,5 +68,33 @@ func add_map_menu_items():
 
 
 func _on_map_select_item_selected(index):
-	# set map level
-	pass
+	if index == 0:
+		character.map = "res://Levels/small_map.tscn"
+	elif index == 1:
+		character.map = "res://Levels/normal_map.tscn"
+	elif index == 2:
+		character.map = "res://Levels/large_map.tscn"
+	else:
+		OS.alert("Map file not found!", "Notification")
+		get_tree().quit()
+
+
+# skill allocation
+
+func _on_martial_prowess_skill_input_value_changed(value):
+	martial_prowess_skill_value = value
+	update_points()
+
+func _on_intellect_skill_input_value_changed(value):
+	intelect_skill_value = value
+	update_points()
+
+
+func _on_cunning_skill_input_value_changed(value):
+	cunning_skill_value = value
+	update_points()
+
+
+func _on_charisma_skill_input_value_changed(value):
+	charisma_skill_value = value
+	update_points()

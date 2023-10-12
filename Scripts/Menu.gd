@@ -1,19 +1,17 @@
 extends Control
 
-var _save = SaveOptions
-var _save_game = SaveGame
+var save_system = SaveSystem.new()
 
 var volume = VolumeOptions.new()
-var character = Character.new()
+# var character = Character.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	$Buttons/StartButton.grab_focus()
-	# load saved options
-	_create_or_load_save_options()
-	_save = SaveOptions.load_options() as SaveOptions
-	volume = _save.volume
+	# create or load saved options
+	save_system.create_or_load_save_options()
+	# set options
+	volume = save_system.save_options.volume
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), volume.music_volume)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), volume.sfx_volume)
 
@@ -21,34 +19,9 @@ func _ready():
 func _process(delta):
 	pass
 
-func _create_or_load_save_options() -> void:
-	if SaveOptions.save_exists():
-		_save = SaveOptions.load_options() as SaveOptions
-	else:
-		_save = SaveOptions.new()
-		
-		_save.volume = VolumeOptions.new()
-		_save.write_options()
-		
-	volume = _save.volume
-
-# function for loading and saving game
-func _create_or_load_save_game() -> bool:
-	if SaveGame.save_exists():
-		_save_game = SaveGame.load_game() as SaveGame
-		return true
-	else:
-		_save_game = SaveGame.new()
-		
-		_save_game.character = Character.new()
-		_save_game.write_game()
-		
-	character = _save_game.character
-	return false
-
 func _on_start_button_pressed():
-	if _create_or_load_save_game():
-		get_tree().change_scene_to_file("res://Levels/Level_{level_number}.tscn".format({"level_number": str(character.last_level)}))
+	if save_system.create_or_load_save_game():
+		get_tree().change_scene_to_file(save_system.save_game.character.map)
 	else:
 		var customization = preload("res://Levels/CharacterCustomization.tscn")
 		var customization_instance = customization.instantiate()

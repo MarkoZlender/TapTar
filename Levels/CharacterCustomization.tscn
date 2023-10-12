@@ -104,7 +104,7 @@ anchor_right = 0.0972222
 anchor_bottom = 0.624074
 offset_bottom = -16.6661
 theme = ExtResource("1_gjac8")
-text = "Combat"
+text = "Martial prowess"
 metadata/_edit_use_anchors_ = true
 
 [node name="HackingLabel" type="Label" parent="."]
@@ -115,7 +115,7 @@ anchor_top = 0.7
 anchor_right = 0.116971
 anchor_bottom = 0.787037
 theme = ExtResource("1_gjac8")
-text = "Hacking"
+text = "Intellect"
 metadata/_edit_use_anchors_ = true
 
 [node name="PointsLabel" type="Label" parent="."]
@@ -148,7 +148,7 @@ anchor_top = 0.77577
 anchor_right = 0.160613
 anchor_bottom = 0.862807
 theme = ExtResource("1_gjac8")
-text = "Lockpicking"
+text = "Cunning"
 metadata/_edit_use_anchors_ = true
 
 [node name="VitalityLabel" type="Label" parent="."]
@@ -160,10 +160,10 @@ anchor_right = 0.117112
 anchor_bottom = 0.69983
 offset_bottom = -20.624
 theme = ExtResource("1_gjac8")
-text = "Vitality"
+text = "Charisma"
 metadata/_edit_use_anchors_ = true
 
-[node name="CombatSkillInput" type="SpinBox" parent="."]
+[node name="MartialProwessSkillInput" type="SpinBox" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.190625
@@ -173,7 +173,7 @@ anchor_bottom = 0.612807
 theme = ExtResource("5_4veot")
 metadata/_edit_use_anchors_ = true
 
-[node name="HackingSkillInput" type="SpinBox" parent="."]
+[node name="IntellectSkillInput" type="SpinBox" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.190842
@@ -183,7 +183,7 @@ anchor_bottom = 0.77577
 theme = ExtResource("5_4veot")
 metadata/_edit_use_anchors_ = true
 
-[node name="LockpickingSkillInput" type="SpinBox" parent="."]
+[node name="CunningSkillInput" type="SpinBox" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.190842
@@ -193,7 +193,7 @@ anchor_bottom = 0.851141
 theme = ExtResource("5_4veot")
 metadata/_edit_use_anchors_ = true
 
-[node name="VitalitySkillInput" type="SpinBox" parent="."]
+[node name="CharismaSkillInput" type="SpinBox" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.190625
@@ -282,10 +282,10 @@ anchor_right = 0.901563
 anchor_bottom = 0.624074
 metadata/_edit_use_anchors_ = true
 
-[connection signal="value_changed" from="CombatSkillInput" to="." method="_on_combat_skill_input_value_changed"]
-[connection signal="value_changed" from="HackingSkillInput" to="." method="_on_hacking_skill_input_value_changed"]
-[connection signal="value_changed" from="LockpickingSkillInput" to="." method="_on_lockpicking_skill_input_value_changed"]
-[connection signal="value_changed" from="VitalitySkillInput" to="." method="_on_vitality_skill_input_value_changed"]
+[connection signal="value_changed" from="MartialProwessSkillInput" to="." method="_on_martial_prowess_skill_input_value_changed"]
+[connection signal="value_changed" from="IntellectSkillInput" to="." method="_on_intellect_skill_input_value_changed"]
+[connection signal="value_changed" from="CunningSkillInput" to="." method="_on_cunning_skill_input_value_changed"]
+[connection signal="value_changed" from="CharismaSkillInput" to="." method="_on_charisma_skill_input_value_changed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
