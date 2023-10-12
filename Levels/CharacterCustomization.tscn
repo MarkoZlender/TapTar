@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://nri4wfs1ovn0"]
+[gd_scene load_steps=8 format=3 uid="uid://nri4wfs1ovn0"]
 
 [ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="1_gjac8"]
 [ext_resource type="Script" path="res://Scripts/CharacterCustomization.gd" id="1_x2vtk"]
 [ext_resource type="Texture2D" uid="uid://dyb4bavnc75gd" path="res://Resources/Images/oldpaper.png" id="2_os6na"]
 [ext_resource type="Texture2D" uid="uid://dkm2wjhh2nqtg" path="res://Resources/Sprites/border1.png" id="4_uesn8"]
 [ext_resource type="Theme" uid="uid://4bpbj15i2idx" path="res://Resources/Themes/spinboxTheme.tres" id="5_4veot"]
+[ext_resource type="Texture2D" uid="uid://ca2ndd3qxgssi" path="res://Resources/Sprites/arrow.png" id="6_cyccr"]
+[ext_resource type="Texture2D" uid="uid://cn2tav06exfrx" path="res://Resources/Sprites/arrow_back.png" id="7_ssu1v"]
 
 [node name="Customization" type="Control"]
 layout_mode = 3
@@ -38,9 +40,9 @@ metadata/_edit_use_anchors_ = true
 [node name="Border2" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.36875
+anchor_left = 0.365625
 anchor_top = 0.380556
-anchor_right = 0.675521
+anchor_right = 0.672396
 anchor_bottom = 0.893519
 texture = ExtResource("4_uesn8")
 expand_mode = 1
@@ -69,6 +71,17 @@ anchor_bottom = 0.332407
 offset_bottom = -15.6665
 theme = ExtResource("1_gjac8")
 text = "Name:"
+metadata/_edit_use_anchors_ = true
+
+[node name="NameLabel2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.69375
+anchor_top = 0.532407
+anchor_right = 0.777083
+anchor_bottom = 0.619444
+theme = ExtResource("1_gjac8")
+text = "Map size"
 metadata/_edit_use_anchors_ = true
 
 [node name="StatsLabel" type="Label" parent="."]
@@ -227,9 +240,54 @@ theme = ExtResource("1_gjac8")
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
+[node name="Portrait" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_left = 0.416667
+anchor_top = 0.408333
+anchor_right = 0.617708
+anchor_bottom = 0.765741
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.572917
+anchor_top = 0.775926
+anchor_right = 0.619271
+anchor_bottom = 0.837963
+icon = ExtResource("6_cyccr")
+flat = true
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="PreviousButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.416667
+anchor_top = 0.775926
+anchor_right = 0.463021
+anchor_bottom = 0.837963
+icon = ExtResource("7_ssu1v")
+flat = true
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="MapSelect" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.791667
+anchor_top = 0.537037
+anchor_right = 0.901563
+anchor_bottom = 0.624074
+metadata/_edit_use_anchors_ = true
+
 [connection signal="value_changed" from="CombatSkillInput" to="." method="_on_combat_skill_input_value_changed"]
 [connection signal="value_changed" from="HackingSkillInput" to="." method="_on_hacking_skill_input_value_changed"]
 [connection signal="value_changed" from="LockpickingSkillInput" to="." method="_on_lockpicking_skill_input_value_changed"]
 [connection signal="value_changed" from="VitalitySkillInput" to="." method="_on_vitality_skill_input_value_changed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="PreviousButton" to="." method="_on_previous_button_pressed"]
+[connection signal="item_selected" from="MapSelect" to="." method="_on_map_select_item_selected"]

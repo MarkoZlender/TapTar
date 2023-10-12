@@ -9,10 +9,13 @@ var combat_skill_value = 0
 var vitality_skill_value = 0
 var hacking_skill_value = 0
 var lockpicking_skill_value = 0
-
+var portraits = ["res://Resources/Images/portrait1.jpg", "res://Resources/Images/portrait2.jpg", "res://Resources/Images/portrait3.jpg"]
+var portrait_index = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Points.text = str(points)
+	$Portrait.texture = load(portraits[portrait_index])
+	add_map_menu_items()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -54,3 +57,31 @@ func _on_hacking_skill_input_value_changed(value):
 func _on_lockpicking_skill_input_value_changed(value):
 	lockpicking_skill_value = value
 	update_points()
+
+
+func _on_next_button_pressed():
+	portrait_index += 1
+	if portrait_index > portraits.size()-1:
+		portrait_index = 2
+		$Portrait.texture = load(portraits[portrait_index])
+	else:
+		$Portrait.texture = load(portraits[portrait_index])
+
+
+func _on_previous_button_pressed():
+	portrait_index -= 1
+	if portrait_index < 0:
+		portrait_index = 0
+		$Portrait.texture = load(portraits[portrait_index])
+	else:
+		$Portrait.texture = load(portraits[portrait_index])
+
+func add_map_menu_items():
+	$MapSelect.add_item("Small")
+	$MapSelect.add_item("Normal")
+	$MapSelect.add_item("Large")
+
+
+func _on_map_select_item_selected(index):
+	# set map level
+	pass
