@@ -38,10 +38,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Border1" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0190972
-anchor_top = 0.121914
-anchor_right = 0.268229
-anchor_bottom = 0.873457
+anchor_left = 0.0192708
+anchor_top = 0.122222
+anchor_right = 0.279167
+anchor_bottom = 0.874074
 texture = ExtResource("5_mo206")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
@@ -49,19 +49,20 @@ metadata/_edit_use_anchors_ = true
 [node name="KeybindsText" type="RichTextLabel" parent="Border1"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.146341
-anchor_top = 0.0582329
-anchor_right = 0.878049
-anchor_bottom = 0.939759
+anchor_left = 0.0341464
+anchor_top = 0.0496915
+anchor_right = 1.01463
+anchor_bottom = 0.931827
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_tw2lm")
-text = "W - move forward
-A - move left
-S - move back
-D - move right
+text = "W - move map up
+A - move map left
+S - move map down
+D - move map right
 
-E  - Interact"
+R - open orders menu
+C  - open character sheet"
 metadata/_edit_use_anchors_ = true
 
 [node name="TitleText" type="RichTextLabel" parent="."]
