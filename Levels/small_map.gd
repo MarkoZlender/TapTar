@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var GroundTiles : TileMap = $GroundTiles
+
 var save_game = SaveGame.load_game() as SaveGame
 var character = Character.new()
 
@@ -7,7 +9,7 @@ var character = Character.new()
 func _ready():
 	character = save_game.character
 	$TextureRect.texture = character.portrait
-
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
