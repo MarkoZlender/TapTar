@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var tilemap
 
@@ -7,11 +7,10 @@ var character = Character.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	tilemap = $GroundTiles
+	tilemap = $Control3/GroundTiles
 	set_process_input(true)
-	#character = save_game.character
-	#$TextureRect.texture = character.portrait
-	
+	character = save_game.character
+	$Control/TextureRect.texture = character.portrait
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -24,18 +23,19 @@ func _input(event):
 		
 		var tile_mouse_position : Vector2i = tilemap.local_to_map(mouse_position)
 		
-		
-		
 		var tile_data : TileData = tilemap.get_cell_tile_data(0, tile_mouse_position)
+		var tile_data2 : TileData = tilemap.get_cell_tile_data(1, tile_mouse_position)
 		
 		
 		
 		if tile_data:
 			var tile_name = str(tile_data.get_custom_data("Tile_name"))
-			print("tile mouse pos" + str(tile_mouse_position) + tile_name)
+			print("tile mouse position: " + str(tile_mouse_position) + "\n" + tile_name)
 		else:
 			print("NO TILE DATA!" + str(tile_mouse_position))
-		
 
-	
-	
+		if tile_data2:
+			var tile_name2 = str(tile_data2.get_custom_data("Tile_name"))
+			print("tile mouse position: " + str(tile_mouse_position) + "\n" + tile_name2)
+		else:
+			print("NO TILE DATA!" + str(tile_mouse_position))

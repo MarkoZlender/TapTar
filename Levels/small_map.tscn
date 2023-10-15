@@ -10,28 +10,24 @@ resource_name = "ground_tiles"
 texture = ExtResource("2_0y5tv")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+0:0/0/custom_data_0 = "sand"
 0:0/0/custom_data_1 = true
 1:0/0 = 0
+1:0/0/custom_data_0 = "sandstone"
 1:0/0/custom_data_1 = true
 0:1/0 = 0
+0:1/0/custom_data_0 = "mud"
 0:1/0/custom_data_1 = true
-1:1/0 = 0
-1:1/0/custom_data_1 = true
-0:2/0 = 0
-0:2/0/custom_data_1 = true
-1:2/0 = 0
-1:2/0/custom_data_1 = true
-0:3/0 = 0
-0:3/0/custom_data_1 = true
 1:3/0 = 0
+1:3/0/custom_data_0 = "lava"
 2:1/0 = 0
+2:1/0/custom_data_0 = "grass"
 2:1/0/custom_data_1 = true
-2:0/0 = 0
-2:0/0/custom_data_1 = true
 2:2/0 = 0
 2:2/0/custom_data_0 = "forest"
 2:2/0/custom_data_1 = true
 2:3/0 = 0
+2:3/0/custom_data_0 = "water"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wy66h"]
 texture = ExtResource("3_5j6pw")
@@ -42,6 +38,7 @@ texture_region_size = Vector2i(128, 128)
 texture = ExtResource("4_73xql")
 texture_region_size = Vector2i(96, 96)
 0:0/0 = 0
+0:0/0/custom_data_0 = "Player_legion"
 
 [sub_resource type="TileSet" id="TileSet_xkqqm"]
 tile_shape = 3
@@ -55,34 +52,76 @@ sources/0 = SubResource("TileSetAtlasSource_m8dm5")
 sources/1 = SubResource("TileSetAtlasSource_wy66h")
 sources/2 = SubResource("TileSetAtlasSource_5niyj")
 
-[node name="Small_map" type="Node2D"]
+[node name="Small_map" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_sutvt")
 
-[node name="Label" type="Label" parent="."]
-visible = false
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 75
-text = "Small map"
+offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-offset_left = 306.0
-offset_top = 82.0
-offset_right = 816.0
-offset_bottom = 592.0
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 35.0
+anchor_top = 14.0
+anchor_right = 47.75
+anchor_bottom = 26.75
+grow_horizontal = 0
+grow_vertical = 0
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="GroundTiles" type="TileMap" parent="."]
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 37.925
+anchor_right = 47.45
+anchor_bottom = 2.65
+theme_override_font_sizes/font_size = 75
+text = "Small map"
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control3" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GroundTiles" type="TileMap" parent="Control3"]
 tile_set = SubResource("TileSet_xkqqm")
 format = 2
 layer_0/name = "Ground"
-layer_0/tile_data = PackedInt32Array(0, 0, 1, 1, 65536, 1, 65538, 65536, 1, 2, 65536, 1, -65535, 65536, 1, 65536, 131072, 2, 131072, 131072, 2, 131071, 131072, 2, 196607, 131072, 2, 196606, 131072, 2, 131070, 131072, 2, 65535, 131072, 2, 65539, 65536, 0, 131076, 65536, 0, 65540, 65536, 0, 65541, 65536, 0, 5, 65536, 0, 4, 65536, 0, 3, 65536, 0, -65533, 65536, 0, -65532, 65536, 0, -131067, 65536, 0, -65531, 65536, 0, -65530, 65536, 0, 6, 65536, 0, 7, 65536, 0, 65542, 65536, 0, 65543, 65536, 0, 131078, 65536, 0, 196614, 65536, 0, 131077, 65536, 0, 262149, 65536, 0, 262148, 65536, 0, 262147, 65536, 0, 196611, 65536, 0, 262146, 65536, 0, 196610, 65536, 0, 196609, 65536, 0, 196608, 65536, 0, 131073, 65536, 0, 131074, 65536, 0, 65537, 65536, 0, 131075, 65536, 0, 196612, 65536, 0, 196613, 65536, 0, 262150, 65536, 0, -1, 65536, 0, -2, 65536, 0, 65534, 65536, 0, 196604, 131072, 2, 131067, 131072, 2, 327677, 0, 0, 327680, 131072, 2, 327679, 131072, 2)
+layer_0/tile_data = PackedInt32Array(65537, 131072, 1, 131073, 131072, 1, 196609, 131072, 1, 262145, 131072, 1, 327681, 131072, 1, 393217, 131072, 1, 1, 131072, 1, 65538, 131072, 1, 131074, 131072, 1, 196610, 131072, 1, 196611, 131072, 1, 262146, 131072, 1, 262147, 131072, 1, 327682, 131072, 1, 393218, 131072, 1, 458754, 131072, 1, 393219, 65536, 3, 327683, 65536, 3, 327684, 65536, 3, 327685, 65536, 3, 393222, 65536, 3, 458758, 65536, 3, 393223, 65536, 3, 458756, 65536, 3, 393220, 65536, 3, 393221, 65536, 3, 458760, 65536, 3, 393224, 65536, 3, 327689, 65536, 3, 393225, 65536, 3, 458762, 65536, 3, 393227, 65536, 3, 393226, 65536, 3, 65543, 131072, 3, 131078, 131072, 3, 196614, 131072, 3, 196615, 131072, 3, 262152, 131072, 3, 196617, 131072, 3, 262154, 131072, 3, 196618, 131072, 3, 131083, 131072, 3, 131082, 131072, 3, 65547, 131072, 3, 131084, 131072, 3, 196620, 131072, 3, 196619, 131072, 3, 131081, 131072, 3, 131080, 131072, 3, 131079, 131072, 3, 196616, 131072, 3, 131086, 131072, 2, 196622, 131072, 2, 196623, 131072, 2, 262159, 131072, 2, 327696, 131072, 2, 327697, 131072, 2, 393234, 131072, 2, 327698, 131072, 2, 262161, 131072, 2, 262160, 131072, 2, 196624, 131072, 2, 131087, 131072, 2, 65551, 131072, 2, 15, 131072, 2, 65552, 131072, 2, 131088, 131072, 2, 17, 131072, 1, 65553, 131072, 1, 131089, 131072, 1, 196626, 131072, 1, 196625, 131072, 1, 262162, 131072, 1, 131090, 131072, 1, 65554, 131072, 1, 458770, 131072, 1, 393233, 131072, 1, 393232, 131072, 1, 327695, 131072, 1, 327694, 131072, 1, 262158, 131072, 1, 262157, 131072, 1, 196621, 131072, 1, 131085, 131072, 1, 65549, 131072, 1, 13, 131072, 1, 65550, 131072, 1, 5, 131072, 1, 65541, 131072, 1, 131077, 131072, 1, 196613, 131072, 1, 262149, 65536, 0, 327686, 65536, 0, 327687, 65536, 0, 327688, 65536, 0, 262153, 65536, 0, 327690, 65536, 0, 327691, 65536, 0, 393228, 65536, 0, 458764, 65536, 0, 262151, 0, 1, 262150, 0, 1, 262148, 0, 1, 196612, 0, 1, 131076, 0, 1, 131075, 0, 1, 65539, 0, 1, 3, 0, 1, 65540, 0, 1, 65542, 0, 1, 7, 0, 1, 65544, 0, 1, 65545, 0, 1, 65546, 0, 1, 11, 0, 1, 65548, 0, 1, 9, 0, 1, 262155, 0, 1, 262156, 0, 1, 327692, 0, 1, 327693, 0, 1, 393229, 0, 1, 393230, 0, 1, 458766, 0, 1, 393231, 0, 1, 458768, 0, 1)
 layer_1/name = "Legions"
 layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array(-65531, 2, 0, 5, 2, 0)
+layer_1/tile_data = PackedInt32Array(5, 2, 0)
