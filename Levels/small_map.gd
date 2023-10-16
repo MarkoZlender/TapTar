@@ -1,6 +1,7 @@
 extends Control
 
-@onready var tilemap = $Control3/GroundTiles
+@onready var tilemap = $GroundTiles
+@onready var legion = $GroundTiles/legion
 
 var save_game = SaveGame.load_game() as SaveGame
 var character = Character.new()
@@ -10,6 +11,7 @@ func _ready():
 	set_process_input(true)
 	character = save_game.character
 	$Control/TextureRect.texture = character.portrait
+	legion.global_position = tilemap.map_to_local(Vector2i(1,5))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

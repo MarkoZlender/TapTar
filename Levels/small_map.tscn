@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ci5hu2dadpcab"]
+[gd_scene load_steps=8 format=3 uid="uid://ci5hu2dadpcab"]
 
 [ext_resource type="Script" path="res://Levels/small_map.gd" id="1_sutvt"]
 [ext_resource type="Texture2D" uid="uid://cit666hf4j2fl" path="res://Resources/Images/tiles.png" id="2_0y5tv"]
-[ext_resource type="Texture2D" uid="uid://bmjiqb7xqr8uw" path="res://Resources/Sprites/roguelikebosses.png" id="3_5j6pw"]
 [ext_resource type="Texture2D" uid="uid://djhtemlp1tjx6" path="res://Resources/Sprites/dorver-idle0.png" id="4_73xql"]
+[ext_resource type="PackedScene" uid="uid://cy35wcdawvyue" path="res://Objects/legion.tscn" id="4_oax6n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m8dm5"]
 resource_name = "ground_tiles"
@@ -29,11 +29,6 @@ texture_region_size = Vector2i(128, 128)
 2:3/0 = 0
 2:3/0/custom_data_0 = "water"
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wy66h"]
-texture = ExtResource("3_5j6pw")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5niyj"]
 texture = ExtResource("4_73xql")
 texture_region_size = Vector2i(96, 96)
@@ -49,7 +44,6 @@ custom_data_layer_0/type = 4
 custom_data_layer_1/name = "walkable"
 custom_data_layer_1/type = 1
 sources/0 = SubResource("TileSetAtlasSource_m8dm5")
-sources/1 = SubResource("TileSetAtlasSource_wy66h")
 sources/2 = SubResource("TileSetAtlasSource_5niyj")
 
 [node name="Small_map" type="Control"]
@@ -105,15 +99,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Control3" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GroundTiles" type="TileMap" parent="Control3"]
+[node name="GroundTiles" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_xkqqm")
 format = 2
 layer_0/name = "Ground"
@@ -125,3 +111,6 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(5, 2, 0)
+
+[node name="legion" parent="GroundTiles" instance=ExtResource("4_oax6n")]
+position = Vector2(162, 130)
