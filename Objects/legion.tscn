@@ -16,3 +16,5 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4xa15")
+
+[connection signal="toggled" from="Selected" to="." method="_on_selected_toggled"]

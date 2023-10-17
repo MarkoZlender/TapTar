@@ -106,3 +106,19 @@ layer_1/tile_data = PackedInt32Array()
 
 [node name="legion" parent="GroundTiles" instance=ExtResource("4_oax6n")]
 position = Vector2(162, 130)
+
+[node name="EndTurnButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75625
+anchor_top = 0.846296
+anchor_right = 0.98125
+anchor_bottom = 0.956481
+offset_right = 417.0
+offset_bottom = 119.0
+theme_override_font_sizes/font_size = 81
+text = "END TURN"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="legion_selected" from="GroundTiles/legion" to="." method="_on_legion_legion_selected"]
+[connection signal="pressed" from="EndTurnButton" to="." method="_on_end_turn_button_pressed"]
