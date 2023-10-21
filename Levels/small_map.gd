@@ -6,6 +6,7 @@ extends Control
 var moved: bool = false
 var legion_position: Vector2i
 var neighbours
+var legion_selected: bool
 
 var save_game = SaveGame.load_game() as SaveGame
 var character = Character.new()
@@ -20,6 +21,7 @@ func _ready():
 	legion.global_position = tilemap.map_to_local(Vector2i(1,0))
 	legion_position = tilemap.local_to_map(legion.global_position)
 	neighbours = tilemap.get_surrounding_cells(legion_position)
+	legion_selected = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -46,10 +48,14 @@ func _input(event):
 					print("legion already moved")
 				else:
 					if tile_mouse_position in neighbours:
-						legion.global_position = tilemap.map_to_local(tile_mouse_position)
-						legion_position = tilemap.local_to_map(legion.global_position)
-						neighbours = tilemap.get_surrounding_cells(legion_position)
-						moved = true
+						if legion_selected == true:
+							legion.global_position = tilemap.map_to_local(tile_mouse_position)
+							legion_position = tilemap.local_to_map(legion.global_position)
+							neighbours = tilemap.get_surrounding_cells(legion_position)
+							moved = true
+							
+						else:
+							print("legion not selected")
 					else:
 						print("tile not a neighbour")
 				
@@ -65,8 +71,10 @@ func _input(event):
 
 func _on_end_turn_button_pressed():
 	moved = false
+	legion_selected = false
 
 func _on_legion_legion_selected(selected):
+	legion_selected = true
 	if selected:
 		print("legion selected")
 		for neighbour in neighbours:
