@@ -77,7 +77,7 @@ func _on_legion_legion_selected(selected):
 	legion_selected = true
 	if selected:
 		print("legion selected")
-		for neighbour in neighbours:
-			tilemap.set_cell(0, neighbour, tilemap.get_cell_source_id(0, neighbour, false), Vector2i(2,2), 0)
+		#for neighbour in neighbours:
+			#tilemap.set_cell(0, neighbour, tilemap.get_cell_source_id(0, neighbour, false), Vector2i(2,2), 0)
 	print("legion position" + str(legion_position))
 	print(str(neighbours))

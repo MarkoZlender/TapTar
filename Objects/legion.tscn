@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cy35wcdawvyue"]
+[gd_scene load_steps=4 format=3 uid="uid://cy35wcdawvyue"]
 
 [ext_resource type="Texture2D" uid="uid://djhtemlp1tjx6" path="res://Resources/Sprites/dorver-idle0.png" id="1_4xa15"]
 [ext_resource type="Script" path="res://Scripts/legion.gd" id="1_5bige"]
+[ext_resource type="TileSet" uid="uid://bcldp6xwy5liu" path="res://Resources/TileSets/test_tileset.tres" id="3_jcgic"]
 
-[node name="legion" type="Node2D"]
+[node name="legion" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_5bige")
 
-[node name="Selected" type="Button" parent="."]
+[node name="PlayerSelect" type="Button" parent="."]
 offset_left = -32.0
 offset_top = -32.0
 offset_right = 32.0
@@ -14,7 +17,14 @@ offset_bottom = 32.0
 toggle_mode = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PlayerSprite" type="Sprite2D" parent="PlayerSelect"]
+position = Vector2(32, 32)
 texture = ExtResource("1_4xa15")
 
-[connection signal="toggled" from="Selected" to="." method="_on_selected_toggled"]
+[node name="PlayerTileMap" type="TileMap" parent="PlayerSelect"]
+position = Vector2(64, 32)
+tile_set = ExtResource("3_jcgic")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 65536, 3, 65535, 65536, 3, 65534, 65536, 3, -2, 65536, 3, -65537, 65536, 3, -65536, 65536, 3)
+
+[connection signal="toggled" from="PlayerSelect" to="." method="_on_selected_toggled"]

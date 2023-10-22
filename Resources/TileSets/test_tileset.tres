@@ -1,0 +1,38 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bcldp6xwy5liu"]
+
+[ext_resource type="Texture2D" uid="uid://cit666hf4j2fl" path="res://Resources/Images/tiles.png" id="1_rt3om"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m8dm5"]
+resource_name = "ground_tiles"
+texture = ExtResource("1_rt3om")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/custom_data_0 = "sand"
+0:0/0/custom_data_1 = true
+1:0/0 = 0
+1:0/0/custom_data_0 = "sandstone"
+1:0/0/custom_data_1 = true
+0:1/0 = 0
+0:1/0/custom_data_0 = "mud"
+0:1/0/custom_data_1 = true
+1:3/0 = 0
+1:3/0/modulate = Color(0.72549, 0, 0.054902, 0.313726)
+1:3/0/custom_data_0 = "lava"
+2:1/0 = 0
+2:1/0/custom_data_0 = "grass"
+2:1/0/custom_data_1 = true
+2:2/0 = 0
+2:2/0/custom_data_0 = "forest"
+2:2/0/custom_data_1 = true
+2:3/0 = 0
+2:3/0/custom_data_0 = "water"
+
+[resource]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(128, 128)
+custom_data_layer_0/name = "Tile_name"
+custom_data_layer_0/type = 4
+custom_data_layer_1/name = "walkable"
+custom_data_layer_1/type = 1
+sources/0 = SubResource("TileSetAtlasSource_m8dm5")
