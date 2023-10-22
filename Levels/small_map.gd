@@ -2,6 +2,7 @@ extends Control
 
 @onready var tilemap = $GroundTiles
 @onready var legion = $GroundTiles/legion
+@onready var camera_2d = $Camera2D
 
 var moved: bool = false
 var legion_position: Vector2i
@@ -25,7 +26,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	camera_movement()
 
 func _input(event):
 	if Input.is_action_just_pressed("left_click"):
@@ -81,3 +82,13 @@ func _on_legion_legion_selected(selected):
 			#tilemap.set_cell(0, neighbour, tilemap.get_cell_source_id(0, neighbour, false), Vector2i(2,2), 0)
 	print("legion position" + str(legion_position))
 	print(str(neighbours))
+
+func camera_movement():
+	if Input.is_action_pressed("up"):
+		camera_2d.position += Vector2(0,-10)
+	elif Input.is_action_pressed("down"):
+		camera_2d.position += Vector2(0,10)
+	elif Input.is_action_pressed("left"):
+		camera_2d.position += Vector2(-10,0)
+	elif Input.is_action_pressed("right"):
+		camera_2d.position += Vector2(10,0)

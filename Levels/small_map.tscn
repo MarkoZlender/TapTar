@@ -89,5 +89,15 @@ theme_override_font_sizes/font_size = 81
 text = "END TURN"
 metadata/_edit_use_anchors_ = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(504, 280)
+zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+limit_smoothed = true
+position_smoothing_enabled = true
+
 [connection signal="legion_selected" from="GroundTiles/legion" to="." method="_on_legion_legion_selected"]
 [connection signal="pressed" from="EndTurnButton" to="." method="_on_end_turn_button_pressed"]
