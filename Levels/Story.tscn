@@ -26,10 +26,8 @@ texture = ExtResource("2_r7wkl")
 [node name="Border" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.210938
-anchor_top = 0.0231481
-anchor_right = 0.733507
-anchor_bottom = 0.95216
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_right = 6.10352e-05
 offset_bottom = 6.10352e-05
 texture = ExtResource("4_u66co")
@@ -39,10 +37,10 @@ metadata/_edit_use_anchors_ = true
 [node name="StoryTitle" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.418403
+anchor_left = 0.418229
 anchor_top = 0.0416667
-anchor_right = 0.50434
-anchor_bottom = 0.177469
+anchor_right = 0.467708
+anchor_bottom = 0.125
 theme = ExtResource("2_jymj5")
 theme_override_font_sizes/normal_font_size = 70
 text = "Story"
@@ -51,27 +49,18 @@ metadata/_edit_use_anchors_ = true
 [node name="StoryDescription" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.228299
-anchor_top = 0.216049
-anchor_right = 0.735243
-anchor_bottom = 0.890432
+anchor_left = 0.034375
+anchor_top = 0.0287037
+anchor_right = 0.971354
+anchor_bottom = 0.975926
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_jymj5")
-text = "There are two opposing factions which spawned after the nuclear war and society's Collapse. They are in constant conflict.
-You take the role of a recruit who fights against the dogmatic faction by infiltrating enemy establishments and causing as much damage as possible to the opposing faction."
+theme_override_font_sizes/normal_font_size = 70
+text = "Set in the blistering depths of Hell, this turn-based strategy game thrusts players into a relentless power struggle for the coveted seat of the infernal throne. With the sudden disappearance of the reigning Prince of Darkness, players must deftly maneuver their legion of demonic forces across the fiery game board, engaging in calculated moves and strategic positioning to outmaneuver rival fiends.
+
+As the fiery battle rages on, players must deftly navigate the delicate balance of diplomacy and deceit, forging tenuous alliances and orchestrating cunning political maneuvers to gain the upper hand. With each unit representing a vital pawn in the grand scheme of conquest, players must assess each move meticulously, anticipating the intricate interplay of enemy forces and the shifting allegiances within the hellish realm.
+
+Amidst the relentless clash for dominance, only the shrewdest tacticians will emerge victorious, claiming the infernal throne as their own and ascending to become the undisputed ruler of the diabolical realm.
+"
 metadata/_edit_use_anchors_ = true
-
-[node name="BackButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.889
-anchor_right = 0.994
-anchor_bottom = 0.997
-offset_left = -0.128052
-offset_right = 6.91199
-offset_bottom = -0.0560303
-theme = ExtResource("2_jymj5")
-text = "Back"
-
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -2,7 +2,6 @@ extends Control
 
 signal legion_selected(selected: bool)
 @onready var player_tile_map = $PlayerSelect/PlayerTileMap
-
 @onready var player_select = $PlayerSelect
 
 
