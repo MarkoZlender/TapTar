@@ -17,7 +17,8 @@ func _ready():
 	set_process_input(true)
 	character = save_game.character
 	$Control/TextureRect.texture = character.portrait
-	#legion.set_legion_position(Vector2i(0,1))
+	legion.set_legion_position(Vector2i(5,1))
+	legion_2.set_legion_position(Vector2i(6,1))
 
 	
 

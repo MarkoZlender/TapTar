@@ -81,8 +81,9 @@ func set_end_turn():
 	player_select.button_pressed = false
 
 func set_legion_position(new_legion_position: Vector2i):
-	self.global_position = tilemap.map_to_local(position)
+	self.global_position = tilemap.map_to_local(new_legion_position)
 	legion_position = tilemap.local_to_map(self.global_position)
+	neighbours = tilemap.get_surrounding_cells(legion_position)
 
 func _input(event):
 	movement()
