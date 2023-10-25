@@ -16,6 +16,7 @@ offset_top = -32.0
 offset_right = 32.0
 offset_bottom = 32.0
 toggle_mode = true
+flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerSprite" type="Sprite2D" parent="PlayerSelect"]
@@ -28,4 +29,5 @@ tile_set = ExtResource("3_jcgic")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 65536, 3, 65535, 65536, 3, 65534, 65536, 3, -2, 65536, 3, -65537, 65536, 3, -65536, 65536, 3)
 
+[connection signal="legion_selected" from="." to="." method="_on_legion_selected"]
 [connection signal="toggled" from="PlayerSelect" to="." method="_on_selected_toggled"]
