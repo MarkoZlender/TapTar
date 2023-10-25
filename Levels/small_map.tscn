@@ -74,16 +74,16 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="legion" parent="." node_paths=PackedStringArray("current_tilemap") instance=ExtResource("4_oax6n")]
-offset_left = 161.0
-offset_top = 132.0
-offset_right = 161.0
-offset_bottom = 132.0
+offset_left = 160.0
+offset_top = 130.0
+offset_right = 160.0
+offset_bottom = 130.0
 current_tilemap = NodePath("../GroundTiles")
 
 [node name="legion2" parent="." node_paths=PackedStringArray("current_tilemap") instance=ExtResource("4_oax6n")]
-offset_left = 161.0
+offset_left = 646.0
 offset_top = 132.0
-offset_right = 161.0
+offset_right = 646.0
 offset_bottom = 132.0
 current_tilemap = NodePath("../GroundTiles")
 
