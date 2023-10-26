@@ -6,12 +6,12 @@ signal legion_selected(selected: bool)
 @onready var player_select = $PlayerSelect
 @onready var tilemap = current_tilemap
 
+
 @export var current_tilemap: TileMap = null
 @export var moved: bool = false
 @export var legion_selection: bool
 @export var legion_position: Vector2i
 @export var neighbours: Array[Vector2i]
-
 
 
 
@@ -22,6 +22,7 @@ func _ready():
 	legion_position = current_tilemap.local_to_map(self.global_position)
 	neighbours = current_tilemap.get_surrounding_cells(legion_position)
 	legion_selection = false
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -29,7 +30,7 @@ func _process(delta):
 
 func movement():
 	if Input.is_action_just_pressed("left_click"):
-		
+		print("restricted coords " + str(SmallMap.taken_positions))
 		var mouse_position = get_global_mouse_position()
 		var tile_mouse_position : Vector2i = tilemap.local_to_map(mouse_position)
 		
@@ -46,12 +47,13 @@ func movement():
 				if moved == true:
 					print("legion already moved")
 				else:
-					if tile_mouse_position in neighbours:
+					if (tile_mouse_position in neighbours) and (tile_mouse_position not in SmallMap.taken_positions):
 						if legion_selection == true:
 							self.global_position = tilemap.map_to_local(tile_mouse_position)
 							legion_position = tilemap.local_to_map(self.global_position)
 							neighbours = tilemap.get_surrounding_cells(legion_position)
 							moved = true
+							SmallMap.taken_positions.append(legion_position)
 							
 						else:
 							print("legion not selected")
@@ -89,6 +91,7 @@ func set_legion_position(new_legion_position: Vector2i):
 
 func get_legion_position():
 	return legion_position
+
 
 func _input(event):
 	movement()

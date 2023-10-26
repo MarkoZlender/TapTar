@@ -14,6 +14,10 @@ config/name="TapTar"
 run/main_scene="res://Levels/Menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 
+[autoload]
+
+SmallMap="*res://Levels/small_map.tscn"
+
 [display]
 
 window/size/viewport_width=1920
