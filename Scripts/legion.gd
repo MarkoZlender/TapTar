@@ -13,6 +13,8 @@ signal legion_selected(selected: bool)
 @export var neighbours: Array[Vector2i]
 
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_process_input(true)
@@ -84,6 +86,9 @@ func set_legion_position(new_legion_position: Vector2i):
 	self.global_position = tilemap.map_to_local(new_legion_position)
 	legion_position = tilemap.local_to_map(self.global_position)
 	neighbours = tilemap.get_surrounding_cells(legion_position)
+
+func get_legion_position():
+	return legion_position
 
 func _input(event):
 	movement()
