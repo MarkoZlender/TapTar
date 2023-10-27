@@ -21,11 +21,13 @@ func _ready():
 	# setting legion positions
 	legion.set_legion_position(Vector2i(5,1))
 	legion_2.set_legion_position(Vector2i(6,1))
+	check_movement()
 	# get all positions on the tilemap taken by legions
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	camera_movement()
+	
 
 
 func camera_movement():
@@ -39,7 +41,21 @@ func camera_movement():
 		camera_2d.position += Vector2(10,0)
 
 
+func check_movement():
+	print("Restricted coords: " + str(taken_positions))
+	for unit in all_legions:
+		if taken_positions.is_empty():
+			for unit2 in all_legions:
+				taken_positions.append(unit2.get_legion_position())
+		if unit.moved:
+			taken_positions.erase(unit.old_legion_position)
+			taken_positions.append(unit.get_legion_position())
+
 func _on_ui_end_turn():
+	taken_positions.clear()
 	legion.set_end_turn()
 	legion_2.set_end_turn()
+	
+	
+	
 

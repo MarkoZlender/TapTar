@@ -12,6 +12,7 @@ signal legion_selected(selected: bool)
 @export var legion_selection: bool
 @export var legion_position: Vector2i
 @export var neighbours: Array[Vector2i]
+@export var old_legion_position: Vector2i
 
 
 
@@ -30,7 +31,7 @@ func _process(delta):
 
 func movement():
 	if Input.is_action_just_pressed("left_click"):
-		print("restricted coords " + str(SmallMap.taken_positions))
+		#print("restricted coords " + str(SmallMap.taken_positions))
 		var mouse_position = get_global_mouse_position()
 		var tile_mouse_position : Vector2i = tilemap.local_to_map(mouse_position)
 		
@@ -49,19 +50,19 @@ func movement():
 				else:
 					if (tile_mouse_position in neighbours) and (tile_mouse_position not in SmallMap.taken_positions):
 						if legion_selection == true:
+							old_legion_position = get_legion_position()
 							self.global_position = tilemap.map_to_local(tile_mouse_position)
 							legion_position = tilemap.local_to_map(self.global_position)
 							neighbours = tilemap.get_surrounding_cells(legion_position)
 							moved = true
-							SmallMap.taken_positions.append(legion_position)
-							
+						
 						else:
 							print("legion not selected")
 					else:
 						print("tile not a neighbour")
 		else:
 			print("NO TILE DATA!" + str(tile_mouse_position))
-
+		
 		if tile_data2:
 			var tile_name2 = str(tile_data2.get_custom_data("Tile_name"))
 			print("tile mouse position: " + str(tile_mouse_position) + "\n" + tile_name2)
@@ -91,7 +92,6 @@ func set_legion_position(new_legion_position: Vector2i):
 
 func get_legion_position():
 	return legion_position
-
 
 func _input(event):
 	movement()
