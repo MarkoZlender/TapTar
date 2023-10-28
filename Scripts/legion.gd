@@ -48,7 +48,7 @@ func movement():
 				if moved == true:
 					print("legion already moved")
 				else:
-					if (tile_mouse_position in neighbours) and (tile_mouse_position not in SmallMap.taken_positions):
+					if (tile_mouse_position in neighbours) and (tile_mouse_position not in SmallMap.taken_positions.values()):
 						if legion_selection == true:
 							self.global_position = tilemap.map_to_local(tile_mouse_position)
 							legion_position = tilemap.local_to_map(self.global_position)
