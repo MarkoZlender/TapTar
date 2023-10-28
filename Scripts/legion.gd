@@ -54,31 +54,24 @@ func movement():
 							legion_position = tilemap.local_to_map(self.global_position)
 							neighbours = tilemap.get_surrounding_cells(legion_position)
 							moved = true
-							
-						
 						else:
 							print("legion not selected")
 					else:
 						print("tile not a neighbour")
 		else:
 			print("NO TILE DATA!" + str(tile_mouse_position))
-		
-
-		# if tile_data2:
-		# 	var tile_name2 = str(tile_data2.get_custom_data("Tile_name"))
-		# 	print("tile mouse position: " + str(tile_mouse_position) + "\n" + tile_name2)
-		# else:
-		# 	print("NO TILE DATA!" + str(tile_mouse_position))
 
 	if moved == true:
 		player_tile_map.hide()
 		SmallMap.check_position(self, legion_position)
-	#print("Current legion position" + str(legion_position))
 
 func _on_selected_toggled(button_pressed):
+	SmallMap.selected_legions[self] = button_pressed
+	print("Selected legions: " + str(SmallMap.selected_legions))
 	legion_selected.emit(button_pressed)
 
 func _on_legion_selected(selected):
+	#print("Selected legions: " + str(SmallMap.selected_legions))
 	if selected && moved == false:
 		legion_selection = true
 		player_tile_map.show()

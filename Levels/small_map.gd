@@ -8,6 +8,7 @@ extends Control
 @onready var all_legions = $Legions.get_children()
 
 @onready var taken_positions = Dictionary()
+@onready var selected_legions = Dictionary()
 
 var save_game = SaveGame.load_game() as SaveGame
 var character = Character.new()
@@ -21,6 +22,7 @@ func _ready():
 	# setting legion positions
 	legion.set_legion_position(Vector2i(5,1))
 	legion_2.set_legion_position(Vector2i(6,1))
+	#fill_taken_positions()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -42,6 +44,10 @@ func camera_movement():
 func check_position(unit: Node, new_legion_position: Vector2i):
 	taken_positions[unit] = new_legion_position
 	print("Restricted coords: " + str(taken_positions))
+
+func fill_taken_positions():
+	for unit in all_legions:
+		selected_legions[unit] = false
 
 
 func _on_ui_end_turn():
