@@ -13,6 +13,7 @@ signal legion_selected(selected: bool)
 @export var legion_position: Vector2i
 @export var neighbours: Array[Vector2i]
 @export var old_legion_position: Vector2i
+@export var new_position: Vector2i
 
 
 
@@ -51,11 +52,16 @@ func movement():
 				else:
 					if (tile_mouse_position in neighbours) and (tile_mouse_position not in LegionController.taken_positions.values()):
 						if legion_selection == true:
-							self.global_position = tilemap.map_to_local(tile_mouse_position)
-							legion_position = tilemap.local_to_map(self.global_position)
+							# animation #########################################
+							var tween = get_tree().create_tween()
+							tween.tween_property(self, "global_position", tilemap.map_to_local(tile_mouse_position), 0.5)
+							######################################################
+							new_position = tilemap.map_to_local(tile_mouse_position)
+							legion_position = tilemap.local_to_map(new_position)
 							neighbours = tilemap.get_surrounding_cells(legion_position)
 							moved = true
-							LegionController.selected_legions.erase(self)
+							# after moving remove legion selection from selected_legions array
+							LegionController.selected_legions.clear()
 						else:
 							print("legion not selected")
 					else:
@@ -65,6 +71,8 @@ func movement():
 
 	if moved == true:
 		player_tile_map.hide()
+		legion_selection = false
+		player_select.button_pressed = false
 		LegionController.check_position(self, legion_position)
 
 func _on_selected_toggled(button_pressed):
