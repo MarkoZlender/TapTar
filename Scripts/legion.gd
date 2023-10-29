@@ -33,6 +33,7 @@ func _process(delta):
 
 func movement():
 	if Input.is_action_just_pressed("left_click"):
+		print("taken positions " + str(LegionController.taken_positions))
 		#print("restricted coords " + str(SmallMap.taken_positions))
 		var mouse_position = get_global_mouse_position()
 		var tile_mouse_position : Vector2i = tilemap.local_to_map(mouse_position)

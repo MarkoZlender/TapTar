@@ -29,6 +29,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	camera_movement()
+	print("taken position values " + str(LegionController.taken_positions.values()))
 	
 
 
@@ -41,8 +42,6 @@ func camera_movement():
 		camera_2d.position += Vector2(-10,0)
 	elif Input.is_action_pressed("right"):
 		camera_2d.position += Vector2(10,0)
-
-
 
 func _on_ui_end_turn():
 	legion.set_end_turn()
