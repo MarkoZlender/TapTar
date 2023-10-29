@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci5hu2dadpcab"]
+[gd_scene load_steps=6 format=3 uid="uid://ci5hu2dadpcab"]
 
 [ext_resource type="Script" path="res://Levels/small_map.gd" id="1_sutvt"]
 [ext_resource type="TileSet" uid="uid://bcldp6xwy5liu" path="res://Resources/TileSets/test_tileset.tres" id="2_wdl0a"]
+[ext_resource type="Script" path="res://Scripts/legion_controller.gd" id="3_tadb5"]
 [ext_resource type="PackedScene" uid="uid://cy35wcdawvyue" path="res://Objects/legion.tscn" id="4_oax6n"]
 [ext_resource type="PackedScene" uid="uid://cvabfqd568i6p" path="res://Levels/UI.tscn" id="4_slmpc"]
 
@@ -77,6 +78,7 @@ layer_1/tile_data = PackedInt32Array()
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("3_tadb5")
 
 [node name="legion" parent="Legions" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("4_oax6n")]
 current_tilemap = NodePath("../../GroundTiles")

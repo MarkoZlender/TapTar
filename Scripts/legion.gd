@@ -24,6 +24,7 @@ func _ready():
 	neighbours = current_tilemap.get_surrounding_cells(legion_position)
 	legion_selection = false
 	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -48,12 +49,13 @@ func movement():
 				if moved == true:
 					print("legion already moved")
 				else:
-					if (tile_mouse_position in neighbours) and (tile_mouse_position not in SmallMap.taken_positions.values()):
+					if (tile_mouse_position in neighbours) and (tile_mouse_position not in LegionController.taken_positions.values()):
 						if legion_selection == true:
 							self.global_position = tilemap.map_to_local(tile_mouse_position)
 							legion_position = tilemap.local_to_map(self.global_position)
 							neighbours = tilemap.get_surrounding_cells(legion_position)
 							moved = true
+							LegionController.selected_legions.erase(self)
 						else:
 							print("legion not selected")
 					else:
@@ -63,16 +65,19 @@ func movement():
 
 	if moved == true:
 		player_tile_map.hide()
-		SmallMap.check_position(self, legion_position)
+		LegionController.check_position(self, legion_position)
 
 func _on_selected_toggled(button_pressed):
-	SmallMap.selected_legions[self] = button_pressed
-	print("Selected legions: " + str(SmallMap.selected_legions))
+	if button_pressed:
+		LegionController.selected_legions.append(self)
+	else:
+		LegionController.selected_legions.erase(self)
+	print("Selected legions: " + str(LegionController.selected_legions))
 	legion_selected.emit(button_pressed)
 
 func _on_legion_selected(selected):
 	#print("Selected legions: " + str(SmallMap.selected_legions))
-	if selected && moved == false:
+	if (selected and moved == false) and LegionController.selected_legions.size() < 2:
 		legion_selection = true
 		player_tile_map.show()
 
@@ -85,6 +90,9 @@ func set_legion_position(new_legion_position: Vector2i):
 	self.global_position = tilemap.map_to_local(new_legion_position)
 	legion_position = tilemap.local_to_map(self.global_position)
 	neighbours = tilemap.get_surrounding_cells(legion_position)
+
+func set_selected(selected: bool):
+	legion_selection = selected
 
 func get_legion_position():
 	return legion_position

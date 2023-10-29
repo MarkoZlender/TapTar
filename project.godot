@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.1", "Forward Plus")
 [autoload]
 
 SmallMap="*res://Levels/small_map.tscn"
+LegionController="*res://Scripts/legion_controller.gd"
 
 [display]
 
