@@ -12,9 +12,7 @@ func _ready():
 	pass # Replace with function body.
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	for unit in all_legions:
-		taken_positions[unit] = unit.get_legion_position()
-		print("Restricted coords: " + str(taken_positions))
+	pass
 
 
 func check_position(unit: Node, new_legion_position: Vector2i):

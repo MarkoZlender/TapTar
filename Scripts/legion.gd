@@ -99,6 +99,7 @@ func set_legion_position(new_legion_position: Vector2i):
 	self.global_position = tilemap.map_to_local(new_legion_position)
 	legion_position = tilemap.local_to_map(self.global_position)
 	neighbours = tilemap.get_surrounding_cells(legion_position)
+	LegionController.check_position(self, legion_position)
 
 func set_selected(selected: bool):
 	legion_selection = selected
