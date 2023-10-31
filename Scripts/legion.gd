@@ -75,6 +75,7 @@ func movement():
 		legion_selection = false
 		player_select.button_pressed = false
 		LegionController.check_position(self, legion_position)
+		LegionController.player_owned_tiles.append(legion_position)
 
 func _on_selected_toggled(button_pressed):
 	if button_pressed:

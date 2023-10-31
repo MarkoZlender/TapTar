@@ -5,11 +5,8 @@ extends Control
 @onready var legion = $Legions/legion
 @onready var legion_2 = $Legions/legion2
 
+@onready var player_owned_tiles = LegionController.player_owned_tiles
 
-# @onready var all_legions = $Legions.get_children()
-
-# @onready var taken_positions = Dictionary()
-# @onready var selected_legions = Dictionary()
 
 var save_game = SaveGame.load_game() as SaveGame
 var character = Character.new()
@@ -23,14 +20,20 @@ func _ready():
 	# setting legion positions
 	legion.set_legion_position(Vector2i(5,1))
 	legion_2.set_legion_position(Vector2i(6,1))
-
+	player_owned_tiles.append(Vector2i(5,1))
+	player_owned_tiles.append(Vector2i(6,1))
+	# check if the player's legion is on a tile and if it is, change the tile
+	check_taken_position()
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	camera_movement()
 	
-
+func _input(event):
+	if Input.is_action_just_pressed("left_click"):
+		check_taken_position()
+	
 
 func camera_movement():
 	if Input.is_action_pressed("up"):
@@ -42,6 +45,12 @@ func camera_movement():
 	elif Input.is_action_pressed("right"):
 		camera_2d.position += Vector2(10,0)
 
+# check if the player's legion is on a tile and if it is, change the tile
+func check_taken_position():
+	for tile_coord in player_owned_tiles:
+		tilemap.set_cell(0, tile_coord, 0, Vector2i(2,2), 0)
+
+# function which executes all the necessary actions when the player ends their turn
 func _on_ui_end_turn():
 	legion.set_end_turn()
 	legion_2.set_end_turn()
