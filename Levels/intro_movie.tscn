@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctqop7i3matn2"]
+
+[ext_resource type="Script" path="res://Scripts/intro_movie.gd" id="1_mcwtn"]
+[ext_resource type="VideoStream" path="res://Resources/Videos/made_with_godot.ogv" id="2_uuan7"]
+
+[node name="intro_movie" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mcwtn")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.0037037
+anchor_right = 1.0
+anchor_bottom = 1.0037
+offset_top = 4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_uuan7")
+autoplay = true
+expand = true
+metadata/_edit_use_anchors_ = true
+
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

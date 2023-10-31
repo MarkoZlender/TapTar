@@ -1,6 +1,8 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bcldp6xwy5liu"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://bcldp6xwy5liu"]
 
 [ext_resource type="Texture2D" uid="uid://cit666hf4j2fl" path="res://Resources/Images/tiles.png" id="1_rt3om"]
+[ext_resource type="Texture2D" uid="uid://dciobc12vof8g" path="res://Resources/Images/tiles_color.png" id="2_1cjvn"]
+[ext_resource type="Texture2D" uid="uid://bwogc8juj5j2a" path="res://Resources/Images/tiles_taken.png" id="3_tq6yb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m8dm5"]
 resource_name = "ground_tiles"
@@ -18,7 +20,7 @@ texture_region_size = Vector2i(128, 128)
 0:1/0/custom_data_1 = true
 1:3/0 = 0
 1:3/0/modulate = Color(0.72549, 0, 0.054902, 0.313726)
-1:3/0/custom_data_0 = "lava"
+1:3/0/custom_data_0 = "highlight"
 2:1/next_alternative_id = 2
 2:1/0 = 0
 2:1/0/custom_data_0 = "grass"
@@ -31,6 +33,35 @@ texture_region_size = Vector2i(128, 128)
 2:3/0 = 0
 2:3/0/custom_data_0 = "water"
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vdmk2"]
+texture = ExtResource("2_1cjvn")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+1:3/0/custom_data_0 = "lava"
+2:3/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_au77e"]
+texture = ExtResource("3_tq6yb")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
 [resource]
 tile_shape = 3
 tile_offset_axis = 1
@@ -40,3 +71,5 @@ custom_data_layer_0/type = 4
 custom_data_layer_1/name = "walkable"
 custom_data_layer_1/type = 1
 sources/0 = SubResource("TileSetAtlasSource_m8dm5")
+sources/1 = SubResource("TileSetAtlasSource_vdmk2")
+sources/2 = SubResource("TileSetAtlasSource_au77e")
