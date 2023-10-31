@@ -53,14 +53,25 @@ texture_region_size = Vector2i(128, 128)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_au77e"]
 texture = ExtResource("3_tq6yb")
 texture_region_size = Vector2i(128, 128)
+0:0/next_alternative_id = 2
 0:0/0 = 0
+0:0/0/modulate = Color(1, 1, 1, 0.466667)
+0:0/0/custom_data_1 = true
+0:0/0/custom_data_2 = "enemy_2"
 1:0/0 = 0
 2:0/0 = 0
+3:0/next_alternative_id = 2
 3:0/0 = 0
+3:0/0/modulate = Color(0, 0.658824, 0.74902, 0.478431)
+3:0/0/custom_data_1 = true
+3:0/0/custom_data_2 = "player"
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0
+3:1/0/modulate = Color(1, 1, 1, 0.584314)
+3:1/0/custom_data_1 = true
+3:1/0/custom_data_2 = "enemy_1"
 
 [resource]
 tile_shape = 3
@@ -70,6 +81,8 @@ custom_data_layer_0/name = "Tile_name"
 custom_data_layer_0/type = 4
 custom_data_layer_1/name = "walkable"
 custom_data_layer_1/type = 1
+custom_data_layer_2/name = "taken"
+custom_data_layer_2/type = 4
 sources/0 = SubResource("TileSetAtlasSource_m8dm5")
 sources/1 = SubResource("TileSetAtlasSource_vdmk2")
 sources/2 = SubResource("TileSetAtlasSource_au77e")

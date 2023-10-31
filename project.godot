@@ -26,6 +26,7 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="res://Resources/Images/glove_pointer.png"
 
 [input]
 

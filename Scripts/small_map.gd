@@ -25,12 +25,13 @@ func _ready():
 	# check if the player's legion is on a tile and if it is, change the tile
 	check_taken_position()
 	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	camera_movement()
 	
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("left_click"):
 		check_taken_position()
 	
@@ -48,7 +49,7 @@ func camera_movement():
 # check if the player's legion is on a tile and if it is, change the tile
 func check_taken_position():
 	for tile_coord in player_owned_tiles:
-		tilemap.set_cell(0, tile_coord, 0, Vector2i(2,2), 0)
+		tilemap.set_cell(1, tile_coord, 2, Vector2i(3,0), 0)
 
 # function which executes all the necessary actions when the player ends their turn
 func _on_ui_end_turn():
