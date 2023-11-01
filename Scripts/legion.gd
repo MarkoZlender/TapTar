@@ -61,28 +61,36 @@ func movement():
 							legion_position = tilemap.local_to_map(new_position)
 							neighbours = tilemap.get_surrounding_cells(legion_position)
 							moved = true
+							# append legion position to taken positions array
+							if legion_position not in LegionController.player_owned_tiles:
+								LegionController.player_owned_tiles.append(legion_position)
+							else:
+								pass
 							# after moving remove legion selection from selected_legions array
 							LegionController.selected_legions.clear()
 						else:
-							print("legion not selected")
+							pass
+							#print("legion not selected")
 					else:
-						print("tile not a neighbour")
+						pass
+						#print("tile not a neighbour")
 		else:
-			print("NO TILE DATA!" + str(tile_mouse_position))
+			pass
+			#print("NO TILE DATA!" + str(tile_mouse_position))
 
 	if moved == true:
 		player_tile_map.hide()
 		legion_selection = false
 		player_select.button_pressed = false
 		LegionController.check_position(self, legion_position)
-		LegionController.player_owned_tiles.append(legion_position)
+		
 
 func _on_selected_toggled(button_pressed):
 	if button_pressed:
 		LegionController.selected_legions.append(self)
 	else:
 		LegionController.selected_legions.erase(self)
-	print("Selected legions: " + str(LegionController.selected_legions))
+	#print("Selected legions: " + str(LegionController.selected_legions))
 	legion_selected.emit(button_pressed)
 
 func _on_legion_selected(selected):

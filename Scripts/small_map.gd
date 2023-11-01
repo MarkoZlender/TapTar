@@ -7,6 +7,8 @@ extends Control
 
 @onready var player_owned_tiles = LegionController.player_owned_tiles
 
+@onready var all_legions = $Legions.get_children()
+
 
 var save_game = SaveGame.load_game() as SaveGame
 var character = Character.new()
@@ -53,8 +55,8 @@ func check_taken_position():
 
 # function which executes all the necessary actions when the player ends their turn
 func _on_ui_end_turn():
-	legion.set_end_turn()
-	legion_2.set_end_turn()
+	for unit in all_legions:
+		unit.set_end_turn()
 	
 	
 	

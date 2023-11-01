@@ -1,8 +1,5 @@
 extends Control
 
-
-@onready var all_legions = self.get_children()
-
 @onready var taken_positions = Dictionary()
 @onready var selected_legions = Array()
 
@@ -19,7 +16,7 @@ func _process(delta):
 
 func check_position(unit: Node, new_legion_position: Vector2i):
 	taken_positions[unit] = new_legion_position
-	print("Restricted coords: " + str(taken_positions))
+	#print("Restricted coords: " + str(taken_positions))
 
 
 
