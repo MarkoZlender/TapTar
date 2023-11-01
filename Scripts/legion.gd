@@ -33,7 +33,7 @@ func _process(delta):
 
 func movement():
 	if Input.is_action_just_pressed("left_click"):
-		print("taken positions " + str(LegionController.taken_positions))
+		#print("taken positions " + str(LegionController.taken_positions))
 		#print("restricted coords " + str(SmallMap.taken_positions))
 		var mouse_position = get_global_mouse_position()
 		var tile_mouse_position : Vector2i = tilemap.local_to_map(mouse_position)
@@ -46,10 +46,11 @@ func movement():
 		if tile_data:
 			var tile_name = str(tile_data.get_custom_data("Tile_name"))
 			var tile_wakable: bool = tile_data.get_custom_data("walkable")
-			print("tile mouse position: " + str(tile_mouse_position) + "\n" + tile_name)
+			#print("tile mouse position: " + str(tile_mouse_position) + "\n" + tile_name)
 			if tile_wakable:
 				if moved == true:
-					print("legion already moved")
+					pass
+					#print("legion already moved")
 				else:
 					if (tile_mouse_position in neighbours) and (tile_mouse_position not in LegionController.taken_positions.values()):
 						if legion_selection == true:
@@ -66,6 +67,7 @@ func movement():
 								LegionController.player_owned_tiles.append(legion_position)
 							else:
 								pass
+
 							# after moving remove legion selection from selected_legions array
 							LegionController.selected_legions.clear()
 						else:
