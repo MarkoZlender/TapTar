@@ -84,8 +84,32 @@ func movement():
 		legion_selection = false
 		player_select.button_pressed = false
 		LegionController.check_position(self, legion_position)
-		
-
+	# A star pathfinding ##############################################################################################################
+	
+	var astar = AStar2D.new()
+	for x in range(tilemap.get_used_rect().size.x):
+		for y in range(tilemap.get_used_rect().size.y):
+			var tile_pos = Vector2(x, y)
+			var tile_data_ground_2 = tilemap.get_cell_tile_data(0, tile_pos)
+			if tile_data_ground_2 and tile_data_ground.get_custom_data("walkable"):
+				var point_id = x * tilemap.get_used_rect().size.y + y
+				astar.add_point(point_id, tile_pos)
+	
+	for x in range(tilemap.get_used_rect().size.x):
+		for y in range(tilemap.get_used_rect().size.y):
+			var tile_pos = Vector2(x, y)
+			var tile_data_ground_2 = tilemap.get_cell_tile_data(0, tile_pos)
+			if tile_data_ground_2 and tile_data_ground.get_custom_data("walkable"):
+				var point_id = x * tilemap.get_used_rect().size.y + y
+				for neighbor in tilemap.get_surrounding_cells(tile_pos):
+					var neighbor_id = neighbor.x * tilemap.get_used_rect().size.y + neighbor.y
+					if astar.has_point(neighbor_id):
+						astar.connect_points(point_id, neighbor_id, true)
+	var start_id = legion_position.x * tilemap.get_used_rect().size.y + legion_position.y
+	var end_id = Vector2(6,6).x * tilemap.get_used_rect().size.y + Vector2(6,6).y
+	var path = astar.get_point_path(start_id, end_id)
+	
+	##################################################################################################################################
 func _on_selected_toggled(button_pressed):
 	if button_pressed:
 		LegionController.selected_legions.append(self)

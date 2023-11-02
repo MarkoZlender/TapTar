@@ -4,6 +4,7 @@ extends Control
 @onready var camera_2d = $Camera2D
 @onready var legion = $Legions/legion
 @onready var legion_2 = $Legions/legion2
+@onready var enemy_legion = $Legions/enemy_legion
 
 @onready var player_owned_tiles = LegionController.player_owned_tiles
 
@@ -24,6 +25,7 @@ func _ready():
 	legion_2.set_legion_position(Vector2i(6,1))
 	player_owned_tiles.append(Vector2i(5,1))
 	player_owned_tiles.append(Vector2i(6,1))
+	#enemy_legion.set_legion_position(Vector2i(5,5))
 	# check if the player's legion is on a tile and if it is, change the tile
 	check_taken_position()
 	
