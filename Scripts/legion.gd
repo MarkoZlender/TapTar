@@ -46,7 +46,7 @@ func movement():
 		if tile_data:
 			var tile_name = str(tile_data.get_custom_data("Tile_name"))
 			var tile_wakable: bool = tile_data.get_custom_data("walkable")
-			#print("tile mouse position: " + str(tile_mouse_position) + "\n" + tile_name)
+			print("tile mouse position: " + str(tile_mouse_position) + "\n" + tile_name)
 			if tile_wakable:
 				if moved == true:
 					pass

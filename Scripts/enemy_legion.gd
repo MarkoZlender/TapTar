@@ -4,6 +4,7 @@ signal legion_selected(selected: bool)
 
 @onready var player_select = $PlayerSelect
 @onready var tilemap = current_tilemap
+@onready var path_to_next_tile
 
 
 @export var current_tilemap: TileMap = null
@@ -25,6 +26,8 @@ func _ready():
 	legion_selection = false
 	
 	
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -35,81 +38,77 @@ func movement():
 	#print("taken positions " + str(LegionController.taken_positions))
 	#print("restricted coords " + str(SmallMap.taken_positions))
 
-	var mouse_position = get_global_mouse_position()
-	var tile_mouse_position : Vector2i = tilemap.local_to_map(mouse_position)
+	#var mouse_position = get_global_mouse_position()
+	#var tile_mouse_position : Vector2i = tilemap.local_to_map(mouse_position)
 	
 
-	var tile_data_ground : TileData = tilemap.get_cell_tile_data(0, tile_mouse_position)
-	var tile_data_taken_ : TileData = tilemap.get_cell_tile_data(1, tile_mouse_position)
+	# var tile_data_ground : TileData = tilemap.get_cell_tile_data(0, tile_mouse_position)
+	# var tile_data_taken_ : TileData = tilemap.get_cell_tile_data(1, tile_mouse_position)
 	
 	
-	if tile_data_ground:
-		var tile_name = str(tile_data_ground.get_custom_data("Tile_name"))
-		var tile_wakable: bool = tile_data_ground.get_custom_data("walkable")
-		#print("tile mouse position: " + str(tile_mouse_position) + "\n" + tile_name)
-		if tile_wakable:
-			if moved == true:
-				pass
-				#print("legion already moved")
-			else:
-				if (tile_mouse_position in neighbours) and (tile_mouse_position not in LegionController.taken_positions.values()):
-					if legion_selection == true:
-						# animation #########################################
-						var tween = get_tree().create_tween()
-						tween.tween_property(self, "global_position", tilemap.map_to_local(tile_mouse_position), 0.5)
-						######################################################
-						new_position = tilemap.map_to_local(tile_mouse_position)
-						legion_position = tilemap.local_to_map(new_position)
-						neighbours = tilemap.get_surrounding_cells(legion_position)
-						moved = true
-						# append legion position to taken positions array
-						if legion_position not in LegionController.player_owned_tiles:
-							LegionController.player_owned_tiles.append(legion_position)
-						else:
-							pass
+	# if tile_data_ground:
+	# 	var tile_name = str(tile_data_ground.get_custom_data("Tile_name"))
+	# 	var tile_wakable: bool = tile_data_ground.get_custom_data("walkable")
+	# 	#print("tile mouse position: " + str(tile_mouse_position) + "\n" + tile_name)
+	# 	if tile_wakable:
+	# 		if moved == true:
+	# 			pass
+	# 			#print("legion already moved")
+	# 		else:
+	# 			if (tile_mouse_position in neighbours) and (tile_mouse_position not in LegionController.taken_positions.values()):
+	# 				if legion_selection == true:
+	# 					# animation #########################################
+	# 					var tween = get_tree().create_tween()
+	# 					tween.tween_property(self, "global_position", tilemap.map_to_local(tile_mouse_position), 0.5)
+	# 					######################################################
+	# 					new_position = tilemap.map_to_local(tile_mouse_position)
+	# 					legion_position = tilemap.local_to_map(new_position)
+	# 					neighbours = tilemap.get_surrounding_cells(legion_position)
+	# 					moved = true
+	# 					# append legion position to taken positions array
+	# 					if legion_position not in LegionController.player_owned_tiles:
+	# 						LegionController.player_owned_tiles.append(legion_position)
+	# 					else:
+	# 						pass
 
-						# after moving remove legion selection from selected_legions array
-						LegionController.selected_legions.clear()
-					else:
-						pass
-						#print("legion not selected")
-				else:
-					pass
-					#print("tile not a neighbour")
+	# 					# after moving remove legion selection from selected_legions array
+	# 					LegionController.selected_legions.clear()
+	# 				else:
+	# 					pass
+	# 					#print("legion not selected")
+	# 			else:
+	# 				pass
+	# 				#print("tile not a neighbour")
+	# else:
+	# 	pass
+	# 	#print("NO TILE DATA!" + str(tile_mouse_position))
+	
+	#path_to_next_tile = tilemap.getAStarPath(self.global_position, Vector2i(3,2))
+	
+	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(Vector2i(3,2)))
+
+	if path_to_next_tile.size() > 1:
+		
+		path_to_next_tile.pop_front()
+		var vTarget = path_to_next_tile.pop_front()
+		print("vTarget: " + str(vTarget))
+		#animation #########################################
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "global_position", vTarget, 0.5)
+		######################################################
+		new_position = tilemap.map_to_local(vTarget)
+		legion_position = tilemap.local_to_map(new_position)
+		neighbours = tilemap.get_surrounding_cells(legion_position)
+		moved = true
 	else:
-		pass
-		#print("NO TILE DATA!" + str(tile_mouse_position))
+		print("no path to next tile")
+	# TODO else if other legion is on the tile, fight
 
 	if moved == true:
 		legion_selection = false
 		player_select.button_pressed = false
 		LegionController.check_position(self, legion_position)
-	# A star pathfinding ##############################################################################################################
 	
-	var astar = AStar2D.new()
-	for x in range(tilemap.get_used_rect().size.x):
-		for y in range(tilemap.get_used_rect().size.y):
-			var tile_pos = Vector2(x, y)
-			var tile_data_ground_2 = tilemap.get_cell_tile_data(0, tile_pos)
-			if tile_data_ground_2 and tile_data_ground.get_custom_data("walkable"):
-				var point_id = x * tilemap.get_used_rect().size.y + y
-				astar.add_point(point_id, tile_pos)
-	
-	for x in range(tilemap.get_used_rect().size.x):
-		for y in range(tilemap.get_used_rect().size.y):
-			var tile_pos = Vector2(x, y)
-			var tile_data_ground_2 = tilemap.get_cell_tile_data(0, tile_pos)
-			if tile_data_ground_2 and tile_data_ground.get_custom_data("walkable"):
-				var point_id = x * tilemap.get_used_rect().size.y + y
-				for neighbor in tilemap.get_surrounding_cells(tile_pos):
-					var neighbor_id = neighbor.x * tilemap.get_used_rect().size.y + neighbor.y
-					if astar.has_point(neighbor_id):
-						astar.connect_points(point_id, neighbor_id, true)
-	var start_id = legion_position.x * tilemap.get_used_rect().size.y + legion_position.y
-	var end_id = Vector2(6,6).x * tilemap.get_used_rect().size.y + Vector2(6,6).y
-	var path = astar.get_point_path(start_id, end_id)
-	
-	##################################################################################################################################
 func _on_selected_toggled(button_pressed):
 	if button_pressed:
 		LegionController.selected_legions.append(self)
@@ -138,9 +137,22 @@ func set_legion_position(new_legion_position: Vector2i):
 	neighbours = tilemap.get_surrounding_cells(legion_position)
 	LegionController.check_position(self, legion_position)
 
+func find_free_position():
+	var free_position: Vector2i
+	var taken_positions = LegionController.taken_positions
+	var neighbours: Array[Vector2i] = tilemap.get_surrounding_cells(legion_position)
+	var free_neighbours: Array[Vector2i] = []
+	for neighbour in neighbours:
+		if neighbour not in taken_positions.values():
+			free_neighbours.append(neighbour)
+	if free_neighbours.size() > 0:
+		free_position = free_neighbours[randi() % free_neighbours.size()]
+	else:
+		free_position = legion_position
+	return free_position
+
 func set_selected(selected: bool):
 	legion_selection = selected
 
 func get_legion_position():
 	return legion_position
-

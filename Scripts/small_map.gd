@@ -23,9 +23,9 @@ func _ready():
 	# setting legion positions
 	legion.set_legion_position(Vector2i(5,1))
 	legion_2.set_legion_position(Vector2i(6,1))
-	player_owned_tiles.append(Vector2i(5,1))
-	player_owned_tiles.append(Vector2i(6,1))
-	#enemy_legion.set_legion_position(Vector2i(5,5))
+	player_owned_tiles.append(legion.get_legion_position())
+	player_owned_tiles.append(legion_2.get_legion_position())
+	enemy_legion.set_legion_position(Vector2i(5,4))
 	# check if the player's legion is on a tile and if it is, change the tile
 	check_taken_position()
 	
