@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cchegyij7br7b"]
+
+[ext_resource type="Texture2D" uid="uid://b66psqadkx472" path="res://Resources/Sprites/Animation/dreadbat-se-1.png" id="1_qlvd3"]
+[ext_resource type="Texture2D" uid="uid://dokk6bxfkqc4d" path="res://Resources/Sprites/Animation/dreadbat-se-2.png" id="2_0ahud"]
+[ext_resource type="Texture2D" uid="uid://c7bdbmfuimn4n" path="res://Resources/Sprites/Animation/dreadbat-se-3.png" id="3_qlfuw"]
+[ext_resource type="Texture2D" uid="uid://obi1dn476meq" path="res://Resources/Sprites/Animation/dreadbat-se-4.png" id="4_utfbk"]
+[ext_resource type="Texture2D" uid="uid://uwo2hl01eipw" path="res://Resources/Sprites/Animation/dreadbat-se-5.png" id="5_g84pd"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qlvd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0ahud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qlfuw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_utfbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g84pd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]

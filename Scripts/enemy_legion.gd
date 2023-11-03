@@ -5,6 +5,7 @@ signal legion_selected(selected: bool)
 @onready var player_select = $PlayerSelect
 @onready var tilemap = current_tilemap
 @onready var path_to_next_tile
+@onready var animated_sprite = $PlayerSelect/AnimatedEnemySprite
 
 
 @export var current_tilemap: TileMap = null
@@ -31,7 +32,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	animated_sprite.play("idle")
 
 func movement():
 	#if Input.is_action_just_pressed("left_click"):

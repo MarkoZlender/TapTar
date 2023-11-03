@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://bcldp6xwy5liu"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://bcldp6xwy5liu"]
 
 [ext_resource type="Texture2D" uid="uid://cit666hf4j2fl" path="res://Resources/Images/tiles.png" id="1_rt3om"]
 [ext_resource type="Texture2D" uid="uid://dciobc12vof8g" path="res://Resources/Images/tiles_color.png" id="2_1cjvn"]
 [ext_resource type="Texture2D" uid="uid://bwogc8juj5j2a" path="res://Resources/Images/tiles_taken.png" id="3_tq6yb"]
+[ext_resource type="Texture2D" uid="uid://dsv20f6aw0yih" path="res://Resources/Images/lava_tiles.png" id="4_nyjme"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m8dm5"]
 resource_name = "ground_tiles"
@@ -73,6 +74,16 @@ texture_region_size = Vector2i(128, 128)
 3:1/0/custom_data_1 = true
 3:1/0/custom_data_2 = "enemy_1"
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1trpw"]
+texture = ExtResource("4_nyjme")
+texture_region_size = Vector2i(128, 128)
+0:0/animation_frame_0/duration = 0.3
+0:0/animation_frame_1/duration = 0.3
+0:0/animation_frame_2/duration = 0.3
+0:0/animation_frame_3/duration = 0.3
+0:0/0 = 0
+0:0/0/custom_data_0 = "lava"
+
 [resource]
 tile_shape = 3
 tile_offset_axis = 1
@@ -86,3 +97,4 @@ custom_data_layer_2/type = 4
 sources/0 = SubResource("TileSetAtlasSource_m8dm5")
 sources/1 = SubResource("TileSetAtlasSource_vdmk2")
 sources/2 = SubResource("TileSetAtlasSource_au77e")
+sources/3 = SubResource("TileSetAtlasSource_1trpw")

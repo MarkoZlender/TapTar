@@ -5,6 +5,7 @@ signal legion_selected(selected: bool)
 @onready var player_tile_map = $PlayerSelect/PlayerTileMap
 @onready var player_select = $PlayerSelect
 @onready var tilemap = current_tilemap
+@onready var animated_sprite = $ PlayerSelect/AnimatedPlayerSprite
 
 
 @export var current_tilemap: TileMap = null
@@ -29,7 +30,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	animated_sprite.play("idle")
 
 func movement():
 	if Input.is_action_just_pressed("left_click"):
@@ -92,6 +93,7 @@ func _on_selected_toggled(button_pressed):
 		LegionController.selected_legions.append(self)
 	else:
 		LegionController.selected_legions.erase(self)
+		player_tile_map.hide()
 	#print("Selected legions: " + str(LegionController.selected_legions))
 	legion_selected.emit(button_pressed)
 
