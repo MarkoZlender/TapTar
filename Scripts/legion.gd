@@ -6,6 +6,7 @@ signal legion_selected(selected: bool)
 @onready var player_select = $PlayerSelect
 @onready var tilemap = current_tilemap
 @onready var animated_sprite = $ PlayerSelect/AnimatedPlayerSprite
+@onready var sfx_player = get_node("/root/Small_map/SFXPlayer")
 
 
 @export var current_tilemap: TileMap = null
@@ -63,6 +64,9 @@ func movement():
 							legion_position = tilemap.local_to_map(new_position)
 							neighbours = tilemap.get_surrounding_cells(legion_position)
 							moved = true
+							# sound effect ######################################
+							sfx_player.stream = load("res://Resources/Sound/SFX/move.wav")
+							sfx_player.play()
 							# append legion position to taken positions array
 							if legion_position not in LegionController.player_owned_tiles:
 								LegionController.player_owned_tiles.append(legion_position)

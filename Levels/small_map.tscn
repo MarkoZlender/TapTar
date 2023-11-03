@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ci5hu2dadpcab"]
+[gd_scene load_steps=9 format=3 uid="uid://ci5hu2dadpcab"]
 
 [ext_resource type="Script" path="res://Scripts/small_map.gd" id="1_wdc23"]
 [ext_resource type="TileSet" uid="uid://bcldp6xwy5liu" path="res://Resources/TileSets/test_tileset.tres" id="2_wdl0a"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cy35wcdawvyue" path="res://Objects/legion.tscn" id="4_oax6n"]
 [ext_resource type="PackedScene" uid="uid://cvabfqd568i6p" path="res://Levels/UI.tscn" id="4_slmpc"]
 [ext_resource type="PackedScene" uid="uid://lmawnpkbefr4" path="res://Objects/enemy_legion.tscn" id="6_gx4r2"]
+[ext_resource type="AudioStream" uid="uid://bvkdfgr1j5h3r" path="res://Resources/Sound/battle.ogg" id="8_r5wc4"]
 
 [node name="Small_map" type="Control"]
 layout_mode = 3
@@ -114,5 +115,16 @@ limit_right = 1920
 limit_bottom = 1080
 limit_smoothed = true
 position_smoothing_enabled = true
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_r5wc4")
+volume_db = -70.0
+autoplay = true
+bus = &"Music"
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -70.0
+autoplay = true
+bus = &"SFX"
 
 [connection signal="end_turn" from="UI" to="." method="_on_ui_end_turn"]

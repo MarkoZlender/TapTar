@@ -6,6 +6,7 @@ signal legion_selected(selected: bool)
 @onready var tilemap = current_tilemap
 @onready var path_to_next_tile
 @onready var animated_sprite = $PlayerSelect/AnimatedEnemySprite
+@onready var sfx_player = get_node("/root/Small_map/SFXPlayer")
 
 
 @export var current_tilemap: TileMap = null
