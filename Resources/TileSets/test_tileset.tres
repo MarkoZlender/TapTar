@@ -69,7 +69,7 @@ texture_region_size = Vector2i(128, 128)
 1:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0
-3:1/0/modulate = Color(1, 1, 1, 0.584314)
+3:1/0/modulate = Color(0.529412, 0.188235, 0.145098, 0.662745)
 3:1/0/custom_data_1 = true
 3:1/0/custom_data_2 = "enemy_1"
 

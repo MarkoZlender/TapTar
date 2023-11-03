@@ -7,6 +7,7 @@ extends Control
 @onready var enemy_legion = $Legions/enemy_legion
 
 @onready var player_owned_tiles = LegionController.player_owned_tiles
+@onready var enemy_owned_tiles = LegionController.enemy_owned_tiles
 
 @onready var all_legions = $Legions.get_children()
 
@@ -25,7 +26,8 @@ func _ready():
 	legion_2.set_legion_position(Vector2i(6,1))
 	player_owned_tiles.append(legion.get_legion_position())
 	player_owned_tiles.append(legion_2.get_legion_position())
-	enemy_legion.set_legion_position(Vector2i(5,4))
+	enemy_legion.set_legion_position(Vector2i(4,4))
+	enemy_owned_tiles.append(enemy_legion.get_legion_position())
 	# check if the player's legion is on a tile and if it is, change the tile
 	check_taken_position()
 	
@@ -54,11 +56,14 @@ func camera_movement():
 func check_taken_position():
 	for tile_coord in player_owned_tiles:
 		tilemap.set_cell(1, tile_coord, 2, Vector2i(3,0), 0)
+	for tile_coord in enemy_owned_tiles:
+		tilemap.set_cell(1, tile_coord, 2, Vector2i(3,1), 0)
 
 # function which executes all the necessary actions when the player ends their turn
 func _on_ui_end_turn():
 	for unit in all_legions:
 		unit.set_end_turn()
+		check_taken_position()
 	
 	
 	

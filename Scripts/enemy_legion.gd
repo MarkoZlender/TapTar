@@ -85,21 +85,29 @@ func movement():
 	
 	#path_to_next_tile = tilemap.getAStarPath(self.global_position, Vector2i(3,2))
 	
-	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(Vector2i(3,2)))
+	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(Vector2i(12,7)))
 
 	if path_to_next_tile.size() > 1:
 		
 		path_to_next_tile.pop_front()
 		var vTarget = path_to_next_tile.pop_front()
+		tilemap.freeAStarCell(self.global_position)
+		tilemap.occupyAStarCell(vTarget)
 		print("vTarget: " + str(vTarget))
+
 		#animation #########################################
 		var tween = get_tree().create_tween()
 		tween.tween_property(self, "global_position", vTarget, 0.5)
 		######################################################
+
 		new_position = tilemap.map_to_local(vTarget)
 		legion_position = tilemap.local_to_map(new_position)
 		neighbours = tilemap.get_surrounding_cells(legion_position)
 		moved = true
+		if legion_position not in LegionController.enemy_owned_tiles:
+			LegionController.enemy_owned_tiles.append(tilemap.local_to_map(legion_position))
+		else:
+			pass
 	else:
 		print("no path to next tile")
 	# TODO else if other legion is on the tile, fight
@@ -107,7 +115,8 @@ func movement():
 	if moved == true:
 		legion_selection = false
 		player_select.button_pressed = false
-		LegionController.check_position(self, legion_position)
+		LegionController.check_position(self, tilemap.local_to_map(legion_position))
+	
 	
 func _on_selected_toggled(button_pressed):
 	if button_pressed:
