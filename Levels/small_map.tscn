@@ -89,7 +89,6 @@ script = ExtResource("3_xqkks")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("3_tadb5")
 
 [node name="legion" parent="Legions" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("4_oax6n")]
 current_tilemap = NodePath("../../GroundTiles")
@@ -99,6 +98,10 @@ current_tilemap = NodePath("../../GroundTiles")
 
 [node name="enemy_legion" parent="Legions" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("6_gx4r2")]
 current_tilemap = NodePath("../../GroundTiles")
+
+[node name="LegionController" type="Node" parent="." node_paths=PackedStringArray("tilemap")]
+script = ExtResource("3_tadb5")
+tilemap = NodePath("../GroundTiles")
 
 [node name="UI" parent="." instance=ExtResource("4_slmpc")]
 layout_mode = 1
