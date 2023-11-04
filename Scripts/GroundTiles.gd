@@ -4,6 +4,7 @@ extends TileMap
 
 @onready var non_walkable_tiles = Array()
 @onready var size = self.get_used_rect().size
+@onready var legion_neighbours =  Array()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,8 +41,8 @@ func aStarStart()->void:
 	# Creates AStar grid
 	for i in size.x:
 		for j in size.y:
-			var idx=getAStarCellId(Vector2(i,j))
-			aStar.add_point(idx, map_to_local(Vector2(i,j)))
+			var idx=getAStarCellId(Vector2i(i,j))
+			aStar.add_point(idx, map_to_local(Vector2i(i,j)))
 	# Fills AStar grid with info about valid tiles
 	for i in size.x:
 		for j in size.y:

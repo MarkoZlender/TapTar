@@ -36,24 +36,27 @@ func _process(delta):
 
 func movement():
 
-	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(Vector2i(1,4)))
-
+	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(Vector2i(8,1)))
+	for coord in path_to_next_tile:
+		print("path_to_next_tile: " + str(tilemap.local_to_map(coord)))
 	if path_to_next_tile.size() > 1:
 		
 		path_to_next_tile.pop_front()
 		var vTarget = path_to_next_tile.pop_front()
-		tilemap.freeAStarCell(self.global_position)
-		tilemap.occupyAStarCell(vTarget)
+
+		#if tilemap.local_to_map(vTarget) in legion_controller.taken_positions.values():
+			#pass
+		#else:
 		print("vTarget: " + str(vTarget))
-		
-		play_animation(vTarget)
-		
-		new_position = tilemap.map_to_local(vTarget)
-		legion_position = tilemap.local_to_map(new_position)
-		neighbours = tilemap.get_surrounding_cells(legion_position)
-		moved = true
-		if legion_position not in legion_controller.enemy_owned_tiles:
-			legion_controller.enemy_owned_tiles.append(tilemap.local_to_map(legion_position))
+		#if tilemap.local_to_map(vTarget) in neighbours:
+		if tilemap.local_to_map(vTarget) in neighbours:
+			play_animation(vTarget)
+			new_position = tilemap.map_to_local(vTarget)
+			legion_position = tilemap.local_to_map(new_position)
+			neighbours = tilemap.get_surrounding_cells(legion_position)
+			moved = true
+			if legion_position not in legion_controller.enemy_owned_tiles:
+				legion_controller.enemy_owned_tiles.append(tilemap.local_to_map(legion_position))
 		else:
 			pass
 	else:
@@ -104,6 +107,7 @@ func set_legion_position(new_legion_position: Vector2i):
 	legion_position = tilemap.local_to_map(self.global_position)
 	neighbours = tilemap.get_surrounding_cells(legion_position)
 	legion_controller.check_position(self, legion_position)
+	#tilemap.occupyAStarCell(self.global_position)
 
 func find_free_position():
 	var free_position: Vector2i

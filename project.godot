@@ -14,10 +14,6 @@ config/name="TapTar"
 run/main_scene="res://Levels/intro_movie.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 
-[autoload]
-
-LegionController="*res://Scripts/legion_controller.gd"
-
 [display]
 
 window/size/viewport_width=1920
