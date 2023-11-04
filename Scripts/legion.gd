@@ -57,23 +57,14 @@ func movement():
 				else:
 					if (tile_mouse_position in neighbours) and (tile_mouse_position not in legion_controller.taken_positions.values()):
 						if legion_selection == true:
-							# animation #########################################
-							var tween = get_tree().create_tween()
-							tween.tween_property(self, "global_position", tilemap.map_to_local(tile_mouse_position), 0.5)
-							######################################################
+							play_animation(tilemap.map_to_local(tile_mouse_position))
 							new_position = tilemap.map_to_local(tile_mouse_position)
 							legion_position = tilemap.local_to_map(new_position)
 							neighbours = tilemap.get_surrounding_cells(legion_position)
 							moved = true
-							# sound effect ######################################
-							sfx_player.stream = load("res://Resources/Sound/SFX/move.wav")
-							sfx_player.play()
+							play_sound_effect()
 							# append legion position to taken positions array
-							if legion_position not in legion_controller.player_owned_tiles:
-								legion_controller.player_owned_tiles.append(legion_position)
-							else:
-								pass
-
+							legion_controller.check_player_owned_tiles(legion_position)
 							# after moving remove legion selection from selected_legions array
 							legion_controller.selected_legions.clear()
 						else:
@@ -91,7 +82,21 @@ func movement():
 		legion_selection = false
 		player_select.button_pressed = false
 		legion_controller.check_position(self, legion_position)
-		
+
+func play_animation(vTarget):
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "global_position", vTarget, 0.5)
+
+	if (tilemap.local_to_map(vTarget).x) < (legion_position.x):
+		print("Flipping sprite to left", vTarget.x, legion_position.x)
+		$PlayerSelect/AnimatedPlayerSprite.set_flip_h(true)
+	if (tilemap.local_to_map(vTarget).x) > (legion_position.x):
+		print("Flipping sprite to right", vTarget.x, legion_position.x)
+		$PlayerSelect/AnimatedPlayerSprite.set_flip_h(false)
+
+func play_sound_effect():
+	sfx_player.stream = load("res://Resources/Sound/SFX/move.wav")
+	sfx_player.play()
 
 func _on_selected_toggled(button_pressed):
 	if button_pressed:

@@ -36,7 +36,7 @@ func _process(delta):
 
 func movement():
 
-	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(Vector2i(12,7)))
+	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(Vector2i(1,4)))
 
 	if path_to_next_tile.size() > 1:
 		
@@ -69,6 +69,13 @@ func movement():
 func play_animation(vTarget):
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", vTarget, 0.5)
+
+	if (tilemap.local_to_map(vTarget).x) < (legion_position.x):
+		print("Flipping sprite to left", vTarget.x, legion_position.x)
+		$PlayerSelect/AnimatedEnemySprite.set_flip_h(true)
+	if (tilemap.local_to_map(vTarget).x) > (legion_position.x):
+		print("Flipping sprite to right", vTarget.x, legion_position.x)
+		$PlayerSelect/AnimatedEnemySprite.set_flip_h(false)
 
 func _on_selected_toggled(button_pressed):
 	if button_pressed:

@@ -21,6 +21,12 @@ func check_position(unit: Node, new_legion_position: Vector2i):
 	taken_positions[unit] = new_legion_position
 	#print("Restricted coords: " + str(taken_positions))
 
+func check_player_owned_tiles(taken_position):
+	if taken_position not in player_owned_tiles:
+		player_owned_tiles.append(taken_position)
+	else:
+		pass
+
 # check if the player's legion is on a tile and if it is, change the tile
 func check_taken_position():
 	for tile_coord in player_owned_tiles:
