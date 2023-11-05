@@ -4,7 +4,7 @@ extends TileMap
 
 @onready var non_walkable_tiles = Array()
 @onready var size = self.get_used_rect().size
-@onready var legion_neighbours =  Array()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

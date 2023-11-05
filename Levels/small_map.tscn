@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ci5hu2dadpcab"]
+[gd_scene load_steps=10 format=3 uid="uid://ci5hu2dadpcab"]
 
 [ext_resource type="Script" path="res://Scripts/small_map.gd" id="1_wdc23"]
 [ext_resource type="TileSet" uid="uid://bcldp6xwy5liu" path="res://Resources/TileSets/test_tileset.tres" id="2_wdl0a"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cvabfqd568i6p" path="res://Levels/UI.tscn" id="4_slmpc"]
 [ext_resource type="PackedScene" uid="uid://lmawnpkbefr4" path="res://Objects/enemy_legion.tscn" id="6_gx4r2"]
 [ext_resource type="AudioStream" uid="uid://bvkdfgr1j5h3r" path="res://Resources/Sound/battle.ogg" id="8_r5wc4"]
+[ext_resource type="Script" path="res://Scripts/CanvasLayer.gd" id="9_nnkni"]
 
 [node name="Small_map" type="Control"]
 layout_mode = 3
@@ -129,5 +130,10 @@ bus = &"Music"
 volume_db = -70.0
 autoplay = true
 bus = &"SFX"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("9_nnkni")
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer"]
 
 [connection signal="end_turn" from="UI" to="." method="_on_ui_end_turn"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TapTar"
-run/main_scene="res://Levels/intro_movie.tscn"
+run/main_scene="res://Levels/small_map.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 
 [display]

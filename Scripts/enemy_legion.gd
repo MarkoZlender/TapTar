@@ -8,6 +8,7 @@ signal legion_selected(selected: bool)
 @onready var animated_sprite = $PlayerSelect/AnimatedEnemySprite
 @onready var sfx_player = get_node("/root/Small_map/SFXPlayer")
 @onready var legion_controller = get_node("/root/Small_map/LegionController")
+@onready var canvasLayer = get_node("/root/Small_map/CanvasLayer")
 
 
 @export var current_tilemap: TileMap = null
@@ -36,7 +37,8 @@ func _process(delta):
 
 func movement():
 
-	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(Vector2i(8,1)))
+	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(Vector2i(14,5)))
+	canvasLayer.line_2d_points = path_to_next_tile
 	for coord in path_to_next_tile:
 		print("path_to_next_tile: " + str(tilemap.local_to_map(coord)))
 	if path_to_next_tile.size() > 1:
@@ -49,16 +51,16 @@ func movement():
 		#else:
 		print("vTarget: " + str(vTarget))
 		#if tilemap.local_to_map(vTarget) in neighbours:
-		if tilemap.local_to_map(vTarget) in neighbours:
-			play_animation(vTarget)
-			new_position = tilemap.map_to_local(vTarget)
-			legion_position = tilemap.local_to_map(new_position)
-			neighbours = tilemap.get_surrounding_cells(legion_position)
-			moved = true
-			if legion_position not in legion_controller.enemy_owned_tiles:
-				legion_controller.enemy_owned_tiles.append(tilemap.local_to_map(legion_position))
-		else:
-			pass
+		#if tilemap.local_to_map(vTarget) in neighbours:
+		play_animation(vTarget)
+		new_position = tilemap.map_to_local(vTarget)
+		legion_position = tilemap.local_to_map(new_position)
+		neighbours = tilemap.get_surrounding_cells(legion_position)
+		moved = true
+		if legion_position not in legion_controller.enemy_owned_tiles:
+			legion_controller.enemy_owned_tiles.append(tilemap.local_to_map(legion_position))
+		#else:
+			#pass
 	else:
 		print("no path to next tile")
 	# TODO else if other legion is on the tile, fight
@@ -128,3 +130,6 @@ func set_selected(selected: bool):
 
 func get_legion_position():
 	return legion_position
+
+func get_neighbours():
+	return neighbours
