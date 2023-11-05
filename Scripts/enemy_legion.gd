@@ -50,17 +50,17 @@ func movement():
 			#pass
 		#else:
 		print("vTarget: " + str(vTarget))
-		#if tilemap.local_to_map(vTarget) in neighbours:
-		#if tilemap.local_to_map(vTarget) in neighbours:
-		play_animation(vTarget)
-		new_position = tilemap.map_to_local(vTarget)
-		legion_position = tilemap.local_to_map(new_position)
-		neighbours = tilemap.get_surrounding_cells(legion_position)
-		moved = true
-		if legion_position not in legion_controller.enemy_owned_tiles:
-			legion_controller.enemy_owned_tiles.append(tilemap.local_to_map(legion_position))
-		#else:
-			#pass
+		if tilemap.local_to_map(vTarget) not in legion_controller.taken_positions.values():
+			
+			play_animation(vTarget)
+			new_position = tilemap.map_to_local(vTarget)
+			legion_position = tilemap.local_to_map(new_position)
+			neighbours = tilemap.get_surrounding_cells(legion_position)
+			moved = true
+			if legion_position not in legion_controller.enemy_owned_tiles:
+				legion_controller.enemy_owned_tiles.append(tilemap.local_to_map(legion_position))
+			else:
+				pass
 	else:
 		print("no path to next tile")
 	# TODO else if other legion is on the tile, fight
