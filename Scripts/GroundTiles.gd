@@ -38,6 +38,16 @@ func aStarStart()->void:
 	size = self.get_used_rect().size
 	aStar = AStar2D.new()
 	aStar.reserve_space(size.x * size.y)
+
+	var HEX_NEIGHBORS_EVEN = [
+        Vector2(0, -1), Vector2(1, 0), Vector2(1, 1),
+        Vector2(0, 1), Vector2(-1, 1), Vector2(-1, 0)
+    ]
+
+	var HEX_NEIGHBORS_ODD = [
+        Vector2(0, -1), Vector2(1, -1), Vector2(1, 0),
+        Vector2(0, 1), Vector2(-1, 0), Vector2(-1, -1)
+    ]
 	# Creates AStar grid
 	for i in size.x:
 		for j in size.y:
@@ -48,10 +58,15 @@ func aStarStart()->void:
 		for j in size.y:
 			if get_cell_source_id(0, Vector2i(i,j)) != -1:
 				var idx=getAStarCellId(Vector2i(i,j))
-				for vNeighborCell in [Vector2i(i,j-1),Vector2i(i,j+1),Vector2i(i-1,j),Vector2i(i+1,j),Vector2i(i-1,j-1),Vector2i(i+1,j-1),Vector2i(i-1,j+1),Vector2i(i+1,j+1)]:
-					var idxNeighbor = getAStarCellId(vNeighborCell)
-					if aStar.has_point(idxNeighbor) and not vNeighborCell in non_walkable_tiles:
-						aStar.connect_points(idx, idxNeighbor, false)
+				for neighbor in range(6):
+					var neighbor_offset = Vector2i()
+					if j % 2 == 0:
+						neighbor_offset = Vector2i(i + HEX_NEIGHBORS_EVEN[neighbor].x, j + HEX_NEIGHBORS_EVEN[neighbor].y)
+					else:
+						neighbor_offset = Vector2i(i + HEX_NEIGHBORS_ODD[neighbor].x, j + HEX_NEIGHBORS_ODD[neighbor].y)
+					var idx_neighbor = getAStarCellId(neighbor_offset)
+					if aStar.has_point(idx_neighbor) and not neighbor_offset in non_walkable_tiles:
+						aStar.connect_points(idx, idx_neighbor, false)
 
 func occupyAStarCell(vGlobalPosition:Vector2i)->void:
 	var vCell := self.local_to_map(vGlobalPosition)

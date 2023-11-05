@@ -37,7 +37,7 @@ func _process(delta):
 
 func movement():
 
-	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(Vector2i(14,5)))
+	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(Vector2i(7,0)))
 	canvasLayer.line_2d_points = path_to_next_tile
 	for coord in path_to_next_tile:
 		print("path_to_next_tile: " + str(tilemap.local_to_map(coord)))
