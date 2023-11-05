@@ -40,13 +40,13 @@ func aStarStart()->void:
 	aStar.reserve_space(size.x * size.y)
 
 	var HEX_NEIGHBORS_EVEN = [
-        Vector2(0, -1), Vector2(1, 0), Vector2(1, 1),
-        Vector2(0, 1), Vector2(-1, 1), Vector2(-1, 0)
+        Vector2i(0, -1), Vector2i(1, 0), Vector2i(1, 1),
+        Vector2i(0, 1), Vector2i(-1, 1), Vector2i(-1, 0)
     ]
 
 	var HEX_NEIGHBORS_ODD = [
-        Vector2(0, -1), Vector2(1, -1), Vector2(1, 0),
-        Vector2(0, 1), Vector2(-1, 0), Vector2(-1, -1)
+        Vector2i(0, -1), Vector2i(1, -1), Vector2i(1, 0),
+        Vector2i(0, 1), Vector2i(-1, 0), Vector2i(-1, -1)
     ]
 	# Creates AStar grid
 	for i in size.x:
