@@ -4,11 +4,13 @@ extends Control
 @onready var camera_2d = $Camera2D
 @onready var legion = $Legions/legion
 @onready var legion_2 = $Legions/legion2
-@onready var enemy_legion = $Legions/enemy_legion
+@onready var enemy_legion = $EnemyLegions/enemy_legion
+@onready var enemy_legion_2 = $EnemyLegions/enemy_legion2
 
 @onready var legion_controller = get_node("/root/Small_map/LegionController")
 
 @onready var all_legions = $Legions.get_children()
+@onready var all_enemy_legions = $EnemyLegions.get_children()
 
 
 var save_game = SaveGame.load_game() as SaveGame
@@ -27,6 +29,10 @@ func _ready():
 	legion_controller.player_owned_tiles.append(legion_2.get_legion_position())
 	enemy_legion.set_legion_position(Vector2i(5,2))
 	legion_controller.enemy_owned_tiles.append(enemy_legion.get_legion_position())
+	enemy_legion.set_target_position(Vector2i(8,1))
+	enemy_legion_2.set_legion_position(Vector2i(5,3))
+	legion_controller.enemy_owned_tiles.append(enemy_legion.get_legion_position())
+	enemy_legion_2.set_target_position(Vector2i(10,1))
 	
 	# check if the player's legion is on a tile and if it is, change the tile
 	legion_controller.check_taken_position()
@@ -45,6 +51,9 @@ func _input(_event):
 # function which executes all the necessary actions when the player ends their turn
 func _on_ui_end_turn():
 	for unit in all_legions:
+		unit.set_end_turn()
+		legion_controller.check_taken_position()
+	for unit in all_enemy_legions:
 		unit.set_end_turn()
 		legion_controller.check_taken_position()
 

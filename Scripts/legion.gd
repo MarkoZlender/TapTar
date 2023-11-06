@@ -55,12 +55,18 @@ func movement():
 					pass
 					#print("legion already moved")
 				else:
-					if (tile_mouse_position in neighbours) and (tile_mouse_position not in legion_controller.taken_positions.values()):
+					if (tile_mouse_position in neighbours) and (tile_mouse_position not in legion_controller.taken_positions.values()) and (tile_mouse_position not in legion_controller.enemy_taken_positions.values()):
 						if legion_selection == true:
 							old_legion_position = tilemap.local_to_map(self.global_position)
+
+							#tilemap.freeAStarCell(tilemap.map_to_local(old_legion_position))
+
 							play_animation(tilemap.map_to_local(tile_mouse_position))
 							new_position = tilemap.map_to_local(tile_mouse_position)
 							legion_position = tilemap.local_to_map(new_position)
+
+							
+
 							neighbours = tilemap.get_surrounding_cells(legion_position)
 							moved = true
 							play_sound_effect()
@@ -82,6 +88,7 @@ func movement():
 		player_tile_map.hide()
 		legion_selection = false
 		player_select.button_pressed = false
+		#tilemap.occupyAStarCell(self.global_position)
 		legion_controller.check_position(self, legion_position)
 
 func play_animation(vTarget):
