@@ -8,9 +8,7 @@ extends TileMap
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#size = self.get_used_rect().size
 	get_non_walkable_tiles()
-	print(non_walkable_tiles)
 	aStarStart()
 	
 
@@ -69,18 +67,16 @@ func aStarStart()->void:
 						aStar.connect_points(idx, idx_neighbor, false)
 
 func occupyAStarCell(vGlobalPosition:Vector2i)->void:
-	var vCell := self.local_to_map(vGlobalPosition)
-	var idx := getAStarCellId(vCell)
+	#var vCell := self.local_to_map(vGlobalPosition)
+	var idx:int = aStar.get_closest_point(vGlobalPosition, true)
 
-	if aStar.has_point(idx):
-		aStar.set_point_disabled(idx, true)
+	if aStar.has_point(idx):aStar.set_point_disabled(idx)
 	
 func freeAStarCell(vGlobalPosition:Vector2i)->void:
-	var vCell := self.map_to_local(vGlobalPosition)
-	var idx := getAStarCellId(vCell)
+	#var vCell := self.map_to_local(vGlobalPosition)
+	var idx:int = aStar.get_closest_point(vGlobalPosition, true)
 
-	if aStar.has_point(idx):
-		aStar.set_point_disabled(idx, false)
+	if aStar.has_point(idx):aStar.set_point_disabled(idx, false)
 
 func getAStarPath(vStartPosition:Vector2i,vTargetPosition:Vector2i)->Array:
 	var vCellStart = local_to_map(vStartPosition)

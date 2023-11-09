@@ -29,10 +29,13 @@ func _ready():
 	legion_selection = false
 	
 	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	animated_sprite.play("idle")
+	if moved:
+		tilemap.freeAStarCell(old_legion_position)
 
 func movement():
 	if Input.is_action_just_pressed("left_click"):
@@ -57,18 +60,16 @@ func movement():
 				else:
 					if (tile_mouse_position in neighbours) and (tile_mouse_position not in legion_controller.taken_positions.values()) and (tile_mouse_position not in legion_controller.enemy_taken_positions.values()):
 						if legion_selection == true:
-							old_legion_position = tilemap.local_to_map(self.global_position)
-
-							#tilemap.freeAStarCell(tilemap.map_to_local(old_legion_position))
-
+							#old_legion_position = self.global_position
+							tilemap.freeAStarCell(self.global_position)
+							#tilemap.occupyAStarCell(tile_mouse_position)
+							#tilemap.occupyAStarCell(tile_mouse_position)
 							play_animation(tilemap.map_to_local(tile_mouse_position))
 							new_position = tilemap.map_to_local(tile_mouse_position)
 							legion_position = tilemap.local_to_map(new_position)
-
-							
-
 							neighbours = tilemap.get_surrounding_cells(legion_position)
 							moved = true
+							
 							play_sound_effect()
 							# append legion position to taken positions array
 							legion_controller.check_player_owned_tiles(legion_position)
@@ -88,7 +89,6 @@ func movement():
 		player_tile_map.hide()
 		legion_selection = false
 		player_select.button_pressed = false
-		#tilemap.occupyAStarCell(self.global_position)
 		legion_controller.check_position(self, legion_position)
 
 func play_animation(vTarget):
@@ -125,13 +125,14 @@ func set_end_turn():
 	moved = false
 	legion_selection = false
 	player_select.button_pressed = false
+	#tilemap.freeAStarCell(old_legion_position)
 
 func set_legion_position(new_legion_position: Vector2i):
 	self.global_position = tilemap.map_to_local(new_legion_position)
 	legion_position = tilemap.local_to_map(self.global_position)
 	neighbours = tilemap.get_surrounding_cells(legion_position)
 	legion_controller.check_position(self, legion_position)
-	#tilemap.occupyAStarCell(self.global_position)
+	tilemap.occupyAStarCell(self.global_position)
 
 func set_selected(selected: bool):
 	legion_selection = selected

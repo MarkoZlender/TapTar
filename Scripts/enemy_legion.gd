@@ -10,6 +10,7 @@ signal legion_selected(selected: bool)
 @onready var legion_controller = get_node("/root/Small_map/LegionController")
 @onready var canvasLayer = get_node("/root/Small_map/CanvasLayer")
 @onready var target_position: Vector2i
+@onready var line_2d_enemy = Line2D.new()
 
 @export var current_tilemap: TileMap = null
 @export var moved: bool = false
