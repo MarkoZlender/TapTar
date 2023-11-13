@@ -4,13 +4,16 @@ signal legion_selected(selected: bool)
 
 @onready var player_select = $PlayerSelect
 @onready var tilemap = current_tilemap
-@onready var path_to_next_tile
+@onready var path_to_next_tile = Array()
 @onready var animated_sprite = $PlayerSelect/AnimatedEnemySprite
 @onready var sfx_player = get_node("/root/Small_map/SFXPlayer")
 @onready var legion_controller = get_node("/root/Small_map/LegionController")
 @onready var canvasLayer = get_node("/root/Small_map/CanvasLayer")
 @onready var target_position: Vector2i
+@onready var current_target_position: Vector2i
 @onready var line_2d_enemy = Line2D.new()
+
+@onready var player_legions = get_node("/root/Small_map/Legions").get_children()
 
 @export var current_tilemap: TileMap = null
 @export var moved: bool = false
@@ -29,6 +32,7 @@ func _ready():
 	legion_position = current_tilemap.local_to_map(self.global_position)
 	neighbours = current_tilemap.get_surrounding_cells(legion_position)
 	legion_selection = false
+
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,24 +42,31 @@ func _process(delta):
 func set_target_position(new_target_position: Vector2i):
 	target_position = new_target_position
 
+func find_player_legion():
+	var random_legion = player_legions[randi() % player_legions.size()]
+	var random_legion_position = tilemap.local_to_map(random_legion.global_position)
+	return random_legion_position
+	
+		
 
 func movement():
+	if path_to_next_tile.size() < 2 or path_to_next_tile == null or path_to_next_tile == []:
+		current_target_position = find_player_legion()
 
-	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(target_position))
+	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(current_target_position))
 	canvasLayer.line_2d_points = path_to_next_tile
-	for coord in path_to_next_tile:
-		print("path_to_next_tile: " + str(tilemap.local_to_map(coord)))
+
+	# for coord in path_to_next_tile:
+	# 	print("path_to_next_tile: " + str(tilemap.local_to_map(coord)))
+
 	if path_to_next_tile.size() > 1:
 		
 		path_to_next_tile.pop_front()
 		var vTarget = path_to_next_tile.pop_front()
 
-		#if tilemap.local_to_map(vTarget) in legion_controller.taken_positions.values():
-			#pass
-		#else:
-		print("vTarget: " + str(vTarget))
 		if tilemap.local_to_map(vTarget) not in legion_controller.taken_positions.values() and tilemap.local_to_map(vTarget) not in legion_controller.enemy_taken_positions.values():
 			#tilemap.freeAStarCell(self.global_position)
+			#tilemap.occupyAStarCell(vTarget)
 			play_animation(vTarget)
 			new_position = tilemap.map_to_local(vTarget)
 			legion_position = tilemap.local_to_map(new_position)
@@ -102,6 +113,7 @@ func _on_legion_selected(selected):
 		legion_selection = true
 
 func set_end_turn():
+	print("Target position: " + str(target_position))
 	# calling movement at the end of the turn so that the enemy legions make moves after the player
 	#############################################################################################
 	movement()
@@ -116,20 +128,6 @@ func set_legion_position(new_legion_position: Vector2i):
 	neighbours = tilemap.get_surrounding_cells(legion_position)
 	legion_controller.check_enemy_position(self, legion_position)
 	#tilemap.occupyAStarCell(self.global_position)
-
-func find_free_position():
-	var free_position: Vector2i
-	var taken_positions = legion_controller.taken_positions
-	var neighbours: Array[Vector2i] = tilemap.get_surrounding_cells(legion_position)
-	var free_neighbours: Array[Vector2i] = []
-	for neighbour in neighbours:
-		if neighbour not in taken_positions.values():
-			free_neighbours.append(neighbour)
-	if free_neighbours.size() > 0:
-		free_position = free_neighbours[randi() % free_neighbours.size()]
-	else:
-		free_position = legion_position
-	return free_position
 
 func set_selected(selected: bool):
 	legion_selection = selected

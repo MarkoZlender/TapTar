@@ -4,6 +4,9 @@ extends Control
 @onready var camera_2d = $Camera2D
 @onready var legion = $Legions/legion
 @onready var legion_2 = $Legions/legion2
+@onready var legion_3 = $Legions/legion3
+
+
 @onready var enemy_legion = $EnemyLegions/enemy_legion
 @onready var enemy_legion_2 = $EnemyLegions/enemy_legion2
 
@@ -25,14 +28,20 @@ func _ready():
 	# setting legion positions
 	legion.set_legion_position(Vector2i(5,1))
 	legion_2.set_legion_position(Vector2i(6,1))
+	legion_3.set_legion_position(Vector2i(15,5))
+
 	legion_controller.player_owned_tiles.append(legion.get_legion_position())
 	legion_controller.player_owned_tiles.append(legion_2.get_legion_position())
+	legion_controller.player_owned_tiles.append(legion_3.get_legion_position())
+
+
 	enemy_legion.set_legion_position(Vector2i(3,2))
 	legion_controller.enemy_owned_tiles.append(enemy_legion.get_legion_position())
-	enemy_legion.set_target_position(Vector2i(8,1))
+	#enemy_legion.set_target_position(Vector2i(8,1))
 	enemy_legion_2.set_legion_position(Vector2i(5,3))
-	legion_controller.enemy_owned_tiles.append(enemy_legion.get_legion_position())
-	enemy_legion_2.set_target_position(Vector2i(10,1))
+	legion_controller.enemy_owned_tiles.append(enemy_legion_2.get_legion_position())
+
+	#enemy_legion_2.set_target_position(Vector2i(10,1))
 	
 	# check if the player's legion is on a tile and if it is, change the tile
 	legion_controller.check_taken_position()

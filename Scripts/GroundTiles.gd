@@ -64,7 +64,7 @@ func aStarStart()->void:
 						neighbor_offset = Vector2i(i + HEX_NEIGHBORS_ODD[neighbor].x, j + HEX_NEIGHBORS_ODD[neighbor].y)
 					var idx_neighbor = getAStarCellId(neighbor_offset)
 					if aStar.has_point(idx_neighbor) and not neighbor_offset in non_walkable_tiles:
-						aStar.connect_points(idx, idx_neighbor, false)
+						aStar.connect_points(idx, idx_neighbor, false) # bidirectional = false
 
 func occupyAStarCell(vGlobalPosition:Vector2i)->void:
 	#var vCell := self.local_to_map(vGlobalPosition)

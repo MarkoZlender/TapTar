@@ -86,6 +86,10 @@ layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array()
 script = ExtResource("3_xqkks")
 
+[node name="LegionController" type="Node" parent="." node_paths=PackedStringArray("tilemap")]
+script = ExtResource("3_tadb5")
+tilemap = NodePath("../GroundTiles")
+
 [node name="Legions" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -97,6 +101,9 @@ current_tilemap = NodePath("../../GroundTiles")
 [node name="legion2" parent="Legions" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("4_oax6n")]
 current_tilemap = NodePath("../../GroundTiles")
 
+[node name="legion3" parent="Legions" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("4_oax6n")]
+current_tilemap = NodePath("../../GroundTiles")
+
 [node name="EnemyLegions" type="Node" parent="."]
 
 [node name="enemy_legion" parent="EnemyLegions" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("6_gx4r2")]
@@ -104,10 +111,6 @@ current_tilemap = NodePath("../../GroundTiles")
 
 [node name="enemy_legion2" parent="EnemyLegions" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("6_gx4r2")]
 current_tilemap = NodePath("../../GroundTiles")
-
-[node name="LegionController" type="Node" parent="." node_paths=PackedStringArray("tilemap")]
-script = ExtResource("3_tadb5")
-tilemap = NodePath("../GroundTiles")
 
 [node name="UI" parent="." instance=ExtResource("4_slmpc")]
 layout_mode = 1
