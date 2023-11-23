@@ -86,10 +86,6 @@ layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array()
 script = ExtResource("3_xqkks")
 
-[node name="LegionController" type="Node" parent="." node_paths=PackedStringArray("tilemap")]
-script = ExtResource("3_tadb5")
-tilemap = NodePath("../GroundTiles")
-
 [node name="Legions" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
@@ -143,5 +139,9 @@ bus = &"SFX"
 script = ExtResource("9_nnkni")
 
 [node name="Line2D" type="Line2D" parent="CanvasLayer"]
+
+[node name="LegionController" type="Node" parent="." node_paths=PackedStringArray("tilemap")]
+script = ExtResource("3_tadb5")
+tilemap = NodePath("../GroundTiles")
 
 [connection signal="end_turn" from="UI" to="." method="_on_ui_end_turn"]

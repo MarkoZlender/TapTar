@@ -70,7 +70,7 @@ func occupyAStarCell(vGlobalPosition:Vector2i)->void:
 	#var vCell := self.local_to_map(vGlobalPosition)
 	var idx:int = aStar.get_closest_point(vGlobalPosition, true)
 
-	if aStar.has_point(idx):aStar.set_point_disabled(idx)
+	if aStar.has_point(idx):aStar.set_point_disabled(idx, true)
 	
 func freeAStarCell(vGlobalPosition:Vector2i)->void:
 	#var vCell := self.map_to_local(vGlobalPosition)

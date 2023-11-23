@@ -51,6 +51,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	camera_movement()
+	legion_controller.check_engagement()
 	
 func _input(_event):
 	if Input.is_action_just_pressed("left_click"):

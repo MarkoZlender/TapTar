@@ -27,6 +27,7 @@ func _ready():
 	legion_position = current_tilemap.local_to_map(self.global_position)
 	neighbours = current_tilemap.get_surrounding_cells(legion_position)
 	legion_selection = false
+	#legion_controller.check_position(self, legion_position)
 	
 	
 	
@@ -34,8 +35,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	animated_sprite.play("idle")
-	if moved:
-		tilemap.freeAStarCell(old_legion_position)
+	
 
 func movement():
 	if Input.is_action_just_pressed("left_click"):
@@ -58,12 +58,9 @@ func movement():
 					pass
 					#print("legion already moved")
 				else:
-					if (tile_mouse_position in neighbours) and (tile_mouse_position not in legion_controller.taken_positions.values()) and (tile_mouse_position not in legion_controller.enemy_taken_positions.values()):
+					if (tile_mouse_position in neighbours) and (tile_mouse_position not in legion_controller.taken_positions.values()):
 						if legion_selection == true:
-							
-							tilemap.freeAStarCell(self.global_position)
-							tilemap.occupyAStarCell(tile_mouse_position)
-							
+
 							play_animation(tilemap.map_to_local(tile_mouse_position))
 							new_position = tilemap.map_to_local(tile_mouse_position)
 							legion_position = tilemap.local_to_map(new_position)
@@ -125,14 +122,14 @@ func set_end_turn():
 	moved = false
 	legion_selection = false
 	player_select.button_pressed = false
-	#tilemap.freeAStarCell(old_legion_position)
+	
 
 func set_legion_position(new_legion_position: Vector2i):
 	self.global_position = tilemap.map_to_local(new_legion_position)
 	legion_position = tilemap.local_to_map(self.global_position)
 	neighbours = tilemap.get_surrounding_cells(legion_position)
 	legion_controller.check_position(self, legion_position)
-	#tilemap.occupyAStarCell(self.global_position)
+	
 
 func set_selected(selected: bool):
 	legion_selection = selected

@@ -45,5 +45,12 @@ func check_taken_position():
 	for tile_coord in enemy_owned_tiles:
 		tilemap.set_cell(1, tile_coord, 2, Vector2i(3,1), 0)
 
+func check_engagement():
+	for tile_coord in player_owned_tiles:
+		if tile_coord in enemy_owned_tiles:
+			var combat_scene = preload("res://Levels/Combat.tscn")
+			var combat_scene_instance = combat_scene.instantiate()
+			add_child(combat_scene_instance)
+
 
 
