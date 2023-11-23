@@ -1,21 +1,29 @@
-[gd_scene format=3 uid="uid://bfbovus5do2hv"]
+[gd_scene load_steps=2 format=3 uid="uid://dm1s5rqpnlacm"]
 
-[node name="Combat" type="Node2D"]
+[ext_resource type="Script" path="res://Scripts/Combat.gd" id="1_55i2n"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1927.0
-offset_bottom = 1088.0
-
-[node name="Label" type="Label" parent="."]
+[node name="Combat" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 74.0
-offset_top = 39.0
-offset_right = 501.0
-offset_bottom = 138.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_55i2n")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+anchor_right = 0.216146
+anchor_bottom = 0.0916667
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 70
-text = "Combat Test"
+text = "Combat test"
+metadata/_edit_use_anchors_ = true

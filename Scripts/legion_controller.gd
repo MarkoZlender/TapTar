@@ -7,6 +7,9 @@ extends Node
 @onready var player_owned_tiles = Array()
 @onready var enemy_owned_tiles = Array()
 
+@onready var current_engaged_player_legion = null
+@onready var current_engaged_enemy_legion = null
+
 @export var tilemap: TileMap = null
 
 
@@ -45,9 +48,27 @@ func check_taken_position():
 	for tile_coord in enemy_owned_tiles:
 		tilemap.set_cell(1, tile_coord, 2, Vector2i(3,1), 0)
 
+func get_player_engaged_legion(tile_coord):
+	for legion in taken_positions:
+		if taken_positions[legion] == tile_coord:
+			return legion
+
+func get_enemy_engaged_legion(tile_coord):
+	for legion in enemy_taken_positions:
+		if enemy_taken_positions[legion] == tile_coord:
+			return legion
+
+func get_current_engaged_player_legion():
+	return current_engaged_player_legion
+
+func get_current_engaged_enemy_legion():
+	return current_engaged_enemy_legion
+
 func check_engagement():
 	for tile_coord in player_owned_tiles:
 		if tile_coord in enemy_owned_tiles:
+			current_engaged_player_legion = get_player_engaged_legion(tile_coord)
+			current_engaged_enemy_legion = get_enemy_engaged_legion(tile_coord)
 			var combat_scene = preload("res://Levels/Combat.tscn")
 			var combat_scene_instance = combat_scene.instantiate()
 			add_child(combat_scene_instance)
