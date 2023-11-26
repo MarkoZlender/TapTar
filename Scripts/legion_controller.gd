@@ -10,6 +10,9 @@ extends Node
 @onready var current_engaged_player_legion = null
 @onready var current_engaged_enemy_legion = null
 
+@onready var sfx_player = get_node("/root/Small_map/SFXPlayer")
+
+
 @export var tilemap: TileMap = null
 
 
@@ -69,9 +72,13 @@ func check_engagement():
 		if tile_coord in enemy_owned_tiles:
 			current_engaged_player_legion = get_player_engaged_legion(tile_coord)
 			current_engaged_enemy_legion = get_enemy_engaged_legion(tile_coord)
+			play_sound_effect()
 			var combat_scene = preload("res://Levels/Combat.tscn")
 			var combat_scene_instance = combat_scene.instantiate()
 			add_child(combat_scene_instance)
 
+func play_sound_effect():
+	sfx_player.stream = load("res://Resources/Sound/SFX/flame-big.ogg")
+	sfx_player.play()
 
 

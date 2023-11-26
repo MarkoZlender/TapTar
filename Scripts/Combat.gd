@@ -6,6 +6,9 @@ extends Control
 @onready var current_engaged_enemy_legion = null
 @onready var Legion = preload("res://Scripts/legion.gd")
 
+@onready var animation_player = $SceneTransitionRect/AnimationPlayer
+@onready var scene_transition_rect = $SceneTransitionRect
+
 @onready var background = $Background
 
 
@@ -14,10 +17,20 @@ func _ready():
 	current_engaged_player_legion = legion_controller.get_current_engaged_player_legion()
 	current_engaged_enemy_legion = legion_controller.get_current_engaged_enemy_legion()
 	
-	# if current_engaged_player_legion is legion:
-	# 	add_child(legion.new())
+	scene_transition_rect.visible = true
+	animation_player.play_backwards("Fade")
+	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func _input(event):
+	if Input.is_action_pressed("exit"):
+		animation_player.play_backwards("Fade_out")
+
+func _on_animation_player_animation_finished(anim_name:StringName):
+	if anim_name == "Fade_out":
+		self.queue_free()

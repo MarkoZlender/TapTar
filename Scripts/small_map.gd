@@ -51,7 +51,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	camera_movement()
-	legion_controller.check_engagement()
+	
 	
 func _input(_event):
 	if Input.is_action_just_pressed("left_click"):
@@ -66,6 +66,8 @@ func _on_ui_end_turn():
 	for unit in all_enemy_legions:
 		unit.set_end_turn()
 		legion_controller.check_taken_position()
+		
+	legion_controller.check_engagement()
 
 
 func camera_movement():
