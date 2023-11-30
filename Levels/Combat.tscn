@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dm1s5rqpnlacm"]
+[gd_scene load_steps=7 format=3 uid="uid://dm1s5rqpnlacm"]
 
 [ext_resource type="Script" path="res://Scripts/Combat.gd" id="1_55i2n"]
+[ext_resource type="SpriteFrames" uid="uid://cchegyij7br7b" path="res://Resources/SpriteFrames/enemy_legion_idle_animation.tres" id="2_lfi8b"]
+[ext_resource type="SpriteFrames" uid="uid://n5hmkl5kraq5" path="res://Resources/SpriteFrames/player_sprite_frames.tres" id="3_c37sy"]
 
 [sub_resource type="Animation" id="Animation_5fawx"]
 resource_name = "Fade"
@@ -55,6 +57,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_left = 0.760417
+anchor_top = -0.294444
+anchor_right = 1.15809
+anchor_bottom = 1.80991
+offset_right = 1423.47
+offset_bottom = -654.705
+rotation = 0.505912
+scale = Vector2(0.808984, 1)
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 anchor_right = 0.216146
@@ -66,7 +81,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="SceneTransitionRect" type="ColorRect" parent="."]
 visible = false
-modulate = Color(0.5, 0.5, 0.5, 0.5)
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,4 +96,46 @@ libraries = {
 "": SubResource("AnimationLibrary_1rscp")
 }
 
+[node name="EnemyLegionSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(1587, 629)
+scale = Vector2(5.93056, 5.93056)
+sprite_frames = ExtResource("2_lfi8b")
+animation = &"idle"
+
+[node name="PlayerLegionSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(381, 629)
+scale = Vector2(5.931, 5.931)
+sprite_frames = ExtResource("3_c37sy")
+animation = &"idle"
+
+[node name="PlayerHealthLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 796.0
+offset_right = 549.0
+offset_bottom = 868.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Player Health"
+
+[node name="EnemyHealthLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1402.0
+offset_top = 799.0
+offset_right = 1741.0
+offset_bottom = 871.0
+theme_override_font_sizes/font_size = 50
+text = "Enemy Health"
+
+[node name="AttackButton" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.090625
+anchor_top = 0.840741
+anchor_right = 0.284375
+anchor_bottom = 0.962963
+theme_override_font_sizes/font_size = 50
+text = "ATTACK"
+metadata/_edit_use_anchors_ = true
+
 [connection signal="animation_finished" from="SceneTransitionRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]

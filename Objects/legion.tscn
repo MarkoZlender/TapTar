@@ -1,101 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://cy35wcdawvyue"]
+[gd_scene load_steps=5 format=3 uid="uid://cy35wcdawvyue"]
 
 [ext_resource type="Script" path="res://Scripts/legion.gd" id="1_5bige"]
-[ext_resource type="Texture2D" uid="uid://bmt65v6ymrwsf" path="res://Resources/Sprites/Animation/adept-idle-long-1.png" id="2_mwuhi"]
-[ext_resource type="Texture2D" uid="uid://c75oqnl417mmo" path="res://Resources/Sprites/Animation/adept-idle-long-2.png" id="3_cwn2w"]
+[ext_resource type="SpriteFrames" uid="uid://n5hmkl5kraq5" path="res://Resources/SpriteFrames/player_sprite_frames.tres" id="2_asoaj"]
 [ext_resource type="TileSet" uid="uid://bcldp6xwy5liu" path="res://Resources/TileSets/test_tileset.tres" id="3_jcgic"]
-[ext_resource type="Texture2D" uid="uid://hgb1qs0u3a6t" path="res://Resources/Sprites/Animation/adept-idle-long-3.png" id="4_iejrm"]
-[ext_resource type="Texture2D" uid="uid://62gemot1jk40" path="res://Resources/Sprites/Animation/adept-idle-long-4.png" id="5_urhgn"]
-[ext_resource type="Texture2D" uid="uid://duncyhne6og2r" path="res://Resources/Sprites/Animation/adept-idle-long-5.png" id="6_w4pd1"]
-[ext_resource type="Texture2D" uid="uid://dfkowgfye2rle" path="res://Resources/Sprites/Animation/adept-idle-long-6.png" id="7_cswi6"]
-[ext_resource type="Texture2D" uid="uid://dr2lmlfv4t2i0" path="res://Resources/Sprites/Animation/adept-idle-long-7.png" id="8_juu53"]
-[ext_resource type="Texture2D" uid="uid://d10s7oufx6fdh" path="res://Resources/Sprites/Animation/adept-idle-long-8.png" id="9_sqjjt"]
-[ext_resource type="Texture2D" uid="uid://17mvimk2s1yd" path="res://Resources/Sprites/Animation/adept-idle-long-9.png" id="10_8gye5"]
-[ext_resource type="Texture2D" uid="uid://bmd7dsoy8pnoi" path="res://Resources/Sprites/Animation/adept-idle-long-10.png" id="11_a062a"]
-[ext_resource type="Texture2D" uid="uid://cmbxcwbppr5tn" path="res://Resources/Sprites/Animation/adept-idle-long-11.png" id="12_fbp42"]
-[ext_resource type="Texture2D" uid="uid://bqlr6d73cnbh2" path="res://Resources/Sprites/Animation/adept-idle-long-12.png" id="13_2ucnq"]
-[ext_resource type="Texture2D" uid="uid://ddmc3ylaorg44" path="res://Resources/Sprites/Animation/adept-idle-long-13.png" id="14_q2rut"]
-[ext_resource type="Texture2D" uid="uid://d2esnvkb0jl8q" path="res://Resources/Sprites/Animation/adept-idle-long-14.png" id="15_t7bll"]
-[ext_resource type="Texture2D" uid="uid://iqenjk4ndcw8" path="res://Resources/Sprites/Animation/adept-idle-long-15.png" id="16_ex1cm"]
-[ext_resource type="Texture2D" uid="uid://cta8cbnriyu4e" path="res://Resources/Sprites/Animation/adept-idle-long-16.png" id="17_8eqcn"]
-[ext_resource type="Texture2D" uid="uid://beuvtjjej1hg7" path="res://Resources/Sprites/Animation/adept-idle-long-17.png" id="18_t0vin"]
-[ext_resource type="Texture2D" uid="uid://b8of843krln0" path="res://Resources/Sprites/Animation/adept-idle-long-18.png" id="19_0v6pd"]
-[ext_resource type="Texture2D" uid="uid://btos8ik6iptqg" path="res://Resources/Sprites/Animation/adept-idle-long-19.png" id="20_0g8fg"]
-[ext_resource type="Texture2D" uid="uid://cwigf72412ig4" path="res://Resources/Sprites/Animation/adept-idle-long-20.png" id="21_dcudi"]
-[ext_resource type="Texture2D" uid="uid://dsmwkp76uhh7w" path="res://Resources/Sprites/Animation/adept-idle-long-21.png" id="22_3xidp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2bcnw"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cno6w"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_mwuhi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_cwn2w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_iejrm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_urhgn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_w4pd1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_cswi6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_juu53")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_sqjjt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_8gye5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_a062a")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_fbp42")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_2ucnq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_q2rut")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_t7bll")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_ex1cm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_8eqcn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("18_t0vin")
-}, {
-"duration": 1.0,
-"texture": ExtResource("19_0v6pd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("20_0g8fg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_dcudi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("22_3xidp")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 8.0
-}]
 
 [node name="legion" type="Control"]
 layout_mode = 3
@@ -116,8 +25,9 @@ metadata/_edit_use_anchors_ = true
 [node name="AnimatedPlayerSprite" type="AnimatedSprite2D" parent="PlayerSelect"]
 position = Vector2(32, 32)
 scale = Vector2(1.68056, 1.68056)
-sprite_frames = SubResource("SpriteFrames_cno6w")
+sprite_frames = ExtResource("2_asoaj")
 animation = &"idle"
+frame_progress = 0.874776
 
 [node name="PlayerTileMap" type="TileMap" parent="PlayerSelect"]
 position = Vector2(64, 32)

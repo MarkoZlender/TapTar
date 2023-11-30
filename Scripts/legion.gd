@@ -8,6 +8,7 @@ signal legion_selected(selected: bool)
 @onready var animated_sprite = $ PlayerSelect/AnimatedPlayerSprite
 @onready var sfx_player = get_node("/root/Small_map/SFXPlayer")
 @onready var legion_controller = get_node("/root/Small_map/LegionController")
+@onready var health = 50
 
 
 @export var current_tilemap: TileMap = null
@@ -87,6 +88,7 @@ func movement():
 		legion_selection = false
 		player_select.button_pressed = false
 		legion_controller.check_position(self, legion_position)
+
 
 func play_animation(vTarget):
 	var tween = get_tree().create_tween()

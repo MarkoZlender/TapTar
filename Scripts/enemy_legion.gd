@@ -13,6 +13,7 @@ signal legion_selected(selected: bool)
 @onready var current_target_position: Vector2i
 @onready var line_2d_enemy = Line2D.new()
 @onready var random_legion_position: Vector2i
+@onready var health = 49
 
 @onready var player_legions = get_node("/root/Small_map/Legions").get_children()
 

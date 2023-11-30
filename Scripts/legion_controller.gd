@@ -76,6 +76,7 @@ func check_engagement():
 			var combat_scene = preload("res://Levels/Combat.tscn")
 			var combat_scene_instance = combat_scene.instantiate()
 			add_child(combat_scene_instance)
+	
 
 func play_sound_effect():
 	sfx_player.stream = load("res://Resources/Sound/SFX/flame-big.ogg")
