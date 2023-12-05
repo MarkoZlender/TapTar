@@ -100,7 +100,8 @@ current_tilemap = NodePath("../../GroundTiles")
 [node name="legion3" parent="Legions" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("4_oax6n")]
 current_tilemap = NodePath("../../GroundTiles")
 
-[node name="EnemyLegions" type="Node" parent="."]
+[node name="EnemyLegions" type="Control" parent="."]
+anchors_preset = 0
 
 [node name="enemy_legion" parent="EnemyLegions" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("6_gx4r2")]
 current_tilemap = NodePath("../../GroundTiles")

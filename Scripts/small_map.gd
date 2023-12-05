@@ -14,7 +14,10 @@ extends Control
 
 @onready var all_legions = $Legions.get_children()
 @onready var all_enemy_legions = $EnemyLegions.get_children()
-@onready var mini_menu
+
+@onready var mini_menu_continue_button
+@onready var mini_menu_main_menu_button
+@onready var mini_menu_exit_button
 
 
 var save_game = SaveGame.load_game() as SaveGame
@@ -47,7 +50,7 @@ func _ready():
 	# check if the player's legion is on a tile and if it is, change the tile
 	legion_controller.check_taken_position()
 
-	#mini_menu.Background.ContinueButton.pressed.connect("pressed()", _on_continue_button_pressed)
+	
 	
 	
 
@@ -55,19 +58,38 @@ func _ready():
 func _process(delta):
 	camera_movement()
 
-func _on_continue_button_pressed():
-	print("continue button pressed")
+
 	
 func _input(_event):
 	if Input.is_action_just_pressed("left_click"):
 		legion_controller.check_taken_position()
 
-	if Input.is_action_just_pressed("exit"):
+	if Input.is_action_just_pressed("exit") and get_node("/root/Small_map/mini_menu") == null:
 		var mini_menu_scene = preload("res://Levels/mini_menu.tscn")
 		var mini_menu_instance = mini_menu_scene.instantiate()
-		mini_menu = get_node("/root/Small_map/mini_menu")
 		add_child(mini_menu_instance)
-	
+
+		mini_menu_continue_button = get_node("/root/Small_map/mini_menu/Background/ContinueButton")
+		mini_menu_continue_button.pressed.connect( _on_continue_button_pressed)
+
+		mini_menu_main_menu_button = get_node("/root/Small_map/mini_menu/Background/MainMenuButton")
+		mini_menu_main_menu_button.pressed.connect( _on_main_menu_button_pressed)
+
+		mini_menu_exit_button = get_node("/root/Small_map/mini_menu/Background/ExitButton")
+		mini_menu_exit_button.pressed.connect( _on_exit_button_pressed)
+
+# mini menu functions ##########################################
+
+func _on_continue_button_pressed():
+	get_node("/root/Small_map/mini_menu").queue_free()
+
+func _on_main_menu_button_pressed():
+	get_tree().change_scene_to_file("res://Levels/Menu.tscn")
+
+func _on_exit_button_pressed():
+	get_tree().quit()
+
+################################################################
 
 # function which executes all the necessary actions when the player ends their turn
 func _on_ui_end_turn():
@@ -80,6 +102,7 @@ func _on_ui_end_turn():
 		
 	legion_controller.check_engagement()
 
+# camera movement function #####################################
 
 func camera_movement():
 	if Input.is_action_pressed("up"):
@@ -90,6 +113,8 @@ func camera_movement():
 		camera_2d.position += Vector2(-10,0)
 	elif Input.is_action_pressed("right"):
 		camera_2d.position += Vector2(10,0)
+
+################################################################
 	
 	
 	

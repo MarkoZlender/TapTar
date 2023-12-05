@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d35gpcccio8ld"]
+[gd_scene load_steps=3 format=3 uid="uid://d35gpcccio8ld"]
 
 [ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="1_r50oa"]
+[ext_resource type="Texture2D" uid="uid://dyb4bavnc75gd" path="res://Resources/Images/oldpaper.png" id="1_sxmcl"]
 
 [node name="mini_menu" type="Control"]
 layout_mode = 3
@@ -10,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.328385
@@ -19,7 +20,7 @@ anchor_right = 0.671615
 anchor_bottom = 0.805093
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.247059, 0.247059, 0.247059, 1)
+texture = ExtResource("1_sxmcl")
 metadata/_edit_use_anchors_ = true
 
 [node name="ContinueButton" type="Button" parent="Background"]
@@ -33,38 +34,12 @@ theme_override_colors/font_color = Color(0.815686, 0.815686, 0.815686, 1)
 text = "Continue"
 metadata/_edit_use_anchors_ = true
 
-[node name="SaveButton" type="Button" parent="Background"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.000758724
-anchor_top = 0.140364
-anchor_right = 1.00076
-anchor_bottom = 0.283005
-grow_horizontal = 2
-theme = ExtResource("1_r50oa")
-theme_override_colors/font_color = Color(0.815686, 0.815686, 0.815686, 1)
-text = "Save"
-metadata/_edit_use_anchors_ = true
-
-[node name="LoadButton" type="Button" parent="Background"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.000758724
-anchor_top = 0.295144
-anchor_right = 1.00076
-anchor_bottom = 0.437785
-grow_horizontal = 2
-theme = ExtResource("1_r50oa")
-theme_override_colors/font_color = Color(0.815686, 0.815686, 0.815686, 1)
-text = "Load"
-metadata/_edit_use_anchors_ = true
-
 [node name="MainMenuButton" type="Button" parent="Background"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.448407
+anchor_top = 0.169196
 anchor_right = 1.0
-anchor_bottom = 0.591047
+anchor_bottom = 0.311836
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_r50oa")
@@ -75,9 +50,9 @@ metadata/_edit_use_anchors_ = true
 [node name="ExitButton" type="Button" parent="Background"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.85736
+anchor_top = 0.748862
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.891502
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_r50oa")
