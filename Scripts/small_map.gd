@@ -14,6 +14,7 @@ extends Control
 
 @onready var all_legions = $Legions.get_children()
 @onready var all_enemy_legions = $EnemyLegions.get_children()
+@onready var mini_menu
 
 
 var save_game = SaveGame.load_game() as SaveGame
@@ -45,17 +46,27 @@ func _ready():
 	
 	# check if the player's legion is on a tile and if it is, change the tile
 	legion_controller.check_taken_position()
+
+	#mini_menu.Background.ContinueButton.pressed.connect("pressed()", _on_continue_button_pressed)
 	
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	camera_movement()
-	
+
+func _on_continue_button_pressed():
+	print("continue button pressed")
 	
 func _input(_event):
 	if Input.is_action_just_pressed("left_click"):
 		legion_controller.check_taken_position()
+
+	if Input.is_action_just_pressed("exit"):
+		var mini_menu_scene = preload("res://Levels/mini_menu.tscn")
+		var mini_menu_instance = mini_menu_scene.instantiate()
+		mini_menu = get_node("/root/Small_map/mini_menu")
+		add_child(mini_menu_instance)
 	
 
 # function which executes all the necessary actions when the player ends their turn
