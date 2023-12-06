@@ -95,10 +95,8 @@ func play_animation(vTarget):
 	tween.tween_property(self, "global_position", vTarget, 0.5)
 
 	if (tilemap.local_to_map(vTarget).x) < (legion_position.x):
-		print("Flipping sprite to left", vTarget.x, legion_position.x)
 		$PlayerSelect/AnimatedPlayerSprite.set_flip_h(true)
 	if (tilemap.local_to_map(vTarget).x) > (legion_position.x):
-		print("Flipping sprite to right", vTarget.x, legion_position.x)
 		$PlayerSelect/AnimatedPlayerSprite.set_flip_h(false)
 
 func play_sound_effect():

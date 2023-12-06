@@ -94,11 +94,13 @@ func _on_exit_button_pressed():
 # function which executes all the necessary actions when the player ends their turn
 func _on_ui_end_turn():
 	for unit in all_legions:
-		unit.set_end_turn()
-		legion_controller.check_taken_position()
+		if unit != null:
+			unit.set_end_turn()
+			legion_controller.check_taken_position()
 	for unit in all_enemy_legions:
-		unit.set_end_turn()
-		legion_controller.check_taken_position()
+		if unit != null:
+			unit.set_end_turn()
+			legion_controller.check_taken_position()
 		
 	legion_controller.check_engagement()
 

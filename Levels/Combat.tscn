@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm1s5rqpnlacm"]
+[gd_scene load_steps=17 format=3 uid="uid://dm1s5rqpnlacm"]
 
 [ext_resource type="Script" path="res://Scripts/Combat.gd" id="1_55i2n"]
 [ext_resource type="SpriteFrames" uid="uid://cchegyij7br7b" path="res://Resources/SpriteFrames/enemy_legion_idle_animation.tres" id="2_lfi8b"]
 [ext_resource type="SpriteFrames" uid="uid://n5hmkl5kraq5" path="res://Resources/SpriteFrames/player_sprite_frames.tres" id="3_c37sy"]
+[ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="4_cbw14"]
+[ext_resource type="FontFile" uid="uid://f4wq7tf4xm3d" path="res://Resources/Fonts/Estonia-Regular.ttf" id="4_gc4ni"]
+[ext_resource type="Texture2D" uid="uid://c17nxbox667yc" path="res://Resources/Sprites/faerie_fire_attack.png" id="5_leikk"]
 
 [sub_resource type="Animation" id="Animation_5fawx"]
 resource_name = "Fade"
@@ -39,6 +42,39 @@ _data = {
 "Fade": SubResource("Animation_5fawx"),
 "Fade_out": SubResource("Animation_ay6mt")
 }
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yv88a"]
+
+[sub_resource type="Theme" id="Theme_orrbf"]
+default_font = ExtResource("4_gc4ni")
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0.768627, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.768627, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/constants/h_separation = 0
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("4_gc4ni")
+Button/styles/normal = SubResource("StyleBoxEmpty_yv88a")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xrblv"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3770"]
+bg_color = Color(0.921569, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7nnaa"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilo55"]
+bg_color = Color(0.921569, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhcrt"]
+bg_color = Color(0.2, 0.352941, 0.796078, 1)
 
 [node name="Combat" type="Control"]
 layout_mode = 3
@@ -110,32 +146,79 @@ animation = &"idle"
 
 [node name="PlayerHealthLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 222.0
-offset_top = 796.0
-offset_right = 549.0
-offset_bottom = 868.0
+offset_left = 532.0
+offset_top = 561.0
+offset_right = 859.0
+offset_bottom = 633.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "Player Health"
 
 [node name="EnemyHealthLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 1402.0
-offset_top = 799.0
-offset_right = 1741.0
-offset_bottom = 871.0
+offset_left = 1138.0
+offset_top = 542.0
+offset_right = 1477.0
+offset_bottom = 614.0
 theme_override_font_sizes/font_size = 50
 text = "Enemy Health"
 
 [node name="AttackButton" type="Button" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.090625
-anchor_top = 0.840741
-anchor_right = 0.284375
-anchor_bottom = 0.962963
+anchor_top = 0.768519
+anchor_right = 0.258854
+anchor_bottom = 0.846296
+theme = SubResource("Theme_orrbf")
 theme_override_font_sizes/font_size = 50
 text = "ATTACK"
+icon = ExtResource("5_leikk")
+flat = true
 metadata/_edit_use_anchors_ = true
+
+[node name="PlayerHealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 251.0
+offset_right = 646.0
+offset_bottom = 290.0
+theme_override_styles/background = SubResource("StyleBoxFlat_xrblv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_s3770")
+max_value = 50.0
+value = 50.0
+
+[node name="EnemyHealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 1270.0
+offset_top = 251.0
+offset_right = 1824.0
+offset_bottom = 290.0
+theme_override_styles/background = SubResource("StyleBoxFlat_7nnaa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ilo55")
+max_value = 49.0
+value = 49.0
+show_percentage = false
+
+[node name="PlayerManaBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 353.0
+offset_right = 646.0
+offset_bottom = 392.0
+theme_override_styles/background = SubResource("StyleBoxFlat_rhcrt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ilo55")
+show_percentage = false
+
+[node name="EndTurnButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 959.0
+offset_right = 343.0
+offset_bottom = 1057.0
+theme = ExtResource("4_cbw14")
+text = "End Turn"
 
 [connection signal="animation_finished" from="SceneTransitionRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="EndTurnButton" to="." method="_on_end_turn_button_pressed"]

@@ -53,12 +53,12 @@ func check_taken_position():
 
 func get_player_engaged_legion(tile_coord):
 	for legion in taken_positions:
-		if taken_positions[legion] == tile_coord:
+		if legion != null and taken_positions[legion] == tile_coord:
 			return legion
 
 func get_enemy_engaged_legion(tile_coord):
 	for legion in enemy_taken_positions:
-		if enemy_taken_positions[legion] == tile_coord:
+		if legion != null and enemy_taken_positions[legion] == tile_coord:
 			return legion
 
 func get_current_engaged_player_legion():
