@@ -88,6 +88,7 @@ func movement():
 		legion_selection = false
 		player_select.button_pressed = false
 		legion_controller.check_position(self, legion_position)
+	
 
 
 func play_animation(vTarget):

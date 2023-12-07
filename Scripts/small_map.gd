@@ -63,6 +63,7 @@ func _process(delta):
 func _input(_event):
 	if Input.is_action_just_pressed("left_click"):
 		legion_controller.check_taken_position()
+		legion_controller.check_engagement()
 
 	if Input.is_action_just_pressed("exit") and get_node("/root/Small_map/mini_menu") == null:
 		var mini_menu_scene = preload("res://Levels/mini_menu.tscn")

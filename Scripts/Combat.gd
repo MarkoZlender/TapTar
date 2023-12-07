@@ -25,6 +25,7 @@ func _ready():
 	
 	$PlayerHealthLabel.text = str(current_engaged_player_legion.health)
 	$EnemyHealthLabel.text = str(current_engaged_enemy_legion.health)
+	print("Owned positions before end of combat: "+str(legion_controller.player_owned_tiles))
 
 
 
@@ -48,7 +49,7 @@ func _on_attack_button_pressed():
 		tween.tween_property($PlayerLegionSprite, "global_position", Vector2(600,629), 0.1)
 		tween.tween_property($PlayerLegionSprite, "global_position", Vector2(381,629), 0.5)
 
-		var random_number = rng.randi_range(1, 3)
+		var random_number = rng.randi_range(10, 20)
 		current_engaged_enemy_legion.health -= random_number
 		$EnemyHealthBar.value -= random_number
 		$EnemyHealthLabel.text = str(current_engaged_enemy_legion.health)
@@ -56,7 +57,12 @@ func _on_attack_button_pressed():
 
 		if current_engaged_enemy_legion.health <= 0:
 			$EnemyHealthLabel.text = str(0)
-			#current_engaged_enemy_legion.queue_free()
+			legion_controller.enemy_taken_positions.erase(current_engaged_enemy_legion)
+			legion_controller.enemy_owned_tiles.erase(current_engaged_enemy_legion.get_legion_position())
+			current_engaged_enemy_legion.queue_free()
+			legion_controller.set_current_engaged_enemy_legion(null)
+			legion_controller.set_current_engaged_player_legion(null)
+			print("Owned positions after end of combat: "+str(legion_controller.enemy_owned_tiles))
 			animation_player.play_backwards("Fade_out")
 	else:
 		pass
@@ -67,7 +73,7 @@ func _on_end_turn_button_pressed():
 	tween.tween_property($EnemyLegionSprite, "global_position", Vector2(1368,629), 0.1)
 	tween.tween_property($EnemyLegionSprite, "global_position", Vector2(1587,629), 0.5)
 
-	var random_number_enemy = rng.randi_range(1, 3)
+	var random_number_enemy = rng.randi_range(10, 20)
 	current_engaged_player_legion.health -= random_number_enemy
 	$PlayerHealthBar.value -= random_number_enemy
 	$PlayerHealthLabel.text = str(current_engaged_player_legion.health)
@@ -75,5 +81,10 @@ func _on_end_turn_button_pressed():
 
 	if current_engaged_player_legion.health <= 0:
 		$PlayerHealthLabel.text = str(0)
-		#current_engaged_enemy_legion.queue_free()
+		legion_controller.taken_positions.erase(current_engaged_player_legion)
+		legion_controller.player_owned_tiles.erase(current_engaged_player_legion.get_legion_position())
+		current_engaged_player_legion.queue_free()
+		legion_controller.set_current_engaged_enemy_legion(null)
+		legion_controller.set_current_engaged_player_legion(null)
+		print("Owned positions after end of combat: "+str(legion_controller.player_owned_tiles))
 		animation_player.play_backwards("Fade_out")

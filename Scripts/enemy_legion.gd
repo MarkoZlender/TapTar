@@ -45,9 +45,10 @@ func set_target_position(new_target_position: Vector2i):
 	target_position = new_target_position
 
 func find_player_legion():
-	var random_legion = player_legions[randi() % player_legions.size()]
-	random_legion_position = tilemap.local_to_map(random_legion.global_position)
-	return random_legion_position
+	if player_legions.size() != 0:
+		var random_legion = player_legions[randi() % player_legions.size()]
+		random_legion_position = tilemap.local_to_map(random_legion.global_position)
+		return random_legion_position
 	
 		
 

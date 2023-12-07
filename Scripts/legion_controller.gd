@@ -11,6 +11,8 @@ extends Node
 @onready var current_engaged_enemy_legion = null
 
 @onready var sfx_player = get_node("/root/Small_map/SFXPlayer")
+@onready var combat_scene = preload("res://Levels/Combat.tscn")
+
 
 
 @export var tilemap: TileMap = null
@@ -67,13 +69,18 @@ func get_current_engaged_player_legion():
 func get_current_engaged_enemy_legion():
 	return current_engaged_enemy_legion
 
+func set_current_engaged_player_legion(legion):
+	current_engaged_player_legion = legion
+
+func set_current_engaged_enemy_legion(legion):
+	current_engaged_enemy_legion = legion
+
 func check_engagement():
-	for tile_coord in player_owned_tiles:
-		if tile_coord in enemy_owned_tiles:
+	for tile_coord in taken_positions.values():
+		if tile_coord in enemy_taken_positions.values():
 			current_engaged_player_legion = get_player_engaged_legion(tile_coord)
 			current_engaged_enemy_legion = get_enemy_engaged_legion(tile_coord)
 			play_sound_effect()
-			var combat_scene = preload("res://Levels/Combat.tscn")
 			var combat_scene_instance = combat_scene.instantiate()
 			add_child(combat_scene_instance)
 	
