@@ -96,7 +96,8 @@ func _on_end_turn_button_pressed():
 		current_engaged_enemy_legion.set_engaged(false)
 
 		current_engaged_player_legion.queue_free()
-
+		
+		# update enemy knowledge of player legions on player legion deletion
 		current_engaged_enemy_legion.player_legions = get_node("/root/Small_map/Legions").get_children()
 
 		legion_controller.set_current_engaged_enemy_legion(null)
