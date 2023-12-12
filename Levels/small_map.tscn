@@ -94,9 +94,6 @@ offset_bottom = 40.0
 [node name="legion" parent="Legions" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("4_oax6n")]
 current_tilemap = NodePath("../../GroundTiles")
 
-[node name="legion2" parent="Legions" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("4_oax6n")]
-current_tilemap = NodePath("../../GroundTiles")
-
 [node name="legion3" parent="Legions" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("4_oax6n")]
 current_tilemap = NodePath("../../GroundTiles")
 

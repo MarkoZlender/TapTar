@@ -57,13 +57,21 @@ func _on_attack_button_pressed():
 
 		if current_engaged_enemy_legion.health <= 0:
 			$EnemyHealthLabel.text = str(0)
+
 			legion_controller.enemy_taken_positions.erase(current_engaged_enemy_legion)
 			legion_controller.enemy_owned_tiles.erase(current_engaged_enemy_legion.get_legion_position())
+
+			current_engaged_enemy_legion.set_engaged(false)
+			current_engaged_player_legion.set_engaged(false)
+
 			current_engaged_enemy_legion.queue_free()
+
 			legion_controller.set_current_engaged_enemy_legion(null)
 			legion_controller.set_current_engaged_player_legion(null)
+
 			print("Owned positions after end of combat: "+str(legion_controller.enemy_owned_tiles))
 			animation_player.play_backwards("Fade_out")
+
 	else:
 		pass
 
@@ -83,8 +91,16 @@ func _on_end_turn_button_pressed():
 		$PlayerHealthLabel.text = str(0)
 		legion_controller.taken_positions.erase(current_engaged_player_legion)
 		legion_controller.player_owned_tiles.erase(current_engaged_player_legion.get_legion_position())
+
+		current_engaged_player_legion.set_engaged(false)
+		current_engaged_enemy_legion.set_engaged(false)
+
 		current_engaged_player_legion.queue_free()
+
+		current_engaged_enemy_legion.player_legions = get_node("/root/Small_map/Legions").get_children()
+
 		legion_controller.set_current_engaged_enemy_legion(null)
 		legion_controller.set_current_engaged_player_legion(null)
+
 		print("Owned positions after end of combat: "+str(legion_controller.player_owned_tiles))
 		animation_player.play_backwards("Fade_out")

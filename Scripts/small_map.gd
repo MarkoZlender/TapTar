@@ -3,7 +3,7 @@ extends Control
 @onready var tilemap = $GroundTiles
 @onready var camera_2d = $Camera2D
 @onready var legion = $Legions/legion
-@onready var legion_2 = $Legions/legion2
+
 @onready var legion_3 = $Legions/legion3
 
 
@@ -31,11 +31,11 @@ func _ready():
 	$Control/TextureRect.texture = character.portrait
 	# setting legion positions
 	legion.set_legion_position(Vector2i(5,1))
-	legion_2.set_legion_position(Vector2i(6,1))
+	
 	legion_3.set_legion_position(Vector2i(15,5))
 
 	legion_controller.player_owned_tiles.append(legion.get_legion_position())
-	legion_controller.player_owned_tiles.append(legion_2.get_legion_position())
+	
 	legion_controller.player_owned_tiles.append(legion_3.get_legion_position())
 
 

@@ -14,6 +14,7 @@ signal legion_selected(selected: bool)
 @onready var line_2d_enemy = Line2D.new()
 @onready var random_legion_position: Vector2i
 @onready var health = 49
+@onready var engaged = false
 
 @onready var player_legions = get_node("/root/Small_map/Legions").get_children()
 
@@ -47,13 +48,17 @@ func set_target_position(new_target_position: Vector2i):
 func find_player_legion():
 	if player_legions.size() != 0:
 		var random_legion = player_legions[randi() % player_legions.size()]
-		random_legion_position = tilemap.local_to_map(random_legion.global_position)
-		return random_legion_position
+		if random_legion != null:
+			random_legion_position = tilemap.local_to_map(random_legion.global_position)
+			return random_legion_position
+		else:
+			find_player_legion()
+	else:
+		print("Player legions is empty")
 	
-		
 
 func movement():
-	if path_to_next_tile == null or path_to_next_tile == []:
+	if path_to_next_tile == null or path_to_next_tile == [] or path_to_next_tile.size() == 0:
 		current_target_position = find_player_legion()
 
 	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(current_target_position))
@@ -122,12 +127,16 @@ func set_end_turn():
 	moved = false
 	legion_selection = false
 	player_select.button_pressed = false
+	player_legions = get_node("/root/Small_map/Legions").get_children()
 
 func set_legion_position(new_legion_position: Vector2i):
 	self.global_position = tilemap.map_to_local(new_legion_position)
 	legion_position = tilemap.local_to_map(self.global_position)
 	neighbours = tilemap.get_surrounding_cells(legion_position)
 	legion_controller.check_enemy_position(self, legion_position)
+
+func set_engaged(engaged_value: bool):
+	self.engaged = engaged_value
 
 func set_selected(selected: bool):
 	legion_selection = selected

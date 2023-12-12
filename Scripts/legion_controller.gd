@@ -78,11 +78,20 @@ func set_current_engaged_enemy_legion(legion):
 func check_engagement():
 	for tile_coord in taken_positions.values():
 		if tile_coord in enemy_taken_positions.values():
+
 			current_engaged_player_legion = get_player_engaged_legion(tile_coord)
 			current_engaged_enemy_legion = get_enemy_engaged_legion(tile_coord)
-			play_sound_effect()
-			var combat_scene_instance = combat_scene.instantiate()
-			add_child(combat_scene_instance)
+
+			if !current_engaged_player_legion.engaged and !current_engaged_enemy_legion.engaged:
+				current_engaged_player_legion.set_engaged(true)
+				current_engaged_enemy_legion.set_engaged(true)
+
+				play_sound_effect()
+				
+				var combat_scene_instance = combat_scene.instantiate()
+				add_child(combat_scene_instance)
+			else:
+				pass
 	
 
 func play_sound_effect():

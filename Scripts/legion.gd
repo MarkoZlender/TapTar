@@ -9,6 +9,7 @@ signal legion_selected(selected: bool)
 @onready var sfx_player = get_node("/root/Small_map/SFXPlayer")
 @onready var legion_controller = get_node("/root/Small_map/LegionController")
 @onready var health = 50
+@onready var engaged = false
 
 
 @export var current_tilemap: TileMap = null
@@ -130,6 +131,9 @@ func set_legion_position(new_legion_position: Vector2i):
 	legion_position = tilemap.local_to_map(self.global_position)
 	neighbours = tilemap.get_surrounding_cells(legion_position)
 	legion_controller.check_position(self, legion_position)
+
+func set_engaged(engaged_value: bool):
+	self.engaged = engaged_value
 	
 
 func set_selected(selected: bool):
