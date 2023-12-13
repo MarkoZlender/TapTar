@@ -57,8 +57,19 @@ func find_player_legion():
 	
 
 func movement():
+	player_legions = get_node("/root/Small_map/Legions").get_children()
+	var target_legion = null
+	for legion in player_legions:
+		if legion and legion.get_legion_position() == current_target_position:
+			target_legion = legion
+			break
+
+	if target_legion == null or (target_legion and target_legion.get_legion_position() != current_target_position):
+		current_target_position = find_player_legion()
+
 	if path_to_next_tile == null or path_to_next_tile == [] or path_to_next_tile.size() == 0:
 		current_target_position = find_player_legion()
+	
 
 	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(current_target_position))
 	canvasLayer.line_2d_points = path_to_next_tile
