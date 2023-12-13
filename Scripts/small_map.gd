@@ -104,6 +104,7 @@ func _on_ui_end_turn():
 			legion_controller.check_taken_position()
 		
 	legion_controller.check_engagement()
+	#legion_controller.check_taken_position()
 
 # camera movement function #####################################
 

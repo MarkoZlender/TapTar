@@ -69,6 +69,7 @@ func movement():
 							neighbours = tilemap.get_surrounding_cells(legion_position)
 							moved = true
 							
+							
 							play_sound_effect()
 							# append legion position to taken positions array
 							legion_controller.check_player_owned_tiles(legion_position)
@@ -89,6 +90,7 @@ func movement():
 		legion_selection = false
 		player_select.button_pressed = false
 		legion_controller.check_position(self, legion_position)
+		
 	
 
 
