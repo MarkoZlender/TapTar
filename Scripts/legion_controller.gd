@@ -25,7 +25,6 @@ func _ready():
 func _process(delta):
 	pass
 
-
 func check_position(unit: Node, new_legion_position: Vector2i):
 	taken_positions[unit] = new_legion_position
 	#print("Restricted coords: " + str(taken_positions))
