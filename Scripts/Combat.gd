@@ -25,6 +25,10 @@ func _ready():
 	
 	$PlayerHealthLabel.text = str(current_engaged_player_legion.health)
 	$EnemyHealthLabel.text = str(current_engaged_enemy_legion.health)
+
+	$PlayerHealthBar.value = current_engaged_player_legion.health
+	$EnemyHealthBar.value = current_engaged_enemy_legion.health
+	
 	print("Owned positions before end of combat: "+str(legion_controller.player_owned_tiles))
 
 
