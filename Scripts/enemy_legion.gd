@@ -92,6 +92,9 @@ func movement():
 			
 			if legion_position not in legion_controller.enemy_owned_tiles:
 				legion_controller.enemy_owned_tiles.append(tilemap.local_to_map(legion_position))
+
+				legion_controller.player_owned_tiles.erase(legion_position)
+				
 			else:
 				pass
 	else:

@@ -1,11 +1,16 @@
 extends Node
 
+# tiles on which legions are currently standing ###############################
 @onready var taken_positions = Dictionary()
 @onready var enemy_taken_positions = Dictionary()
+###############################################################################
+
 @onready var selected_legions = Array()
 
+# all tiles that are owned by the player and the enemy ########################
 @onready var player_owned_tiles = Array()
 @onready var enemy_owned_tiles = Array()
+###############################################################################
 
 @onready var current_engaged_player_legion = null
 @onready var current_engaged_enemy_legion = null

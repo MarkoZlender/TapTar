@@ -69,6 +69,8 @@ func movement():
 							neighbours = tilemap.get_surrounding_cells(legion_position)
 							moved = true
 							
+							legion_controller.enemy_owned_tiles.erase(legion_position)
+							
 							
 							play_sound_effect()
 							# append legion position to taken positions array

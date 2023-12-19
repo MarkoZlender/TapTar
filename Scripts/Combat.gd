@@ -61,6 +61,8 @@ func _on_attack_button_pressed():
 
 		if current_engaged_enemy_legion.health <= 0:
 			$EnemyHealthLabel.text = str(0)
+			# if enemy legion is defeated, update player owned tiles
+			legion_controller.player_owned_tiles.append(current_engaged_enemy_legion.get_legion_position())
 
 			legion_controller.enemy_taken_positions.erase(current_engaged_enemy_legion)
 			legion_controller.enemy_owned_tiles.erase(current_engaged_enemy_legion.get_legion_position())
