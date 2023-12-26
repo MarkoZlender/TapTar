@@ -89,14 +89,10 @@ func movement():
 			legion_position = tilemap.local_to_map(new_position)
 			neighbours = tilemap.get_surrounding_cells(legion_position)
 			moved = true
-			
-			if legion_position not in legion_controller.enemy_owned_tiles:
-				legion_controller.enemy_owned_tiles.append(tilemap.local_to_map(legion_position))
 
-				legion_controller.player_owned_tiles.erase(legion_position)
-				
-			else:
-				pass
+			if self.engaged == false:
+				legion_controller.check_enemy_owned_tiles(tilemap.local_to_map(legion_position))
+			
 	else:
 		print("no path to next tile")
 	# TODO else if other legion is on the tile, fight
@@ -112,10 +108,10 @@ func play_animation(vTarget):
 	tween.tween_property(self, "global_position", vTarget, 0.5)
 
 	if (tilemap.local_to_map(vTarget).x) < (legion_position.x):
-		print("Flipping sprite to left", vTarget.x, legion_position.x)
+		#print("Flipping sprite to left", vTarget.x, legion_position.x)
 		$PlayerSelect/AnimatedEnemySprite.set_flip_h(true)
 	if (tilemap.local_to_map(vTarget).x) > (legion_position.x):
-		print("Flipping sprite to right", vTarget.x, legion_position.x)
+		#print("Flipping sprite to right", vTarget.x, legion_position.x)
 		$PlayerSelect/AnimatedEnemySprite.set_flip_h(false)
 
 func _on_selected_toggled(button_pressed):
@@ -132,7 +128,7 @@ func _on_legion_selected(selected):
 		legion_selection = true
 
 func set_end_turn():
-	print("Target position: " + str(target_position))
+	#print("Target position: " + str(target_position))
 	# calling movement at the end of the turn so that the enemy legions make moves after the player
 	#############################################################################################
 	movement()
@@ -155,7 +151,7 @@ func set_selected(selected: bool):
 	legion_selection = selected
 
 func get_legion_position():
-	return legion_position
+	return tilemap.local_to_map(legion_position)
 
 func get_neighbours():
 	return neighbours

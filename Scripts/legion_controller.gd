@@ -41,12 +41,18 @@ func check_enemy_position(unit: Node, new_legion_position: Vector2i):
 func check_player_owned_tiles(taken_position):
 	if taken_position not in player_owned_tiles:
 		player_owned_tiles.append(taken_position)
+		
+		if taken_position in enemy_owned_tiles:
+			enemy_owned_tiles.erase(taken_position)
 	else:
 		pass
 
 func check_enemy_owned_tiles(taken_position):
 	if taken_position not in enemy_owned_tiles:
 		enemy_owned_tiles.append(taken_position)
+
+		#if taken_position in player_owned_tiles:
+			#player_owned_tiles.erase(taken_position)
 	else:
 		pass
 

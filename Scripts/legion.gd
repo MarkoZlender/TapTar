@@ -54,7 +54,7 @@ func movement():
 		if tile_data:
 			var tile_name = str(tile_data.get_custom_data("Tile_name"))
 			var tile_wakable: bool = tile_data.get_custom_data("walkable")
-			print("tile mouse position: " + str(tile_mouse_position) + "\n" + tile_name)
+			#print("tile mouse position: " + str(tile_mouse_position) + "\n" + tile_name)
 			if tile_wakable:
 				if moved == true:
 					pass
@@ -69,7 +69,10 @@ func movement():
 							neighbours = tilemap.get_surrounding_cells(legion_position)
 							moved = true
 							
-							legion_controller.enemy_owned_tiles.erase(legion_position)
+							# if (legion_position in legion_controller.enemy_owned_tiles):
+							# 	print("removing enemy tile")
+							# 	legion_controller.enemy_owned_tiles.erase(legion_position)
+							# 	print("Legion position: " + str(legion_position))
 							
 							
 							play_sound_effect()

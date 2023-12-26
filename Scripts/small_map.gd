@@ -40,10 +40,10 @@ func _ready():
 
 
 	enemy_legion.set_legion_position(Vector2i(3,2))
-	legion_controller.enemy_owned_tiles.append(enemy_legion.get_legion_position())
+	legion_controller.enemy_owned_tiles.append(enemy_legion.legion_position)
 	#enemy_legion.set_target_position(Vector2i(8,1))
 	enemy_legion_2.set_legion_position(Vector2i(5,3))
-	legion_controller.enemy_owned_tiles.append(enemy_legion_2.get_legion_position())
+	legion_controller.enemy_owned_tiles.append(enemy_legion_2.legion_position)
 
 	#enemy_legion_2.set_target_position(Vector2i(10,1))
 	
@@ -57,6 +57,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	camera_movement()
+	#legion_controller.check_taken_position()
 
 
 	
@@ -104,6 +105,14 @@ func _on_ui_end_turn():
 			legion_controller.check_taken_position()
 		
 	legion_controller.check_engagement()
+	print("Player taken positions: "+str(legion_controller.taken_positions))
+	print("Enemy taken positions: "+str(legion_controller.enemy_taken_positions))
+
+	print("Player ownedpositions: "+str(legion_controller.player_owned_tiles))
+	print("Enemy owned positions: "+str(legion_controller.enemy_owned_tiles))
+
+	print("Player owned tiles count: "+str(legion_controller.player_owned_tiles.size()))
+	print("Enemy owned tiles count: "+str(legion_controller.enemy_owned_tiles.size()))
 	#legion_controller.check_taken_position()
 
 # camera movement function #####################################

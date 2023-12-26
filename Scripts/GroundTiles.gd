@@ -84,7 +84,7 @@ func getAStarPath(vStartPosition:Vector2i,vTargetPosition:Vector2i)->Array:
 	var vCellTarget = local_to_map(vTargetPosition)
 	var idxTarget = getAStarCellId(vCellTarget)
 
-	print("vCellStart: ",vCellStart, " idxStart: ",idxStart, " vCellTarget: ",vCellTarget, " idxTarget: ",idxTarget)
+	#print("vCellStart: ",vCellStart, " idxStart: ",idxStart, " vCellTarget: ",vCellTarget, " idxTarget: ",idxTarget)
 
 	# Just a small check to see if both points are in the grid
 	if aStar.has_point(idxStart) and aStar.has_point(idxTarget):

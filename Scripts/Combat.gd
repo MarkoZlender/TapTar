@@ -28,6 +28,8 @@ func _ready():
 
 	$PlayerHealthBar.value = current_engaged_player_legion.health
 	$EnemyHealthBar.value = current_engaged_enemy_legion.health
+
+	print("Player health: "+str(current_engaged_player_legion.health))
 	
 	print("Owned positions before end of combat: "+str(legion_controller.player_owned_tiles))
 
@@ -61,9 +63,11 @@ func _on_attack_button_pressed():
 
 		if current_engaged_enemy_legion.health <= 0:
 			$EnemyHealthLabel.text = str(0)
+			legion_controller.enemy_taken_positions.erase(current_engaged_enemy_legion)
 			# if enemy legion is defeated, update player owned tiles
-			legion_controller.player_owned_tiles.append(current_engaged_enemy_legion.get_legion_position())
-
+			if (current_engaged_player_legion.get_legion_position() not in legion_controller.player_owned_tiles):
+				legion_controller.player_owned_tiles.append(current_engaged_player_legion.get_legion_position())
+			
 			legion_controller.enemy_taken_positions.erase(current_engaged_enemy_legion)
 			legion_controller.enemy_owned_tiles.erase(current_engaged_enemy_legion.get_legion_position())
 
@@ -96,7 +100,12 @@ func _on_end_turn_button_pressed():
 	if current_engaged_player_legion.health <= 0:
 		$PlayerHealthLabel.text = str(0)
 		legion_controller.taken_positions.erase(current_engaged_player_legion)
+
+		if (current_engaged_enemy_legion.get_legion_position() not in legion_controller.enemy_owned_tiles):
+			legion_controller.enemy_owned_tiles.append(current_engaged_enemy_legion.get_legion_position())
+
 		legion_controller.player_owned_tiles.erase(current_engaged_player_legion.get_legion_position())
+		
 
 		current_engaged_player_legion.set_engaged(false)
 		current_engaged_enemy_legion.set_engaged(false)
