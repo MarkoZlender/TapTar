@@ -68,7 +68,7 @@ func _on_attack_button_pressed():
 			if (current_engaged_player_legion.get_legion_position() not in legion_controller.player_owned_tiles):
 				legion_controller.player_owned_tiles.append(current_engaged_player_legion.get_legion_position())
 			
-			legion_controller.enemy_taken_positions.erase(current_engaged_enemy_legion)
+			
 			legion_controller.enemy_owned_tiles.erase(current_engaged_enemy_legion.get_legion_position())
 
 			current_engaged_enemy_legion.set_engaged(false)
@@ -78,6 +78,8 @@ func _on_attack_button_pressed():
 
 			legion_controller.set_current_engaged_enemy_legion(null)
 			legion_controller.set_current_engaged_player_legion(null)
+
+			legion_controller.check_taken_position()
 
 			print("Owned positions after end of combat: "+str(legion_controller.enemy_owned_tiles))
 			animation_player.play_backwards("Fade_out")
@@ -117,6 +119,8 @@ func _on_end_turn_button_pressed():
 
 		legion_controller.set_current_engaged_enemy_legion(null)
 		legion_controller.set_current_engaged_player_legion(null)
+
+		legion_controller.check_taken_position()
 
 		print("Owned positions after end of combat: "+str(legion_controller.player_owned_tiles))
 		animation_player.play_backwards("Fade_out")
