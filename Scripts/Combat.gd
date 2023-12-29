@@ -1,6 +1,8 @@
 extends Control
 
 @onready var legion_controller = get_node("/root/Small_map/LegionController")
+@onready var camera = get_node("/root/Small_map/Camera2D")
+@onready var ui_canvas_layer = get_node("/root/Small_map/UICanvasLayer")
 
 @onready var current_engaged_player_legion = null
 @onready var current_engaged_enemy_legion = null
@@ -15,6 +17,9 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	camera.set_enabled(false)
+	ui_canvas_layer.set_visible(false)
+
 	current_engaged_player_legion = legion_controller.get_current_engaged_player_legion()
 	current_engaged_enemy_legion = legion_controller.get_current_engaged_enemy_legion()
 	
@@ -82,7 +87,13 @@ func _on_attack_button_pressed():
 			legion_controller.check_taken_position()
 
 			print("Owned positions after end of combat: "+str(legion_controller.enemy_owned_tiles))
+
+			
+
 			animation_player.play_backwards("Fade_out")
+
+			#camera.set_enabled(true)
+			ui_canvas_layer.set_visible(true)
 
 	else:
 		pass
@@ -123,4 +134,8 @@ func _on_end_turn_button_pressed():
 		legion_controller.check_taken_position()
 
 		print("Owned positions after end of combat: "+str(legion_controller.player_owned_tiles))
+
+		#camera.set_enabled(true)
+		ui_canvas_layer.set_visible(true)
+
 		animation_player.play_backwards("Fade_out")

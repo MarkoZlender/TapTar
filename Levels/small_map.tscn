@@ -106,19 +106,14 @@ current_tilemap = NodePath("../../GroundTiles")
 [node name="enemy_legion2" parent="EnemyLegions" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("6_gx4r2")]
 current_tilemap = NodePath("../../GroundTiles")
 
-[node name="UI" parent="." instance=ExtResource("4_slmpc")]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.903704
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(504, 280)
 enabled = false
 zoom = Vector2(1.5, 1.5)
 limit_left = 0
 limit_top = 0
-limit_right = 1920
-limit_bottom = 1080
+limit_right = 2000
+limit_bottom = 1100
 limit_smoothed = true
 position_smoothing_enabled = true
 
@@ -143,4 +138,11 @@ script = ExtResource("9_nnkni")
 script = ExtResource("3_tadb5")
 tilemap = NodePath("../GroundTiles")
 
-[connection signal="end_turn" from="UI" to="." method="_on_ui_end_turn"]
+[node name="UICanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="UICanvasLayer" instance=ExtResource("4_slmpc")]
+anchors_preset = 12
+anchor_top = 1.0
+grow_vertical = 0
+
+[connection signal="end_turn" from="UICanvasLayer/UI" to="." method="_on_ui_end_turn"]
