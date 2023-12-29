@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://bcldp6xwy5liu"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://bcldp6xwy5liu"]
 
 [ext_resource type="Texture2D" uid="uid://cit666hf4j2fl" path="res://Resources/Images/tiles.png" id="1_rt3om"]
 [ext_resource type="Texture2D" uid="uid://dciobc12vof8g" path="res://Resources/Images/tiles_color.png" id="2_1cjvn"]
 [ext_resource type="Texture2D" uid="uid://bwogc8juj5j2a" path="res://Resources/Images/tiles_taken.png" id="3_tq6yb"]
 [ext_resource type="Texture2D" uid="uid://dsv20f6aw0yih" path="res://Resources/Images/lava_tiles.png" id="4_nyjme"]
+[ext_resource type="Texture2D" uid="uid://cx5hxswd54fax" path="res://Resources/Images/keep-tile.png" id="5_dwimq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m8dm5"]
 resource_name = "ground_tiles"
@@ -87,6 +88,14 @@ texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/custom_data_0 = "lava"
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l043u"]
+texture = ExtResource("5_dwimq")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/custom_data_0 = "castle"
+0:0/0/custom_data_1 = true
+0:0/0/custom_data_3 = true
+
 [resource]
 tile_shape = 3
 tile_offset_axis = 1
@@ -97,7 +106,10 @@ custom_data_layer_1/name = "walkable"
 custom_data_layer_1/type = 1
 custom_data_layer_2/name = "taken"
 custom_data_layer_2/type = 4
+custom_data_layer_3/name = "building"
+custom_data_layer_3/type = 1
 sources/0 = SubResource("TileSetAtlasSource_m8dm5")
 sources/1 = SubResource("TileSetAtlasSource_vdmk2")
 sources/2 = SubResource("TileSetAtlasSource_au77e")
 sources/3 = SubResource("TileSetAtlasSource_1trpw")
+sources/5 = SubResource("TileSetAtlasSource_l043u")

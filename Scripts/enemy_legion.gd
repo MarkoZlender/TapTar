@@ -92,6 +92,7 @@ func movement():
 
 			if self.engaged == false:
 				legion_controller.check_enemy_owned_tiles(tilemap.local_to_map(legion_position))
+				legion_controller.player_owned_tiles.erase(tilemap.local_to_map(legion_position))
 			
 	else:
 		print("no path to next tile")
