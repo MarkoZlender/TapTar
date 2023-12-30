@@ -3,6 +3,9 @@ extends Control
 @onready var legion_controller = get_node("/root/Small_map/LegionController")
 @onready var camera = get_node("/root/Small_map/Camera2D")
 @onready var ui_canvas_layer = get_node("/root/Small_map/UICanvasLayer")
+@onready var gold_label = get_node("/root/Small_map/UICanvasLayer/UI/GoldLabel")
+
+
 
 @onready var current_engaged_player_legion = null
 @onready var current_engaged_enemy_legion = null
@@ -93,6 +96,8 @@ func _on_attack_button_pressed():
 			animation_player.play_backwards("Fade_out")
 
 			#camera.set_enabled(true)
+			legion_controller.calculate_gold()
+			gold_label.text = str(legion_controller.gold)
 			ui_canvas_layer.set_visible(true)
 
 	else:
@@ -136,6 +141,8 @@ func _on_end_turn_button_pressed():
 		print("Owned positions after end of combat: "+str(legion_controller.player_owned_tiles))
 
 		#camera.set_enabled(true)
+		legion_controller.calculate_gold()
+		gold_label.text = str(legion_controller.gold)
 		ui_canvas_layer.set_visible(true)
 
 		animation_player.play_backwards("Fade_out")
