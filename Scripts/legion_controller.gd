@@ -19,6 +19,7 @@ extends Node
 @onready var combat_scene = preload("res://Levels/Combat.tscn")
 
 @onready var gold = 0
+@onready var enemy_gold = 0
 
 
 
@@ -112,15 +113,25 @@ func play_sound_effect():
 
 # score and resources functions #################################
 
-func calculate_gold(tiles:Array):
+func calculate_gold():
 	gold = 0
-	for tile in tiles:
+	enemy_gold = 0
+	for tile in player_owned_tiles:
 		var tile_data : TileData = tilemap.get_cell_tile_data(0, Vector2i(tile[0], tile[1]))
 		var is_building: bool = tile_data.get_custom_data("building")
 		if is_building:
 			gold += 20
 		else:
 			gold += 10
+
+	for tile in enemy_owned_tiles:
+		var tile_data : TileData = tilemap.get_cell_tile_data(0, Vector2i(tile[0], tile[1]))
+		var is_building: bool = tile_data.get_custom_data("building")
+		if is_building:
+			enemy_gold += 20
+		else:
+			enemy_gold += 10
+			
 	return gold
 
 func calculate_score():
