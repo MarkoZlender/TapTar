@@ -50,6 +50,11 @@ func _ready():
 	# check if the player's legion is on a tile and if it is, change the tile
 	legion_controller.check_taken_position()
 
+	legion_controller.gold = legion_controller.calculate_gold(legion_controller.player_owned_tiles)
+
+	print("Score: "+str(legion_controller.calculate_score()))
+	print("Gold: "+str(legion_controller.calculate_gold(legion_controller.player_owned_tiles)))
+	
 	
 	
 	
@@ -93,6 +98,8 @@ func _on_exit_button_pressed():
 
 ################################################################
 
+
+
 # function which executes all the necessary actions when the player ends their turn
 func _on_ui_end_turn():
 	for unit in all_legions:
@@ -105,14 +112,17 @@ func _on_ui_end_turn():
 			legion_controller.check_taken_position()
 		
 	legion_controller.check_engagement()
-	print("Player taken positions: "+str(legion_controller.taken_positions))
-	print("Enemy taken positions: "+str(legion_controller.enemy_taken_positions))
+
+	legion_controller.gold = legion_controller.calculate_gold(legion_controller.player_owned_tiles)
 
 	print("Player ownedpositions: "+str(legion_controller.player_owned_tiles))
 	print("Enemy owned positions: "+str(legion_controller.enemy_owned_tiles))
 
 	print("Player owned tiles count: "+str(legion_controller.player_owned_tiles.size()))
 	print("Enemy owned tiles count: "+str(legion_controller.enemy_owned_tiles.size()))
+
+	print("Score: "+str(legion_controller.calculate_score()))
+	print("Gold: "+str(legion_controller.gold))
 	#legion_controller.check_taken_position()
 
 # camera movement function #####################################

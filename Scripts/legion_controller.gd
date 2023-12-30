@@ -18,6 +18,8 @@ extends Node
 @onready var sfx_player = get_node("/root/Small_map/SFXPlayer")
 @onready var combat_scene = preload("res://Levels/Combat.tscn")
 
+@onready var gold = 0
+
 
 
 @export var tilemap: TileMap = null
@@ -107,5 +109,31 @@ func check_engagement():
 func play_sound_effect():
 	sfx_player.stream = load("res://Resources/Sound/SFX/flame-big.ogg")
 	sfx_player.play()
+
+# score and resources functions #################################
+
+func calculate_gold(tiles:Array):
+	gold = 0
+	for tile in tiles:
+		var tile_data : TileData = tilemap.get_cell_tile_data(0, Vector2i(tile[0], tile[1]))
+		var is_building: bool = tile_data.get_custom_data("building")
+		if is_building:
+			gold += 20
+		else:
+			gold += 10
+	return gold
+
+func calculate_score():
+	var score = 0
+	for tile in player_owned_tiles:
+		var tile_data : TileData = tilemap.get_cell_tile_data(0, Vector2i(tile[0], tile[1]))
+		var is_building: bool = tile_data.get_custom_data("building")
+		if is_building:
+			score += 10
+		else:
+			score += 5
+	return score
+
+#################################################################
 
 
