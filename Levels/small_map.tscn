@@ -108,7 +108,6 @@ current_tilemap = NodePath("../../GroundTiles")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(504, 280)
-enabled = false
 zoom = Vector2(1.5, 1.5)
 limit_left = 0
 limit_top = 0
@@ -141,8 +140,8 @@ tilemap = NodePath("../GroundTiles")
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="UICanvasLayer" instance=ExtResource("4_slmpc")]
-anchors_preset = 12
-anchor_top = 1.0
-grow_vertical = 0
+offset_top = 860.0
 
 [connection signal="end_turn" from="UICanvasLayer/UI" to="." method="_on_ui_end_turn"]
+
+[editable path="UICanvasLayer/UI"]
