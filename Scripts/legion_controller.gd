@@ -131,8 +131,6 @@ func calculate_gold():
 			enemy_gold += 20
 		else:
 			enemy_gold += 10
-			
-	return gold
 
 func calculate_score():
 	var score = 0
