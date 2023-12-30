@@ -140,7 +140,7 @@ tilemap = NodePath("../GroundTiles")
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="UICanvasLayer" instance=ExtResource("4_slmpc")]
-offset_top = 860.0
+offset_top = 847.0
 
 [connection signal="end_turn" from="UICanvasLayer/UI" to="." method="_on_ui_end_turn"]
 

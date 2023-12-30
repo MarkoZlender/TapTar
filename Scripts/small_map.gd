@@ -51,7 +51,7 @@ func _ready():
 	legion_controller.check_taken_position()
 
 	legion_controller.calculate_gold()
-	$UICanvasLayer/UI/GoldLabel.text = "Gold: " + str(legion_controller.gold)
+	$UICanvasLayer/UI/GoldLabel.text = str(legion_controller.gold)
 
 	print("Score: "+str(legion_controller.calculate_score()))
 	print("Gold: "+str(legion_controller.gold))
@@ -116,7 +116,7 @@ func _on_ui_end_turn():
 	legion_controller.check_engagement()
 
 	legion_controller.calculate_gold()
-	$UICanvasLayer/UI/GoldLabel.text = "Gold: " + str(legion_controller.gold)
+	$UICanvasLayer/UI/GoldLabel.text = str(legion_controller.gold)
 
 	print("Player ownedpositions: "+str(legion_controller.player_owned_tiles))
 	print("Enemy owned positions: "+str(legion_controller.enemy_owned_tiles))
