@@ -69,6 +69,7 @@ func movement():
 							neighbours = tilemap.get_surrounding_cells(legion_position)
 							moved = true
 							
+							
 							# if (legion_position in legion_controller.enemy_owned_tiles):
 							# 	print("removing enemy tile")
 							# 	legion_controller.enemy_owned_tiles.erase(legion_position)
@@ -95,6 +96,7 @@ func movement():
 		legion_selection = false
 		player_select.button_pressed = false
 		legion_controller.check_position(self, legion_position)
+		legion_controller.calculate_gold()
 		
 	
 
