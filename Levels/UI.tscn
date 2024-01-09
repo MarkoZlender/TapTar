@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvabfqd568i6p"]
+[gd_scene load_steps=5 format=3 uid="uid://cvabfqd568i6p"]
 
 [ext_resource type="Script" path="res://Scripts/UI.gd" id="1_bqe7m"]
 [ext_resource type="Texture2D" uid="uid://dyb4bavnc75gd" path="res://Resources/Images/oldpaper.png" id="2_8su5v"]
 [ext_resource type="Texture2D" uid="uid://bgdto4fr8tu6f" path="res://Resources/Images/coin.svg" id="2_u0qhl"]
+[ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="3_eh55i"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -26,11 +27,12 @@ texture = ExtResource("2_8su5v")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.804167
-anchor_top = 0.839815
+anchor_top = 0.892593
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
+theme = ExtResource("3_eh55i")
 theme_override_font_sizes/font_size = 70
 text = "END TURN"
 metadata/_edit_use_anchors_ = true
@@ -43,32 +45,24 @@ anchor_bottom = 1.0
 offset_top = -104.0
 offset_right = 445.0
 grow_vertical = 0
+theme = ExtResource("3_eh55i")
 theme_override_font_sizes/font_size = 70
 text = "NEW LEGION"
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.244792
-anchor_top = 0.569444
-anchor_right = 0.399479
-anchor_bottom = 0.691667
-color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="GoldLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.311458
-anchor_top = 0.598148
+anchor_top = 0.892593
 anchor_right = 0.463021
-anchor_bottom = 0.689815
+anchor_bottom = 0.984259
+theme = ExtResource("3_eh55i")
 theme_override_font_sizes/font_size = 70
 text = "0"
 metadata/_edit_use_anchors_ = true
 
 [node name="Coin" type="Sprite2D" parent="."]
-position = Vector2(520, 693)
+position = Vector2(520, 1005)
 scale = Vector2(0.294, 0.294)
 texture = ExtResource("2_u0qhl")
 

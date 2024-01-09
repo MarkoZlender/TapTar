@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ci5hu2dadpcab"]
+[gd_scene load_steps=11 format=3 uid="uid://ci5hu2dadpcab"]
 
 [ext_resource type="Script" path="res://Scripts/small_map.gd" id="1_wdc23"]
 [ext_resource type="TileSet" uid="uid://bcldp6xwy5liu" path="res://Resources/TileSets/test_tileset.tres" id="2_wdl0a"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://lmawnpkbefr4" path="res://Objects/enemy_legion.tscn" id="6_gx4r2"]
 [ext_resource type="AudioStream" uid="uid://bvkdfgr1j5h3r" path="res://Resources/Sound/battle.ogg" id="8_r5wc4"]
 [ext_resource type="Script" path="res://Scripts/CanvasLayer.gd" id="9_nnkni"]
+[ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="10_e8y40"]
 
 [node name="Small_map" type="Control"]
 layout_mode = 3
@@ -145,22 +146,24 @@ offset_top = 847.0
 [node name="TextureRect" parent="UICanvasLayer/UI" index="0"]
 anchors_preset = -1
 anchor_top = 0.540773
-anchor_right = 0.997917
 anchor_bottom = 2.6867
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" parent="UICanvasLayer/UI" index="3"]
-anchor_left = 0.231771
-anchor_top = 0.545064
-anchor_bottom = 1.01717
+[node name="EndTurnButton" parent="UICanvasLayer/UI" index="1"]
+anchor_top = 0.553648
+theme = ExtResource("10_e8y40")
 
-[node name="GoldLabel" parent="UICanvasLayer/UI" index="4"]
+[node name="Button" parent="UICanvasLayer/UI" index="2"]
+theme = ExtResource("10_e8y40")
+
+[node name="GoldLabel" parent="UICanvasLayer/UI" index="3"]
 anchor_left = 0.314063
 anchor_top = 0.540773
 anchor_right = 0.400521
 anchor_bottom = 1.00429
+theme = ExtResource("10_e8y40")
 
-[node name="Coin" parent="UICanvasLayer/UI" index="5"]
+[node name="Coin" parent="UICanvasLayer/UI" index="4"]
 position = Vector2(523, 180)
 
 [connection signal="end_turn" from="UICanvasLayer/UI" to="." method="_on_ui_end_turn"]
