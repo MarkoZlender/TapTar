@@ -30,9 +30,9 @@ func _ready():
 	character = save_game.character
 	$Control/TextureRect.texture = character.portrait
 	# setting legion positions
-	legion.set_legion_position(Vector2i(5,1))
+	legion.set_legion_position(Vector2i(1,0))
 	
-	legion_3.set_legion_position(Vector2i(15,5))
+	legion_3.set_legion_position(Vector2i(2,1))
 
 	legion_controller.player_owned_tiles.append(legion.get_legion_position())
 	
@@ -104,6 +104,9 @@ func _on_exit_button_pressed():
 ################################################################
 
 
+	
+
+
 
 # function which executes all the necessary actions when the player ends their turn
 func _on_ui_end_turn():
@@ -146,6 +149,35 @@ func camera_movement():
 
 ################################################################
 	
-	
-	
 
+
+
+
+
+
+func _on_new_legion_button_pressed():
+	var new_legion_position = null
+	if legion_controller.gold >= 10 and legion_controller.player_owned_tiles.size() > all_legions.size():
+		for tile in legion_controller.player_owned_tiles:
+			if tile not in legion_controller.taken_positions.values():
+				print("New legion")
+				var new_legion_scene = preload("res://Objects/legion.tscn")
+				var new_legion_instance = new_legion_scene.instantiate()
+				$Legions.add_child(new_legion_instance)
+				new_legion_position = tile
+				new_legion_instance.set_legion_position(new_legion_position)
+				all_legions.append(new_legion_instance)
+			
+				legion_controller.new_legions_created += 1
+				legion_controller.calculate_gold()
+				$UICanvasLayer/UI/GoldLabel.text = str(legion_controller.gold)
+
+				print("Score: "+str(legion_controller.calculate_score()))
+				print("Gold: "+str(legion_controller.gold))
+				print("Enemy gold: " + str(legion_controller.enemy_gold))
+				break
+			else:
+				print("No available tiles")
+				break
+	else:
+		print("Not enough gold or no available tiles")
