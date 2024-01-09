@@ -30,7 +30,6 @@ anchor_right = 1.0
 anchor_bottom = 0.14264
 grow_horizontal = 2
 theme = ExtResource("1_r50oa")
-theme_override_colors/font_color = Color(0.815686, 0.815686, 0.815686, 1)
 text = "Continue"
 metadata/_edit_use_anchors_ = true
 
@@ -43,7 +42,6 @@ anchor_bottom = 0.311836
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_r50oa")
-theme_override_colors/font_color = Color(0.815686, 0.815686, 0.815686, 1)
 text = "Main Menu"
 metadata/_edit_use_anchors_ = true
 
@@ -56,6 +54,6 @@ anchor_bottom = 0.891502
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_r50oa")
-theme_override_colors/font_color = Color(0.815686, 0.815686, 0.815686, 1)
+theme_override_colors/font_color = Color(0.666667, 0, 0.117647, 1)
 text = "Exit"
 metadata/_edit_use_anchors_ = true

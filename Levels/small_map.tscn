@@ -108,6 +108,7 @@ current_tilemap = NodePath("../../GroundTiles")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(504, 280)
+enabled = false
 zoom = Vector2(1.5, 1.5)
 limit_left = 0
 limit_top = 0
