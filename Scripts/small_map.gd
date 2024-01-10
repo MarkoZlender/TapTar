@@ -123,6 +123,7 @@ func _on_ui_end_turn():
 
 	legion_controller.calculate_gold()
 	$UICanvasLayer/UI/GoldLabel.text = str(legion_controller.gold)
+	legion_controller.create_new_enemy_legion()
 
 	print("Player ownedpositions: "+str(legion_controller.player_owned_tiles))
 	print("Enemy owned positions: "+str(legion_controller.enemy_owned_tiles))

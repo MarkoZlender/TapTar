@@ -32,6 +32,8 @@ signal legion_selected(selected: bool)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_process_input(true)
+	current_tilemap = get_node("/root/Small_map/GroundTiles")
+	tilemap = current_tilemap
 	legion_position = current_tilemap.local_to_map(self.global_position)
 	neighbours = current_tilemap.get_surrounding_cells(legion_position)
 	legion_selection = false

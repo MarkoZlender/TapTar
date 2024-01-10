@@ -16,11 +16,14 @@ extends Node
 @onready var current_engaged_enemy_legion = null
 
 @onready var sfx_player = get_node("/root/Small_map/SFXPlayer")
+@onready var enemy_legions = get_node("/root/Small_map/EnemyLegions")
+@onready var small_map = get_node("/root/Small_map")
 @onready var combat_scene = preload("res://Levels/Combat.tscn")
 
 @onready var gold = 0
 @onready var enemy_gold = 0
 @onready var new_legions_created = 0
+@onready var new_enemy_legions_created = 0
 
 
 
@@ -133,6 +136,7 @@ func calculate_gold():
 			enemy_gold += 20
 		else:
 			enemy_gold += 10
+	enemy_gold -= new_enemy_legions_created * 100
 
 func calculate_score():
 	var score = 0
@@ -146,5 +150,28 @@ func calculate_score():
 	return score
 
 #################################################################
+
+func create_new_enemy_legion():
+	var new_legion_position = null
+	if enemy_gold >= 100 and enemy_owned_tiles.size() > enemy_taken_positions.values().size():
+		for tile in enemy_owned_tiles:
+			if tile not in enemy_taken_positions.values():
+				print("New enemy legion")
+				var new_legion_scene = preload("res://Objects/enemy_legion.tscn")
+				var new_legion_instance = new_legion_scene.instantiate()
+				enemy_legions.add_child(new_legion_instance)
+				new_legion_position = tile
+				new_legion_instance.set_legion_position(new_legion_position)
+				small_map.all_enemy_legions.append(new_legion_instance)
+				
+				new_enemy_legions_created += 1
+				calculate_gold()
+				print("Enemy gold: " + str(enemy_gold))
+				break
+			else:
+				print("No available tiles")
+				break
+	else:
+		print("Not enough gold or no available tiles")
 
 
