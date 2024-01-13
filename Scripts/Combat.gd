@@ -114,7 +114,8 @@ func _on_end_turn_button_pressed():
 	$DefendingIcon.visible = false
 
 	var random_number_enemy = rng.randi_range(10, 20)
-
+	
+	# if defend is true, enemy legion deals half damage
 	if defend:
 		random_number_enemy = int(random_number_enemy / 2)
 
