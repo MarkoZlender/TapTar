@@ -16,6 +16,8 @@ extends Control
 @onready var background = $Background
 @onready var rng = RandomNumberGenerator.new()
 
+@onready var defend:bool = false
+
 @onready var attack_counter = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -109,11 +111,18 @@ func _on_end_turn_button_pressed():
 	tween.tween_property($EnemyLegionSprite, "global_position", Vector2(1368,629), 0.1)
 	tween.tween_property($EnemyLegionSprite, "global_position", Vector2(1587,629), 0.5)
 
+	$DefendingIcon.visible = false
+
 	var random_number_enemy = rng.randi_range(10, 20)
+
+	if defend:
+		random_number_enemy = int(random_number_enemy / 2)
+
 	current_engaged_player_legion.health -= random_number_enemy
 	$PlayerHealthBar.value -= random_number_enemy
 	$PlayerHealthLabel.text = str(current_engaged_player_legion.health)
 	attack_counter = 0
+	defend = false
 
 	if current_engaged_player_legion.health <= 0:
 		$PlayerHealthLabel.text = str(0)
@@ -146,3 +155,12 @@ func _on_end_turn_button_pressed():
 		ui_canvas_layer.set_visible(true)
 
 		animation_player.play_backwards("Fade_out")
+
+
+func _on_defend_button_toggled(button_pressed):
+	if button_pressed:
+		defend = true
+		$DefendingIcon.visible = true
+	else:
+		defend = false
+		$DefendingIcon.visible = false

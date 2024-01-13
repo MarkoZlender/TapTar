@@ -39,7 +39,7 @@ func _ready():
 	legion_controller.player_owned_tiles.append(legion_3.get_legion_position())
 
 
-	enemy_legion.set_legion_position(Vector2i(17,7))
+	enemy_legion.set_legion_position(Vector2i(2,2))
 	legion_controller.enemy_owned_tiles.append(enemy_legion.legion_position)
 	#enemy_legion.set_target_position(Vector2i(8,1))
 	enemy_legion_2.set_legion_position(Vector2i(18,7))
