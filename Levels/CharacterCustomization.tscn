@@ -317,6 +317,8 @@ anchor_left = 0.852083
 anchor_top = 0.537037
 anchor_right = 0.961979
 anchor_bottom = 0.624074
+fit_to_longest_item = false
+allow_reselect = true
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]

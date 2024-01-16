@@ -25,6 +25,7 @@ func turn_small_map():
 
 
 func _on_next_button_pressed():
+	Score.score += legion_controller.calculate_score()
 	get_tree().change_scene_to_file("res://Levels/big_map.tscn")
 
 

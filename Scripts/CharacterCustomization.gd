@@ -63,9 +63,10 @@ func _on_previous_button_pressed():
 		$Portrait.texture = load(portraits[portrait_index])
 
 func add_map_menu_items():
+	$MapSelect.add_item("Mini")
 	$MapSelect.add_item("Small")
-	$MapSelect.add_item("Normal")
-	$MapSelect.add_item("Large")
+	$MapSelect.add_item("Big")
+	$MapSelect.add_item("")
 
 
 func _on_map_select_item_selected(index):

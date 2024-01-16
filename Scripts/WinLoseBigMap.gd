@@ -4,6 +4,8 @@ extends Node
 @onready var legion_controller = get_node("/root/Small_map/LegionController")
 @onready var winlose_screen = get_node("/root/Small_map/Camera2D/MiniMenuCanvasLayer/WinLoseScreen")
 @onready var winlose_screen_label = get_node("/root/Small_map/Camera2D/MiniMenuCanvasLayer/WinLoseScreen/WinLoseLabel")
+@onready var winlose_screen_score_label = get_node("/root/Small_map/Camera2D/MiniMenuCanvasLayer/WinLoseScreen/ScoreLabel")
+
 @onready var winlose_screen_next = get_node("/root/Small_map/Camera2D/MiniMenuCanvasLayer/WinLoseScreen/NextButton")
 
 @onready var ui_screen = get_node("/root/Small_map/UICanvasLayer")
@@ -14,6 +16,8 @@ func turn_small_map():
 	turns += 1
 	if turns > 5:
 		if legion_controller.player_owned_tiles.size() > legion_controller.enemy_owned_tiles.size():
+			Score.score += legion_controller.calculate_score()
+			winlose_screen_score_label.text = str(Score.score)
 			winlose_screen.visible = true
 			winlose_screen_label.text = "You Win!"
 			ui_screen.visible = false
@@ -25,8 +29,7 @@ func turn_small_map():
 
 
 func _on_next_button_pressed():
-	Score.score += legion_controller.calculate_score()
-	get_tree().change_scene_to_file("res://Levels/small_map.tscn")
+	get_tree().change_scene_to_file("res://Levels/big_map.tscn")
 
 
 func _on_exit_button_pressed():
