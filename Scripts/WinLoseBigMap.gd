@@ -16,6 +16,7 @@ func turn_small_map():
 		if legion_controller.player_owned_tiles.size() > legion_controller.enemy_owned_tiles.size():
 			Score.score += legion_controller.calculate_score()
 			winlose_screen_score_label.text = str(Score.score)
+			Score.save_score(Score.score)
 			winlose_screen.visible = true
 			winlose_screen_label.text = "You Win!"
 			ui_screen.visible = false

@@ -51,3 +51,9 @@ func _on_delete_progress_pressed():
 		OS.alert("Save deleted", "Notification")
 	else:
 		OS.alert("Save file not found.", "Notification")
+
+
+func _on_scoreboard_button_pressed():
+	var score = preload("res://Levels/ScoreBoard.tscn")
+	var score_instance = score.instantiate()
+	add_child(score_instance)

@@ -81,6 +81,11 @@ layout_mode = 2
 theme = ExtResource("2_kpwpd")
 text = "Options"
 
+[node name="ScoreboardButton" type="Button" parent="Buttons"]
+layout_mode = 2
+theme = ExtResource("2_kpwpd")
+text = "Score board"
+
 [node name="QuitButton" type="Button" parent="Buttons"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../StoryButton")
@@ -102,4 +107,5 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="Buttons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Buttons/Delete Progress" to="." method="_on_delete_progress_pressed"]
 [connection signal="pressed" from="Buttons/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Buttons/ScoreboardButton" to="." method="_on_scoreboard_button_pressed"]
 [connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_quit_button_pressed"]
