@@ -70,11 +70,11 @@ func add_map_menu_items():
 
 func _on_map_select_item_selected(index):
 	if index == 0:
-		character.map = "res://Levels/small_map.tscn"
+		character.map = "res://Levels/mini_map.tscn"
 	elif index == 1:
-		character.map = "res://Levels/normal_map.tscn"
+		character.map = "res://Levels/small_map.tscn"
 	elif index == 2:
-		character.map = "res://Levels/large_map.tscn"
+		character.map = "res://Levels/big_map.tscn"
 	else:
 		OS.alert("Map file not found!", "Notification")
 		get_tree().quit()
