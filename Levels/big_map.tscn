@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://btagp0xu2g6oc"]
+
+[ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="1_tewd7"]
+
+[node name="big_map" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 428.0
+offset_bottom = 275.0
+theme = ExtResource("1_tewd7")
+text = "BIG MAP"
+metadata/_edit_use_anchors_ = true

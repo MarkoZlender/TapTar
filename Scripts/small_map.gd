@@ -11,6 +11,7 @@ extends Control
 @onready var enemy_legion_2 = $EnemyLegions/enemy_legion2
 
 @onready var legion_controller = get_node("/root/Small_map/LegionController")
+@onready var winlose = get_node("/root/Small_map/WinLose")
 
 @onready var all_legions = $Legions.get_children()
 @onready var all_enemy_legions = $EnemyLegions.get_children()
@@ -39,7 +40,7 @@ func _ready():
 	legion_controller.player_owned_tiles.append(legion_3.get_legion_position())
 
 
-	enemy_legion.set_legion_position(Vector2i(2,2))
+	enemy_legion.set_legion_position(Vector2i(17,7))
 	legion_controller.enemy_owned_tiles.append(enemy_legion.legion_position)
 	#enemy_legion.set_target_position(Vector2i(8,1))
 	enemy_legion_2.set_legion_position(Vector2i(18,7))
@@ -124,6 +125,8 @@ func _on_ui_end_turn():
 	legion_controller.calculate_gold()
 	$UICanvasLayer/UI/GoldLabel.text = str(legion_controller.gold)
 	legion_controller.create_new_enemy_legion()
+	winlose.turn_small_map()
+
 
 	print("Player ownedpositions: "+str(legion_controller.player_owned_tiles))
 	print("Enemy owned positions: "+str(legion_controller.enemy_owned_tiles))
