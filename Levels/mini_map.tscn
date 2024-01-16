@@ -1,0 +1,232 @@
+[gd_scene load_steps=15 format=3 uid="uid://c3lmu56ey3spx"]
+
+[ext_resource type="Script" path="res://Scripts/mini_map.gd" id="1_a74tc"]
+[ext_resource type="Texture2D" uid="uid://bbpgri2idl8bc" path="res://Resources/Images/wood.png" id="2_5m71h"]
+[ext_resource type="Texture2D" uid="uid://coyjk2q12sg4x" path="res://Resources/Images/Parchment.png" id="3_brqok"]
+[ext_resource type="TileSet" uid="uid://bcldp6xwy5liu" path="res://Resources/TileSets/test_tileset.tres" id="4_arhog"]
+[ext_resource type="Script" path="res://Scripts/GroundTiles.gd" id="5_tknfx"]
+[ext_resource type="PackedScene" uid="uid://cy35wcdawvyue" path="res://Objects/legion.tscn" id="6_jaxvq"]
+[ext_resource type="PackedScene" uid="uid://lmawnpkbefr4" path="res://Objects/enemy_legion.tscn" id="7_nek7j"]
+[ext_resource type="Texture2D" uid="uid://dyb4bavnc75gd" path="res://Resources/Images/oldpaper.png" id="8_y4fej"]
+[ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="9_do5bi"]
+[ext_resource type="AudioStream" uid="uid://bvkdfgr1j5h3r" path="res://Resources/Sound/battle.ogg" id="10_ogqcq"]
+[ext_resource type="Script" path="res://Scripts/CanvasLayer.gd" id="11_tkauh"]
+[ext_resource type="Script" path="res://Scripts/legion_controller.gd" id="12_mv0ny"]
+[ext_resource type="PackedScene" uid="uid://cvabfqd568i6p" path="res://Levels/UI.tscn" id="13_73tsq"]
+[ext_resource type="Script" path="res://Scripts/WinLoseMiniMap.gd" id="14_gxsyq"]
+
+[node name="Small_map" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a74tc")
+
+[node name="Wood" type="Sprite2D" parent="."]
+position = Vector2(1334, 646)
+scale = Vector2(3.09323, 3.09323)
+texture = ExtResource("2_5m71h")
+
+[node name="Parchment" type="Sprite2D" parent="."]
+position = Vector2(999, 735)
+rotation = 1.57079
+scale = Vector2(6.34479, 6.34479)
+texture = ExtResource("3_brqok")
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 35.0
+anchor_top = 14.0
+anchor_right = 47.75
+anchor_bottom = 26.75
+grow_horizontal = 0
+grow_vertical = 0
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Control2" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 37.925
+anchor_right = 47.45
+anchor_bottom = 2.65
+theme_override_font_sizes/font_size = 75
+text = "Small map"
+metadata/_edit_use_anchors_ = true
+
+[node name="GroundTiles" type="TileMap" parent="."]
+tile_set = ExtResource("4_arhog")
+format = 2
+layer_0/name = "Ground"
+layer_0/tile_data = PackedInt32Array(65539, 3, 0, 131075, 3, 0, 196612, 3, 0, 196613, 0, 0, 196614, 3, 0, 196615, 3, 0, 131079, 3, 0, 131080, 3, 0, 65543, 3, 0, 65542, 3, 0, 5, 3, 0, 65540, 3, 0, 131076, 3, 0, 131077, 3, 0, 131078, 3, 0, 65541, 3, 0, 65538, 0, 0, 131074, 0, 0, 196610, 0, 0, 196611, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 196616, 0, 0, 131081, 0, 0, 65545, 0, 0, 65544, 0, 0, 7, 0, 0, 6, 0, 0, 3, 0, 0, 4, 0, 0, 262151, 0, 0, 262152, 0, 0, 65537, 0, 0, 131073, 0, 0, 196609, 0, 0, 262146, 0, 0, 262147, 0, 0, 327684, 0, 0, 327685, 5, 0, 327686, 0, 0, 262153, 0, 0, 196617, 0, 0, 131082, 0, 0, 65546, 5, 0, 9, 0, 0, 1, 0, 0)
+layer_1/name = "Taken"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Buildings"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array()
+script = ExtResource("5_tknfx")
+
+[node name="Legions" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="legion" parent="Legions" instance=ExtResource("6_jaxvq")]
+
+[node name="legion3" parent="Legions" instance=ExtResource("6_jaxvq")]
+
+[node name="EnemyLegions" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="enemy_legion" parent="EnemyLegions" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("7_nek7j")]
+current_tilemap = NodePath("../../GroundTiles")
+
+[node name="enemy_legion2" parent="EnemyLegions" node_paths=PackedStringArray("current_tilemap") instance=ExtResource("7_nek7j")]
+current_tilemap = NodePath("../../GroundTiles")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(504, 280)
+limit_left = -1000
+limit_top = -500
+limit_right = 3000
+limit_bottom = 1700
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="MiniMenuCanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="WinLoseScreen" type="TextureRect" parent="Camera2D/MiniMenuCanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_y4fej")
+
+[node name="WinLoseLabel" type="Label" parent="Camera2D/MiniMenuCanvasLayer/WinLoseScreen"]
+layout_mode = 0
+anchor_left = 0.2625
+anchor_right = 0.702083
+anchor_bottom = 0.280556
+offset_left = 3.05176e-05
+theme = ExtResource("9_do5bi")
+text = "YOU LOSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ExitButton" type="Button" parent="Camera2D/MiniMenuCanvasLayer/WinLoseScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.360417
+anchor_top = 0.696296
+anchor_right = 0.597396
+anchor_bottom = 0.82963
+offset_bottom = 6.10352e-05
+theme = ExtResource("9_do5bi")
+text = "Exit"
+metadata/_edit_use_anchors_ = true
+
+[node name="NextButton" type="Button" parent="Camera2D/MiniMenuCanvasLayer/WinLoseScreen"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.360417
+anchor_top = 0.493519
+anchor_right = 0.597396
+anchor_bottom = 0.626852
+offset_bottom = 6.10352e-05
+theme = ExtResource("9_do5bi")
+text = "Next"
+metadata/_edit_use_anchors_ = true
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ogqcq")
+volume_db = -70.0
+autoplay = true
+bus = &"Music"
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -70.0
+autoplay = true
+bus = &"SFX"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("11_tkauh")
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer"]
+
+[node name="LegionController" type="Node" parent="." node_paths=PackedStringArray("tilemap")]
+script = ExtResource("12_mv0ny")
+tilemap = NodePath("../GroundTiles")
+
+[node name="UICanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="UICanvasLayer" instance=ExtResource("13_73tsq")]
+offset_top = 847.0
+
+[node name="TextureRect" parent="UICanvasLayer/UI" index="0"]
+anchors_preset = -1
+anchor_top = 0.540773
+anchor_bottom = 2.6867
+metadata/_edit_use_anchors_ = true
+
+[node name="EndTurnButton" parent="UICanvasLayer/UI" index="1"]
+anchor_top = 0.553648
+
+[node name="GoldLabel" parent="UICanvasLayer/UI" index="3"]
+anchor_left = 0.314063
+anchor_top = 0.540773
+anchor_right = 0.400521
+anchor_bottom = 1.00429
+
+[node name="Coin" parent="UICanvasLayer/UI" index="4"]
+position = Vector2(523, 180)
+
+[node name="WinLose" type="Node" parent="."]
+script = ExtResource("14_gxsyq")
+
+[connection signal="pressed" from="Camera2D/MiniMenuCanvasLayer/WinLoseScreen/ExitButton" to="WinLose" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Camera2D/MiniMenuCanvasLayer/WinLoseScreen/NextButton" to="WinLose" method="_on_next_button_pressed"]
+[connection signal="end_turn" from="UICanvasLayer/UI" to="." method="_on_ui_end_turn"]
+[connection signal="pressed" from="UICanvasLayer/UI/NewLegionButton" to="." method="_on_new_legion_button_pressed"]
+
+[editable path="UICanvasLayer/UI"]

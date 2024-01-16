@@ -131,11 +131,14 @@ func calculate_gold():
 
 	for tile in enemy_owned_tiles:
 		var tile_data : TileData = tilemap.get_cell_tile_data(0, Vector2i(tile[0], tile[1]))
-		var is_building: bool = tile_data.get_custom_data("building")
-		if is_building:
-			enemy_gold += 20
+		if tile_data == null:
+			continue
 		else:
-			enemy_gold += 10
+			var is_building: bool = tile_data.get_custom_data("building")
+			if is_building:
+				enemy_gold += 20
+			else:
+				enemy_gold += 10
 	enemy_gold -= new_enemy_legions_created * 100
 
 func calculate_score():
