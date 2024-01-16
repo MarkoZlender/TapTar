@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ci5hu2dadpcab"]
+[gd_scene load_steps=13 format=3 uid="uid://ci5hu2dadpcab"]
 
 [ext_resource type="Script" path="res://Scripts/small_map.gd" id="1_wdc23"]
 [ext_resource type="Texture2D" uid="uid://coyjk2q12sg4x" path="res://Resources/Images/Parchment.png" id="2_bpyvu"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://lmawnpkbefr4" path="res://Objects/enemy_legion.tscn" id="6_gx4r2"]
 [ext_resource type="AudioStream" uid="uid://bvkdfgr1j5h3r" path="res://Resources/Sound/battle.ogg" id="8_r5wc4"]
 [ext_resource type="Script" path="res://Scripts/CanvasLayer.gd" id="9_nnkni"]
+[ext_resource type="Script" path="res://Scripts/WinLoseSmallMap.gd" id="13_lvbty"]
 
 [node name="Small_map" type="Control"]
 layout_mode = 3
@@ -49,7 +50,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 35.0
@@ -69,7 +69,6 @@ offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Control2"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 37.925
@@ -127,6 +126,8 @@ limit_bottom = 1700
 limit_smoothed = true
 position_smoothing_enabled = true
 
+[node name="MiniMenuCanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_r5wc4")
 volume_db = -70.0
@@ -170,6 +171,9 @@ anchor_bottom = 1.00429
 
 [node name="Coin" parent="UICanvasLayer/UI" index="4"]
 position = Vector2(523, 180)
+
+[node name="WinLose" type="Node" parent="."]
+script = ExtResource("13_lvbty")
 
 [connection signal="end_turn" from="UICanvasLayer/UI" to="." method="_on_ui_end_turn"]
 [connection signal="pressed" from="UICanvasLayer/UI/NewLegionButton" to="." method="_on_new_legion_button_pressed"]

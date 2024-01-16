@@ -76,24 +76,24 @@ func _input(_event):
 
 		
 
-	if Input.is_action_just_pressed("exit") and get_node("/root/Small_map/mini_menu") == null:
+	if Input.is_action_just_pressed("exit") and get_node("/root/Small_map/Camera2D/MiniMenuCanvasLayer/mini_menu") == null:
 		var mini_menu_scene = preload("res://Levels/mini_menu.tscn")
 		var mini_menu_instance = mini_menu_scene.instantiate()
-		add_child(mini_menu_instance)
+		$Camera2D/MiniMenuCanvasLayer.add_child(mini_menu_instance)
 
-		mini_menu_continue_button = get_node("/root/Small_map/mini_menu/Background/ContinueButton")
+		mini_menu_continue_button = get_node("/root/Small_map/Camera2D/MiniMenuCanvasLayer/mini_menu/Background/ContinueButton")
 		mini_menu_continue_button.pressed.connect( _on_continue_button_pressed)
 
-		mini_menu_main_menu_button = get_node("/root/Small_map/mini_menu/Background/MainMenuButton")
+		mini_menu_main_menu_button = get_node("/root/Small_map/Camera2D/MiniMenuCanvasLayer/mini_menu/Background/MainMenuButton")
 		mini_menu_main_menu_button.pressed.connect( _on_main_menu_button_pressed)
 
-		mini_menu_exit_button = get_node("/root/Small_map/mini_menu/Background/ExitButton")
+		mini_menu_exit_button = get_node("/root/Small_map/Camera2D/MiniMenuCanvasLayer/mini_menu/Background/ExitButton")
 		mini_menu_exit_button.pressed.connect( _on_exit_button_pressed)
 
 # mini menu functions ##########################################
 
 func _on_continue_button_pressed():
-	get_node("/root/Small_map/mini_menu").queue_free()
+	get_node("/root/Small_map/Camera2D/MiniMenuCanvasLayer/mini_menu").queue_free()
 
 func _on_main_menu_button_pressed():
 	get_tree().change_scene_to_file("res://Levels/Menu.tscn")
