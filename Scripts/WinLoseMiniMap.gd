@@ -22,6 +22,15 @@ func turn_small_map():
 			winlose_screen_label.text = "You Lose!"
 			winlose_screen_next.visible = false
 			ui_screen.visible = false
+	elif legion_controller.enemy_owned_tiles.size() == 0 or legion_controller.enemy_taken_positions.size() == 0:
+		winlose_screen.visible = true
+		winlose_screen_label.text = "You Win!"
+		ui_screen.visible = false
+	elif legion_controller.player_owned_tiles.size() == 0 or legion_controller.taken_positions.size() == 0:
+		winlose_screen.visible = true
+		winlose_screen_label.text = "You Lose!"
+		winlose_screen_next.visible = false
+		ui_screen.visible = false
 
 
 func _on_next_button_pressed():
