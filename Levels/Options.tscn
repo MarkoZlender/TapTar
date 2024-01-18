@@ -39,9 +39,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0192708
-anchor_top = 0.122222
-anchor_right = 0.279167
-anchor_bottom = 0.874074
+anchor_top = 0.112037
+anchor_right = 0.332812
+anchor_bottom = 0.901852
 texture = ExtResource("5_mo206")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
@@ -49,10 +49,10 @@ metadata/_edit_use_anchors_ = true
 [node name="KeybindsText" type="RichTextLabel" parent="Border1"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0341464
-anchor_top = 0.0496915
-anchor_right = 1.01463
-anchor_bottom = 0.931827
+anchor_left = 0.0348837
+anchor_top = 0.073857
+anchor_right = 1.15947
+anchor_bottom = 0.932005
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_tw2lm")
@@ -61,8 +61,8 @@ A - move map left
 S - move map down
 D - move map right
 
-R - open orders menu
-C  - open character sheet"
+Mouse button 1 - select legion
+Mouse button 1 - move legion"
 metadata/_edit_use_anchors_ = true
 
 [node name="TitleText" type="RichTextLabel" parent="."]
