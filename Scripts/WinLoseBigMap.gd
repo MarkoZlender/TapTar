@@ -12,7 +12,7 @@ extends Node
 
 func turn_small_map():
 	turns += 1
-	if turns > 5:
+	if turns > 20:
 		if legion_controller.player_owned_tiles.size() > legion_controller.enemy_owned_tiles.size():
 			Score.score += legion_controller.calculate_score()
 			winlose_screen_score_label.text = str(Score.score)
