@@ -127,7 +127,7 @@ func calculate_gold():
 			gold += 20
 		else:
 			gold += 10
-	gold -= new_legions_created * 10
+	gold -= new_legions_created * 100
 
 	for tile in enemy_owned_tiles:
 		var tile_data : TileData = tilemap.get_cell_tile_data(0, Vector2i(tile[0], tile[1]))

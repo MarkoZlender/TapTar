@@ -162,7 +162,7 @@ func camera_movement():
 
 func _on_new_legion_button_pressed():
 	var new_legion_position = null
-	if legion_controller.gold >= 10 and legion_controller.player_owned_tiles.size() > all_legions.size():
+	if legion_controller.gold >= 100 and legion_controller.player_owned_tiles.size() > all_legions.size():
 		for tile in legion_controller.player_owned_tiles:
 			if tile not in legion_controller.taken_positions.values():
 				print("New legion")
