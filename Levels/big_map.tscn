@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://yn2cijb5f352"]
 
-[ext_resource type="Script" path="res://Scripts/small_map.gd" id="1_743vm"]
+[ext_resource type="Script" path="res://Scripts/big_map.gd" id="1_4q73l"]
 [ext_resource type="Theme" uid="uid://loej2f8ojc2n" path="res://Resources/Themes/TapTarTheme.tres" id="1_tewd7"]
 [ext_resource type="Texture2D" uid="uid://bbpgri2idl8bc" path="res://Resources/Images/wood.png" id="2_87rtn"]
 [ext_resource type="Texture2D" uid="uid://coyjk2q12sg4x" path="res://Resources/Images/Parchment.png" id="3_esjjc"]
@@ -22,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_743vm")
+script = ExtResource("1_4q73l")
 
 [node name="Wood" type="Sprite2D" parent="."]
 position = Vector2(1334, 646)
@@ -232,6 +232,14 @@ anchor_bottom = 1.00429
 
 [node name="Coin" parent="UICanvasLayer/UI" index="4"]
 position = Vector2(523, 180)
+
+[node name="TurnsLabel" parent="UICanvasLayer/UI" index="5"]
+anchor_top = 0.553648
+anchor_right = 0.497396
+anchor_bottom = 0.957081
+offset_right = 0.0
+text = "Turns left: 30
+"
 
 [node name="WinLose" type="Node" parent="."]
 script = ExtResource("14_eh7vc")

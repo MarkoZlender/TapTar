@@ -68,4 +68,15 @@ position = Vector2(520, 1005)
 scale = Vector2(0.294, 0.294)
 texture = ExtResource("2_u0qhl")
 
+[node name="TurnsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373958
+anchor_top = 0.892593
+anchor_right = 0.533854
+anchor_bottom = 0.984259
+offset_right = -70.0
+theme = ExtResource("3_eh55i")
+metadata/_edit_use_anchors_ = true
+
 [connection signal="pressed" from="EndTurnButton" to="." method="_on_end_turn_button_pressed"]

@@ -126,6 +126,7 @@ func _on_ui_end_turn():
 	$UICanvasLayer/UI/GoldLabel.text = str(legion_controller.gold)
 	legion_controller.create_new_enemy_legion()
 	winlose.turn_small_map()
+	$UICanvasLayer/UI/TurnsLabel.text = "Turns: " + str(10-winlose.turns)
 
 
 	print("Player ownedpositions: "+str(legion_controller.player_owned_tiles))

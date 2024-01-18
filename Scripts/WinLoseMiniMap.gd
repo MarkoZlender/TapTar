@@ -12,7 +12,7 @@ extends Node
 
 func turn_small_map():
 	turns += 1
-	if turns > 5:
+	if turns > 10:
 		if legion_controller.player_owned_tiles.size() > legion_controller.enemy_owned_tiles.size():
 			winlose_screen.visible = true
 			winlose_screen_label.text = "You Win!"
