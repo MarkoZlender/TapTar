@@ -150,12 +150,13 @@ func _on_end_turn_button_pressed():
 
 		print("Owned positions after end of combat: "+str(legion_controller.player_owned_tiles))
 
-		#camera.set_enabled(true)
+		
 		legion_controller.calculate_gold()
 		gold_label.text = str(legion_controller.gold)
 		ui_canvas_layer.set_visible(true)
 
 		animation_player.play_backwards("Fade_out")
+		camera.set_enabled(true)
 
 
 func _on_defend_button_toggled(button_pressed):

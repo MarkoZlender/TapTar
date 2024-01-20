@@ -12,20 +12,32 @@ extends Node
 
 func turn_small_map():
 	turns += 1
-	if turns > 10:
+	if turns > 30:
 		if legion_controller.player_owned_tiles.size() > legion_controller.enemy_owned_tiles.size():
+			Score.score += legion_controller.calculate_score()
+			winlose_screen_score_label.text = "Score: " + str(Score.score)
+			Score.save_score(Score.score)
 			winlose_screen.visible = true
 			winlose_screen_label.text = "You Win!"
 			ui_screen.visible = false
 		if legion_controller.player_owned_tiles.size() < legion_controller.enemy_owned_tiles.size():
+			Score.score += legion_controller.calculate_score()
+			winlose_screen_score_label.text = "Score: " + str(Score.score)
+			Score.save_score(Score.score)
 			winlose_screen.visible = true
 			winlose_screen_label.text = "You Lose!"
 			ui_screen.visible = false
-	elif legion_controller.enemy_owned_tiles.size() == 0 or legion_controller.enemy_taken_positions.size() == 0:
+	elif legion_controller.enemy_owned_tiles.size() == 0 or legion_controller.enemy_legions.get_children().size() == 0:
+		Score.score += legion_controller.calculate_score()
+		winlose_screen_score_label.text = "Score: " + str(Score.score)
+		Score.save_score(Score.score)
 		winlose_screen.visible = true
 		winlose_screen_label.text = "You Win!"
 		ui_screen.visible = false
 	elif legion_controller.player_owned_tiles.size() == 0 or legion_controller.taken_positions.size() == 0:
+		Score.score += legion_controller.calculate_score()
+		winlose_screen_score_label.text = "Score: " + str(Score.score)
+		Score.save_score(Score.score)
 		winlose_screen.visible = true
 		winlose_screen_label.text = "You Lose!"
 		ui_screen.visible = false

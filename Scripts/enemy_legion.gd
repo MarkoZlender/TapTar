@@ -60,50 +60,53 @@ func find_player_legion():
 
 func movement():
 	player_legions = get_node("/root/Small_map/Legions").get_children()
-	var target_legion = null
-	for legion in player_legions:
-		if legion and legion.get_legion_position() == current_target_position:
-			target_legion = legion
-			break
-
-	if target_legion == null or (target_legion and target_legion.get_legion_position() != current_target_position):
-		current_target_position = find_player_legion()
-
-	if path_to_next_tile == null or path_to_next_tile == [] or path_to_next_tile.size() == 0:
-		current_target_position = find_player_legion()
-	
-
-	path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(current_target_position))
-	canvasLayer.line_2d_points = path_to_next_tile
-
-	# for coord in path_to_next_tile:
-	# 	print("path_to_next_tile: " + str(tilemap.local_to_map(coord)))
-
-	if path_to_next_tile.size() > 1:
-		
-		path_to_next_tile.pop_front()
-		var vTarget = path_to_next_tile.pop_front()
-
-		if tilemap.local_to_map(vTarget) not in legion_controller.enemy_taken_positions.values():
-
-			play_animation(vTarget)
-			new_position = tilemap.map_to_local(vTarget)
-			legion_position = tilemap.local_to_map(new_position)
-			neighbours = tilemap.get_surrounding_cells(legion_position)
-			moved = true
-
-			if self.engaged == false:
-				legion_controller.check_enemy_owned_tiles(tilemap.local_to_map(legion_position))
-				legion_controller.player_owned_tiles.erase(tilemap.local_to_map(legion_position))
-			
+	if player_legions.size() == 0:
+		print("Player legions is empty")
 	else:
-		print("no path to next tile")
-	# TODO else if other legion is on the tile, fight
+		var target_legion = null
+		for legion in player_legions:
+			if legion and legion.get_legion_position() == current_target_position:
+				target_legion = legion
+				break
 
-	if moved == true:
-		legion_selection = false
-		player_select.button_pressed = false
-		legion_controller.check_enemy_position(self, tilemap.local_to_map(legion_position))
+		if target_legion == null or (target_legion and target_legion.get_legion_position() != current_target_position):
+			current_target_position = find_player_legion()
+
+		if path_to_next_tile == null or path_to_next_tile == [] or path_to_next_tile.size() == 0:
+			current_target_position = find_player_legion()
+		
+
+		path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(current_target_position))
+		canvasLayer.line_2d_points = path_to_next_tile
+
+		# for coord in path_to_next_tile:
+		# 	print("path_to_next_tile: " + str(tilemap.local_to_map(coord)))
+
+		if path_to_next_tile.size() > 1:
+			
+			path_to_next_tile.pop_front()
+			var vTarget = path_to_next_tile.pop_front()
+
+			if tilemap.local_to_map(vTarget) not in legion_controller.enemy_taken_positions.values():
+
+				play_animation(vTarget)
+				new_position = tilemap.map_to_local(vTarget)
+				legion_position = tilemap.local_to_map(new_position)
+				neighbours = tilemap.get_surrounding_cells(legion_position)
+				moved = true
+
+				if self.engaged == false:
+					legion_controller.check_enemy_owned_tiles(tilemap.local_to_map(legion_position))
+					legion_controller.player_owned_tiles.erase(tilemap.local_to_map(legion_position))
+				
+		else:
+			print("no path to next tile")
+		# TODO else if other legion is on the tile, fight
+
+		if moved == true:
+			legion_selection = false
+			player_select.button_pressed = false
+			legion_controller.check_enemy_position(self, tilemap.local_to_map(legion_position))
 
 
 func play_animation(vTarget):

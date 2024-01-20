@@ -231,7 +231,14 @@ anchor_right = 0.400521
 anchor_bottom = 1.00429
 
 [node name="Coin" parent="UICanvasLayer/UI" index="4"]
-position = Vector2(523, 180)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.231771
+anchor_top = 0.442061
+anchor_right = 0.308333
+anchor_bottom = 1.07296
+offset_right = 353.0
+offset_bottom = 353.0
 
 [node name="TurnsLabel" parent="UICanvasLayer/UI" index="5"]
 anchor_top = 0.553648
