@@ -19,6 +19,7 @@ extends Node
 @onready var enemy_legions = get_node("/root/Small_map/EnemyLegions")
 @onready var small_map = get_node("/root/Small_map")
 @onready var combat_scene = preload("res://Levels/Combat.tscn")
+@onready var background_music = get_node("/root/Small_map/BackgroundMusic")
 
 @onready var gold = 0
 @onready var enemy_gold = 0
@@ -104,6 +105,7 @@ func check_engagement():
 				current_engaged_enemy_legion.set_engaged(true)
 
 				play_sound_effect()
+				background_music.playing = false
 				
 				var combat_scene_instance = combat_scene.instantiate()
 				add_child(combat_scene_instance)

@@ -4,6 +4,8 @@ extends Control
 @onready var camera = get_node("/root/Small_map/Camera2D")
 @onready var ui_canvas_layer = get_node("/root/Small_map/UICanvasLayer")
 @onready var gold_label = get_node("/root/Small_map/UICanvasLayer/UI/GoldLabel")
+@onready var background_music = get_node("/root/Small_map/BackgroundMusic")
+@onready var sfx_player = $SFXPlayer
 
 
 
@@ -64,6 +66,8 @@ func _on_attack_button_pressed():
 		var tween = get_tree().create_tween()
 		tween.tween_property($PlayerLegionSprite, "global_position", Vector2(600,629), 0.1)
 		tween.tween_property($PlayerLegionSprite, "global_position", Vector2(381,629), 0.5)
+		sfx_player.stream = load("res://Resources/Sound/SFX/lightning.ogg")
+		sfx_player.play()
 
 		var random_number = rng.randi_range(10, 20)
 		current_engaged_enemy_legion.health -= random_number
@@ -97,10 +101,11 @@ func _on_attack_button_pressed():
 
 			animation_player.play_backwards("Fade_out")
 
-			#camera.set_enabled(true)
+			camera.set_enabled(true)
 			legion_controller.calculate_gold()
 			gold_label.text = str(legion_controller.gold)
 			ui_canvas_layer.set_visible(true)
+			background_music.play()
 
 	else:
 		pass
@@ -110,6 +115,9 @@ func _on_end_turn_button_pressed():
 	var tween = get_tree().create_tween()
 	tween.tween_property($EnemyLegionSprite, "global_position", Vector2(1368,629), 0.1)
 	tween.tween_property($EnemyLegionSprite, "global_position", Vector2(1587,629), 0.5)
+	sfx_player.stream = load("res://Resources/Sound/SFX/bat-hit.ogg")
+	sfx_player.play()
+
 
 	$DefendingIcon.visible = false
 
@@ -157,12 +165,17 @@ func _on_end_turn_button_pressed():
 
 		animation_player.play_backwards("Fade_out")
 		camera.set_enabled(true)
+		background_music.play()
 
 
 func _on_defend_button_toggled(button_pressed):
 	if button_pressed:
 		defend = true
 		$DefendingIcon.visible = true
+		sfx_player.stream = load("res://Resources/Sound/SFX/equipmentclicks.wav")
+		sfx_player.play()
 	else:
 		defend = false
 		$DefendingIcon.visible = false
+		sfx_player.stream = load("res://Resources/Sound/SFX/equipmentclicks.wav")
+		sfx_player.play()

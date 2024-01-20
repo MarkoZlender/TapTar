@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dm1s5rqpnlacm"]
+[gd_scene load_steps=16 format=3 uid="uid://dm1s5rqpnlacm"]
 
 [ext_resource type="Script" path="res://Scripts/Combat.gd" id="1_55i2n"]
 [ext_resource type="SpriteFrames" uid="uid://cchegyij7br7b" path="res://Resources/SpriteFrames/enemy_legion_idle_animation.tres" id="2_lfi8b"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://b6gsk8nygm7uw" path="res://Resources/Themes/combat_theme.tres" id="5_ce65t"]
 [ext_resource type="Texture2D" uid="uid://c17nxbox667yc" path="res://Resources/Sprites/faerie_fire_attack.png" id="5_leikk"]
 [ext_resource type="Texture2D" uid="uid://bsr4ftot0xfmi" path="res://Resources/Images/shield_polished.png" id="7_j2wvj"]
+[ext_resource type="AudioStream" uid="uid://bpg1kgwynfr1w" path="res://Resources/Sound/SFX/frantic.wav" id="8_eudb5"]
 
 [sub_resource type="Animation" id="Animation_5fawx"]
 resource_name = "Fade"
@@ -190,6 +191,16 @@ visible = false
 position = Vector2(580.5, 370)
 scale = Vector2(1.71667, 1.71667)
 texture = ExtResource("7_j2wvj")
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_eudb5")
+volume_db = -70.0
+autoplay = true
+bus = &"Music"
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -70.0
+bus = &"SFX"
 
 [connection signal="animation_finished" from="SceneTransitionRect/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="AttackButton" to="." method="_on_attack_button_pressed"]
