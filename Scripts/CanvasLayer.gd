@@ -12,5 +12,6 @@ func _ready():
 func _process(delta):
 	_draw()
 
+# draws the line for debugging
 func _draw():
 	line_2d.points = line_2d_points

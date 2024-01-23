@@ -1,3 +1,4 @@
+# data class for characters
 class_name Character extends Resource
 
 # name
@@ -14,6 +15,6 @@ class_name Character extends Resource
 @export var portrait = "res://Resources/Images/no_image_available.svg"
 
 # map
-@export var map := "res://Levels/small_map.tscn"
+@export var map := "res://Levels/mini_map.tscn"
 
 
