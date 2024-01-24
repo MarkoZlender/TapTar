@@ -11,6 +11,6 @@ func _ready():
 func _process(delta):
 	pass
 
-
+# emits the end_turn signal
 func _on_end_turn_button_pressed():
 	end_turn.emit()

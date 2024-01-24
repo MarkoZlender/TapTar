@@ -10,6 +10,6 @@ func _ready():
 func _process(delta):
 	pass
 
-
+# go back to the main menu when the button is pressed
 func _on_button_pressed():
 	self.queue_free()

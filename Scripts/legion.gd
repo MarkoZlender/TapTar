@@ -31,10 +31,7 @@ func _ready():
 	legion_position = current_tilemap.local_to_map(self.global_position)
 	neighbours = current_tilemap.get_surrounding_cells(legion_position)
 	legion_selection = false
-	#legion_controller.check_position(self, legion_position)
-	
-	
-	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -42,25 +39,25 @@ func _process(delta):
 	
 
 func movement():
+	# check if left mouse button is pressed
 	if Input.is_action_just_pressed("left_click"):
-		#print("taken positions " + str(LegionController.taken_positions))
-		#print("restricted coords " + str(SmallMap.taken_positions))
+		
+		# get global mouse position
 		var mouse_position = get_global_mouse_position()
+		# convert global mouse position to local mouse position
 		var tile_mouse_position : Vector2i = tilemap.local_to_map(mouse_position)
 		
-
+		# get custom data from tilemap
 		var tile_data : TileData = tilemap.get_cell_tile_data(0, tile_mouse_position)
-		var tile_data2 : TileData = tilemap.get_cell_tile_data(1, tile_mouse_position)
 		
-		
+		# if tile data is not null, if tile exists
 		if tile_data:
-			var tile_name = str(tile_data.get_custom_data("Tile_name"))
+			# get bool for walkable condition from tile data
 			var tile_wakable: bool = tile_data.get_custom_data("walkable")
-			#print("tile mouse position: " + str(tile_mouse_position) + "\n" + tile_name)
+			
 			if tile_wakable:
 				if moved == true:
 					pass
-					#print("legion already moved")
 				else:
 					if (tile_mouse_position in neighbours) and (tile_mouse_position not in legion_controller.taken_positions.values()):
 						if legion_selection == true:
@@ -72,12 +69,6 @@ func movement():
 							moved = true
 							
 							
-							# if (legion_position in legion_controller.enemy_owned_tiles):
-							# 	print("removing enemy tile")
-							# 	legion_controller.enemy_owned_tiles.erase(legion_position)
-							# 	print("Legion position: " + str(legion_position))
-							
-							
 							play_sound_effect()
 							# append legion position to taken positions array
 							legion_controller.check_player_owned_tiles(legion_position)
@@ -85,13 +76,10 @@ func movement():
 							legion_controller.selected_legions.clear()
 						else:
 							pass
-							#print("legion not selected")
 					else:
 						pass
-						#print("tile not a neighbour")
 		else:
 			pass
-			#print("NO TILE DATA!" + str(tile_mouse_position))
 
 	if moved == true:
 		player_tile_map.hide()
@@ -122,15 +110,14 @@ func _on_selected_toggled(button_pressed):
 	else:
 		legion_controller.selected_legions.erase(self)
 		player_tile_map.hide()
-	#print("Selected legions: " + str(LegionController.selected_legions))
 	legion_selected.emit(button_pressed)
 
 func _on_legion_selected(selected):
-	#print("Selected legions: " + str(SmallMap.selected_legions))
 	if (selected and moved == false) and legion_controller.selected_legions.size() < 2:
 		legion_selection = true
 		player_tile_map.show()
 
+# set legion properties on end turn
 func set_end_turn():
 	moved = false
 	legion_selection = false
@@ -156,5 +143,6 @@ func get_legion_position():
 func get_neighbours():
 	return neighbours
 
+# enable input based on events
 func _input(event):
 	movement()

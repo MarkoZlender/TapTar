@@ -3,7 +3,6 @@ extends Control
 var save_system = SaveSystem.new()
 
 var volume = VolumeOptions.new()
-# var character = Character.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,6 +11,7 @@ func _ready():
 	save_system.create_or_load_save_options()
 	# set options
 	volume = save_system.save_options.volume
+	# set saved volume values
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), volume.music_volume)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), volume.sfx_volume)
 

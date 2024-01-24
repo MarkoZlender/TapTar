@@ -119,8 +119,6 @@ func _on_exit_button_pressed():
 ################################################################
 
 
-	
-
 
 
 # function which executes all the necessary actions when the player ends their turn

@@ -1,5 +1,6 @@
 class_name SaveGame extends Resource
 
+# set save game path
 const SAVE_GAME_PATH := "user://gamesave.tres"
 
 @export var character : Resource

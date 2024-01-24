@@ -10,8 +10,6 @@ func create_or_load_save_options() -> void:
 		
 		save_options = VolumeOptions.new()
 		save_options.write_options()
-		
-	#volume = _save.volume
 
 func create_or_load_save_game() -> bool:
 	if SaveGame.save_exists():
@@ -22,7 +20,5 @@ func create_or_load_save_game() -> bool:
 		
 		save_game.character = Character.new()
 		save_game.write_game()
-		
-	#character = save_game.character
 	return false
 
