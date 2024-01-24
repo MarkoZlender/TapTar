@@ -85,7 +85,7 @@ func _on_map_select_item_selected(index):
 		character.map = "res://Levels/big_map.tscn"
 	else:
 		OS.alert("Map file not found!", "Notification")
-		get_tree().quit()
+		#get_tree().quit()
 
 
 # skill allocation
