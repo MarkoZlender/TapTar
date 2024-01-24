@@ -67,13 +67,11 @@ func aStarStart()->void:
 						aStar.connect_points(idx, idx_neighbor, false) # bidirectional = false
 
 func occupyAStarCell(vGlobalPosition:Vector2i)->void:
-	#var vCell := self.local_to_map(vGlobalPosition)
 	var idx:int = aStar.get_closest_point(vGlobalPosition, true)
 
 	if aStar.has_point(idx):aStar.set_point_disabled(idx, true)
 	
 func freeAStarCell(vGlobalPosition:Vector2i)->void:
-	#var vCell := self.map_to_local(vGlobalPosition)
 	var idx:int = aStar.get_closest_point(vGlobalPosition, true)
 
 	if aStar.has_point(idx):aStar.set_point_disabled(idx, false)
@@ -83,8 +81,6 @@ func getAStarPath(vStartPosition:Vector2i,vTargetPosition:Vector2i)->Array:
 	var idxStart = getAStarCellId(vCellStart)
 	var vCellTarget = local_to_map(vTargetPosition)
 	var idxTarget = getAStarCellId(vCellTarget)
-
-	#print("vCellStart: ",vCellStart, " idxStart: ",idxStart, " vCellTarget: ",vCellTarget, " idxTarget: ",idxTarget)
 
 	# Just a small check to see if both points are in the grid
 	if aStar.has_point(idxStart) and aStar.has_point(idxTarget):

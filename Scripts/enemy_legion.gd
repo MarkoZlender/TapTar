@@ -47,6 +47,7 @@ func _process(delta):
 func set_target_position(new_target_position: Vector2i):
 	target_position = new_target_position
 
+# finds random player legion to move towards
 func find_player_legion():
 	if player_legions.size() != 0:
 		var random_legion = null
@@ -79,9 +80,6 @@ func movement():
 		path_to_next_tile = tilemap.getAStarPath(self.global_position, tilemap.map_to_local(current_target_position))
 		canvasLayer.line_2d_points = path_to_next_tile
 
-		# for coord in path_to_next_tile:
-		# 	print("path_to_next_tile: " + str(tilemap.local_to_map(coord)))
-
 		if path_to_next_tile.size() > 1:
 			
 			path_to_next_tile.pop_front()
@@ -101,7 +99,6 @@ func movement():
 				
 		else:
 			print("no path to next tile")
-		# TODO else if other legion is on the tile, fight
 
 		if moved == true:
 			legion_selection = false
@@ -114,10 +111,8 @@ func play_animation(vTarget):
 	tween.tween_property(self, "global_position", vTarget, 0.5)
 
 	if (tilemap.local_to_map(vTarget).x) < (legion_position.x):
-		#print("Flipping sprite to left", vTarget.x, legion_position.x)
 		$PlayerSelect/AnimatedEnemySprite.set_flip_h(true)
 	if (tilemap.local_to_map(vTarget).x) > (legion_position.x):
-		#print("Flipping sprite to right", vTarget.x, legion_position.x)
 		$PlayerSelect/AnimatedEnemySprite.set_flip_h(false)
 
 func _on_selected_toggled(button_pressed):
@@ -125,16 +120,13 @@ func _on_selected_toggled(button_pressed):
 		legion_controller.selected_legions.append(self)
 	else:
 		legion_controller.selected_legions.erase(self)
-	#print("Selected legions: " + str(LegionController.selected_legions))
 	legion_selected.emit(button_pressed)
 
 func _on_legion_selected(selected):
-	#print("Selected legions: " + str(SmallMap.selected_legions))
 	if (selected and moved == false) and legion_controller.selected_legions.size() < 2:
 		legion_selection = true
 
 func set_end_turn():
-	#print("Target position: " + str(target_position))
 	# calling movement at the end of the turn so that the enemy legions make moves after the player
 	#############################################################################################
 	movement()

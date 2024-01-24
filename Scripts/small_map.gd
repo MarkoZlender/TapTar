@@ -188,9 +188,11 @@ func _on_new_legion_button_pressed():
 		for tile in legion_controller.player_owned_tiles:
 			if tile not in legion_controller.taken_positions.values():
 				print("New legion")
+
 				var new_legion_scene = preload("res://Objects/legion.tscn")
 				var new_legion_instance = new_legion_scene.instantiate()
 				$Legions.add_child(new_legion_instance)
+				
 				new_legion_position = tile
 				new_legion_instance.set_legion_position(new_legion_position)
 				all_legions.append(new_legion_instance)

@@ -38,13 +38,13 @@ func _ready():
 func _process(delta):
 	pass
 
+# checks player legion's position and adds it to the dictionary of taken positions
 func check_position(unit: Node, new_legion_position: Vector2i):
 	taken_positions[unit] = new_legion_position
-	#print("Restricted coords: " + str(taken_positions))
 
+# checks enemy legion's position and adds it to the dictionary of enemy taken positions
 func check_enemy_position(unit: Node, new_legion_position: Vector2i):
 	enemy_taken_positions[unit] = new_legion_position
-	#print("Restricted coords: " + str(taken_positions))
 
 func check_player_owned_tiles(taken_position):
 	if taken_position not in player_owned_tiles:
@@ -58,9 +58,6 @@ func check_player_owned_tiles(taken_position):
 func check_enemy_owned_tiles(taken_position):
 	if taken_position not in enemy_owned_tiles:
 		enemy_owned_tiles.append(taken_position)
-
-		#if taken_position in player_owned_tiles:
-			#player_owned_tiles.erase(taken_position)
 	else:
 		pass
 
@@ -71,27 +68,6 @@ func check_taken_position():
 	for tile_coord in enemy_owned_tiles:
 		tilemap.set_cell(1, tile_coord, 2, Vector2i(3,1), 0)
 
-func get_player_engaged_legion(tile_coord):
-	for legion in taken_positions:
-		if legion != null and taken_positions[legion] == tile_coord:
-			return legion
-
-func get_enemy_engaged_legion(tile_coord):
-	for legion in enemy_taken_positions:
-		if legion != null and enemy_taken_positions[legion] == tile_coord:
-			return legion
-
-func get_current_engaged_player_legion():
-	return current_engaged_player_legion
-
-func get_current_engaged_enemy_legion():
-	return current_engaged_enemy_legion
-
-func set_current_engaged_player_legion(legion):
-	current_engaged_player_legion = legion
-
-func set_current_engaged_enemy_legion(legion):
-	current_engaged_enemy_legion = legion
 
 func check_engagement():
 	for tile_coord in taken_positions.values():
@@ -154,7 +130,10 @@ func calculate_score():
 			score += 5
 	return score
 
-#################################################################
+#########################################################################
+
+
+# enemy ai for creating new legions ####################################
 
 func create_new_enemy_legion():
 	var new_legion_position = null
@@ -178,5 +157,33 @@ func create_new_enemy_legion():
 				break
 	else:
 		print("Not enough gold or no available tiles")
+
+#########################################################################
+
+# getters and setters ########################################################
+
+func get_current_engaged_player_legion():
+	return current_engaged_player_legion
+
+func get_current_engaged_enemy_legion():
+	return current_engaged_enemy_legion
+
+func set_current_engaged_player_legion(legion):
+	current_engaged_player_legion = legion
+
+func set_current_engaged_enemy_legion(legion):
+	current_engaged_enemy_legion = legion
+
+func get_player_engaged_legion(tile_coord):
+	for legion in taken_positions:
+		if legion != null and taken_positions[legion] == tile_coord:
+			return legion
+
+func get_enemy_engaged_legion(tile_coord):
+	for legion in enemy_taken_positions:
+		if legion != null and enemy_taken_positions[legion] == tile_coord:
+			return legion
+
+#############################################################################
 
 
