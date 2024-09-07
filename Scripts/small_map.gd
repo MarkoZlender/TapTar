@@ -148,7 +148,7 @@ func _on_ui_end_turn():
 	winlose.turn_small_map()
 
 	# update the turns label
-	$UICanvasLayer/UI/TurnsLabel.text = "Turns: " + str(30-winlose.turns)
+	$UICanvasLayer/UI/TurnsLabel.text = "Turns: " + str(20-winlose.turns)
 
 	# debug prints ###########################################################################
 

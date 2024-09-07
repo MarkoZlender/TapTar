@@ -1,2 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
+Executables/release.pck
+Executables/release.exe
+export_presets.cfg
