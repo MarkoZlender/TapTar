@@ -94,12 +94,14 @@ libraries = {
 }
 
 [node name="EnemyLegionSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(1587, 629)
 scale = Vector2(5.93056, 5.93056)
 sprite_frames = ExtResource("2_lfi8b")
 animation = &"idle"
 
 [node name="PlayerLegionSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(381, 629)
 scale = Vector2(5.931, 5.931)
 sprite_frames = ExtResource("3_c37sy")
@@ -111,7 +113,6 @@ offset_left = 532.0
 offset_top = 561.0
 offset_right = 859.0
 offset_bottom = 633.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 text = "Player Health"
 

@@ -8,7 +8,7 @@ func create_or_load_save_options() -> void:
 	else:
 		save_options = SaveOptions.new()
 		
-		save_options = VolumeOptions.new()
+		save_options.volume = VolumeOptions.new()
 		save_options.write_options()
 
 func create_or_load_save_game() -> bool:
